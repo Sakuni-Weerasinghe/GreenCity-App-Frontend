@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 //import { getPublicContent } from '../../services/user.service'
 import Map from "../../Components/Map/Map"
@@ -22,10 +22,10 @@ const Home = () => {
   //     }
   //     );
   // }, []);
-  
+
   return (
     <div>
-        {/* <Map/> */}
+      <Map />
     </div>
   )
 }

@@ -30,7 +30,7 @@ const Header = () => {
         } else {
             setUserInfo(undefined);
         }
-    }, []);
+    }, [loginStatus, userInfo]);
 
     const logOut = () => {
         authService.logout();
@@ -50,9 +50,16 @@ const Header = () => {
                             <li className="nav-item mt-2">
                                 <a className="nav-link" href='/'>HOME</a>
                             </li>
+                            {/* <li className="nav-item mt-2">
+                                <a className="nav-link" href='/login'>LOGIN</a>
+                            </li>
+                            <li className="nav-item mt-2">
+                                <a className="nav-link" onClick={() => { setshowSignupModal(true) }}>SIGNUP</a>
+                                <SignupModal show={showSignupModal} onHide={() => setshowSignupModal(false)} />
+                            </li> */}
 
 
-                            {loginStatus ?
+                            {/* {loginStatus ?
                                 <>
                                     <span>ffffffffffffffffffffffffffffffff</span>
                                 </>
@@ -60,7 +67,7 @@ const Header = () => {
                                 <>
                                     <span>sssssssssssssssssssssssssssss</span>
                                 </>
-                            }
+                            } */}
 
 
 

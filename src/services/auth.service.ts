@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 
 const API_URL = "http://localhost:8080/api/auth/";
 let loginStatus: boolean = false;
@@ -84,3 +85,9 @@ export const getCurrentUser = () => {
 export const getLoginStatus = () => {
   return loginStatus;
 }
+
+export const setLoginStatusValue = (value: boolean) => {
+  loginStatus = value;
+}
+
+

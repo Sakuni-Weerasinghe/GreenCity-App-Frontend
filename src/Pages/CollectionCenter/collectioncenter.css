@@ -1,0 +1,45 @@
+#main_banner img {
+    width: 100%;
+}
+
+button {
+    border-radius: 0px;
+}
+
+button:focus {
+    box-shadow: none;
+}
+
+.username {
+    color: #052123;
+}
+
+.username:hover {
+    color: #0f484c;
+    text-decoration: none;
+}
+
+.bigButton {
+    background-color: #052123;
+}
+
+.bigButton:hover {
+    background-color: #0f484c;
+}
+
+ul {
+    padding-left: 18px;
+}
+
+.title {
+    background-color: #052123;
+}
+
+.data {
+    background-color: #f1f1f1;
+    color: #052123;
+}
+
+#description {
+    background-color: #f1f1f1;
+}
