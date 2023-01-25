@@ -1,0 +1,16 @@
+#request_btn {
+    border: 1px solid #778c17;
+    color: #778c17;
+    background-color: white;
+}
+
+#request_btn:hover,
+#request_btn:focus {
+    background-color: #778c17;
+    color: white;
+}
+
+#mapBtn {
+    background-color: #778c17;
+    color: white;
+}

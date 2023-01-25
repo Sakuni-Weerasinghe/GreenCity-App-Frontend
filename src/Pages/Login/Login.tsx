@@ -17,13 +17,13 @@ const style = {
 }
 
 
-const Login = () => {
+const Login = (props: any) => {
   let navigate: NavigateFunction = useNavigate();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
-  const [showSignupModal, setshowSignupModal] = useState(false)
+  const [showSignUpModal, setShowSignUpModal] = useState(false)
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("This field is required!"),
@@ -45,13 +45,17 @@ const Login = () => {
     login(username, password).then(
       (response) => {
         if (response) {
+          props.loginStatusHandler(true);
           navigate("/profile");
+        } else {
+          props.loginStatusHandler(false);
         }
       },
       (error) => {
         const resMessage = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
         setLoading(false);
         setMessage(resMessage);
+        props.loginStatusHandler(false);
       }
     );
   };
@@ -77,8 +81,7 @@ const Login = () => {
                     </div>
                     <div className="text-right">
                       <button type="submit" className="btn btn-dark btn-block my-4 px-5" disabled={loading}>
-                        {loading && (<span className="spinner-border spinner-border-sm"></span>)}
-                        Login
+                        Login {loading && (<span className="spinner-border spinner-border-sm"></span>)}
                       </button>
                     </div>
                     {message && (
@@ -90,8 +93,8 @@ const Login = () => {
                     )}
                   </form>
                   <div>
-                    <p className="mb-0 mt-5">Don't have an account? <a className="text-dark-50 fw-bold" onClick={() => { setshowSignupModal(true) }}>Sign Up</a></p>
-                    <SignupModal show={showSignupModal} onHide={() => setshowSignupModal(false)} />
+                    <p className="mb-0 mt-5">Don't have an account? <a className="text-dark-50 fw-bold" onClick={() => { setShowSignUpModal(true) }}>Sign Up</a></p>
+                    <SignupModal show={showSignUpModal} onHide={() => setShowSignUpModal(false)} />
                   </div>
                 </div>
               </div>

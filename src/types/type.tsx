@@ -3,7 +3,7 @@ export type UserSignupForm = {
     lastname: string;
     contactnumber: string;
     email: string;
-    addressline1:string;
+    addressline1: string;
     addressline2: string;
     addressline3: string;
     username: string;
@@ -15,7 +15,7 @@ export type CenterSignupForm = {
     centername: string;
     contactnumber: string;
     email: string;
-    addressline1:string;
+    addressline1: string;
     addressline2: string;
     addressline3: string;
     username: string;
@@ -26,6 +26,14 @@ export type CenterSignupForm = {
 export type LoginForm = {
     username: string;
     password: string;
+}
+
+export type CollectionCenterData = {
+    id: string;
+    name: string;
+    location: string;
+    waste_type: string;
+    image: string;
 }
 
 

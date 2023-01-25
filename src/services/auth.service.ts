@@ -1,8 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
 
 const API_URL = "http://localhost:8080/api/auth/";
-let loginStatus: boolean = false;
 
 export const ccentersignup = (
   centerName: string,
@@ -64,7 +62,6 @@ export const login = (username: string, password: string) => {
       if (response) {
         const userData = JSON.stringify(response);
         localStorage.setItem("userData", userData);
-        loginStatus = true;
       }
       return response;
     });
@@ -72,7 +69,6 @@ export const login = (username: string, password: string) => {
 
 export const logout = () => {
   localStorage.removeItem("userData");
-  loginStatus = false;
 };
 
 export const getCurrentUser = () => {
@@ -83,11 +79,9 @@ export const getCurrentUser = () => {
 };
 
 export const getLoginStatus = () => {
-  return loginStatus;
+  if (localStorage.getItem("userData")) {
+    return true;
+  } else {
+    return false;
+  }
 }
-
-export const setLoginStatusValue = (value: boolean) => {
-  loginStatus = value;
-}
-
-

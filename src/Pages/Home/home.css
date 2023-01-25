@@ -1,0 +1,8 @@
+#main_banner img {
+    width: 100%;
+}
+
+#mapButton {
+    box-shadow: none;
+    background-color: #778c17;
+}

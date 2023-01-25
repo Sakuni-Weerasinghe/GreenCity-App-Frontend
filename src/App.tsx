@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Core/Header/Header"
 import Footer from "./Core/Footer/Footer"
@@ -8,7 +8,7 @@ import CcenterSignup from "./Pages/SignUp/Components/CcenterSignup"
 
 
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/profile';
 import CollectionCenter from './Pages/CollectionCenter/center';
@@ -18,22 +18,24 @@ import * as authService from '../src/services/auth.service';
 import UserRequest from './Pages/CollectionCenter/userRequest';
 
 function App() {
+
+  const [loginStatus, setLoginStatus] = useState(false);
+
   useEffect(() => {
-    const currentUser = authService.getCurrentUser();
-    if (currentUser) {
-      authService.setLoginStatusValue(true);
-    } else {
-      authService.setLoginStatusValue(false);
-    }
-  }, [])
+    setLoginStatus(authService.getLoginStatus());
+  }, [loginStatus]);
+
+  const loginStatusHandler = (value: boolean) => {
+    setLoginStatus(value);
+  };
 
   return (
     <div>
-      <Header></Header>
-      <div className='container'>
+      <Header loginStatus={loginStatus} loginStatusHandler={loginStatusHandler}></Header>
+      <div className="content p-0">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path='login' element={<Login />} />
+          <Route path='login' element={<Login loginStatusHandler={loginStatusHandler} />} />
           <Route path="signup/userSignup" element={<UserSignup />} />
           <Route path="signup/centerSignup" element={<CcenterSignup />} />
           <Route path="profile" element={<Profile />} />

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import { getCenterBoard } from "../../services/user.service";
-import banner from "../../assets/Images/banner.jpg";
 import center from "../../assets/Images/center1.jpg";
 import "./collectioncenter.css";
 
@@ -29,7 +28,8 @@ const BoardCenter = () => {
   return (
     <>
       <div id="main_banner">
-        <img src={banner} alt="" />
+        {/*<img src={banner} alt="" />*/
+        }
       </div>
 
       <div className="container mt-4">

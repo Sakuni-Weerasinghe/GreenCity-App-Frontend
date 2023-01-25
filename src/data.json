@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1",
+        "name": "center1",
+        "location": "Kandy",
+        "waste_type": "Metal",
+        "image": "../../../assets/Images/collectionCenters/center1.jpeg"
+    },
+    {
+        "id": "2",
+        "name": "center2",
+        "location": "Kaluthara",
+        "waste_type": "Paper",
+        "image": "../../../assets/Images/collectionCenters/center2.jpeg"
+    },
+    {
+        "id": "3",
+        "name": "center3",
+        "location": "Colombo",
+        "waste_type": "Paper",
+        "image": "../../../assets/Images/collectionCenters/center3.jpeg"
+    },
+    {
+        "id": "4",
+        "name": "center4",
+        "location": "Peradeniya",
+        "waste_type": "Metal",
+        "image": "../../../assets/Images/collectionCenters/center4.jpeg"
+    },
+    {
+        "id": "5",
+        "name": "center5",
+        "location": "Katugasthota",
+        "waste_type": "Metal",
+        "image": "../../../assets/Images/collectionCenters/center5.jpeg"
+    },
+    {
+        "id": "6",
+        "name": "center6",
+        "location": "Galle",
+        "waste_type": "Metal",
+        "image": "../../../assets/Images/collectionCenters/center6.jpeg"
+    },
+    {
+        "id": "7",
+        "name": "center7",
+        "location": "Kegalle",
+        "waste_type": "Metal",
+        "image": "../../../assets/Images/collectionCenters/center7.jpeg"
+    },
+    {
+        "id": "8",
+        "name": "center8",
+        "location": "Kandy",
+        "waste_type": "Metal",
+        "image": "../../../assets/Images/collectionCenters/center8.jpeg"
+    },
+    {
+        "id": "9",
+        "name": "center9",
+        "location": "Digana",
+        "waste_type": "Metal",
+        "image": "../../../assets/Images/collectionCenters/center9.jpeg"
+    },
+    {
+        "id": "10",
+        "name": "center10",
+        "location": "Colombo",
+        "waste_type": "Metal",
+        "image": "../../../assets/Images/collectionCenters/center10.jpeg"
+    }
+]
