@@ -43,3 +43,7 @@ ul {
 #description {
     background-color: #f1f1f1;
 }
+
+#create_collectioncenter label {
+    font-weight: 500;
+}

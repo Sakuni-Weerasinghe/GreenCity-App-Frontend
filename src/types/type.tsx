@@ -36,4 +36,11 @@ export type CollectionCenterData = {
     image: string;
 }
 
+export type CollectionCenter_createForm = {
+    name: string;
+    waste_type: string;
+    description: string;
+    picture: File;
+}
+
 

@@ -9,15 +9,14 @@ import HomeSearchBar from '../Home/search_bar/search_bar'
 import banner_xl from '../../assets/Images/main_banner.jpg';
 import CollectionCenterList from './CollectionCenterList/CollectionCenterList';
 import MapModal from '../../Modal/MapModal';
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
+  const navigate = useNavigate();
   const [collectionCenterList, setCollectionCenterList] = useState(collectionCenterData)
   const [showMapModal, setShowMapModal] = useState(false);
 
-  const onCenterData = (collectionCenterList: any) => {
-    setCollectionCenterList(collectionCenterList)
-  }
   // const[content,setContent] = useState<string>("");
 
   // useEffect(() => {
@@ -41,8 +40,8 @@ const Home = () => {
       <div id="main_banner">
         <img src={banner_xl}></img>
       </div>
-      <div className='col-12'>
-
+      <div className='container col-12 p-3 my-4 rounded' id='collectionCenterLink'>
+        <a onClick={() => navigate("/collectionCenter/collectionCenter_create")}>+ Create Collection Center</a>
       </div>
       <HomeSearchBar onCenterData={setCollectionCenterList} />
       <div>

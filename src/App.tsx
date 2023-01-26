@@ -16,6 +16,7 @@ import BoardUser from './Pages/User/user';
 import BoardAdmin from './Pages/Admin/admin';
 import * as authService from '../src/services/auth.service';
 import UserRequest from './Pages/CollectionCenter/userRequest';
+import CollectionCenter_create from './Pages/CollectionCenter/collectionCenter_create';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="collectionCenter" element={<CollectionCenter />} />
           <Route path="collectionCenter/userRequest" element={<UserRequest />} />
+          <Route path='collectionCenter/collectionCenter_create' element={<CollectionCenter_create />} />
           <Route path="user" element={<BoardUser />} />
           <Route path="admin" element={<BoardAdmin />} />
         </Routes>
