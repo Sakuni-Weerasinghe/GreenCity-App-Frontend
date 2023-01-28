@@ -3,8 +3,13 @@ import { useState, useEffect } from "react";
 import { getCenterBoard } from "../../services/user.service";
 import center from "../../assets/Images/center1.jpg";
 import "./collectioncenter.css";
+import { useNavigate } from "react-router-dom";
+import CollectionCenterDeleteModal from "../../Modal/CollectionCenterDeleteModal";
 
 const BoardCenter = () => {
+  let navigate = useNavigate();
+  const [showCollectionCenterDeleteModal, setShowCollectionCenterDeleteModal] = useState(false)
+
   // const [content, setContent] = useState<string>("");
 
   // useEffect(() => {
@@ -24,6 +29,14 @@ const BoardCenter = () => {
   //     }
   //   );
   // }, []);
+
+  const onClickRequest = () => {
+    navigate("/collectionRequest/collectionRequest_requirement");
+  }
+
+  const onClickUpdate = () => {
+    navigate("/collectionCenter/collectionCenter_update");
+  }
 
   return (
     <>
@@ -64,7 +77,14 @@ const BoardCenter = () => {
           <p className="text-justify p-3 py-1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui ab eveniet quos voluptate ex tenetur repellat aliquid, recusandae, itaque nihil ea! Atque delectus illum asperiores voluptates unde, consequuntur voluptatum?</p>
         </div>
         <div>
-          <button className="btn btn-dark btn-block px-3 mb-3 mt-1"> Request  </button>
+          <button className="btn btn-dark btn-block px-3 mb-3 mt-1" onClick={onClickRequest}> Request PickUp  </button>
+        </div>
+        <div>
+          <button className="btn btn-dark btn-block px-3 mb-3 mt-1" onClick={onClickUpdate}> Update </button>
+        </div>
+        <div>
+          <button className="btn btn-danger btn-block px-3 mb-3 mt-1" onClick={() => { setShowCollectionCenterDeleteModal(true) }}> Delete </button>
+          <CollectionCenterDeleteModal show={showCollectionCenterDeleteModal} onHide={() => setShowCollectionCenterDeleteModal(false)} />
         </div>
       </div>
     </>

@@ -5,7 +5,7 @@ const CollectionCenterList = (props: any) => {
     let navigate = useNavigate();
 
     const onClickRequest = () => {
-        navigate("/collectionCenter/userRequest");
+        navigate("/collectionRequest/collectionRequest_requirement");
     }
     return (
         <div className="row row-cols-1 row-cols-md-4 g-4 p-5 pt-2">

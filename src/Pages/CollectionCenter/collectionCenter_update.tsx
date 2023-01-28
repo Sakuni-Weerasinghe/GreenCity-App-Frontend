@@ -1,12 +1,7 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useState } from 'react'
-import * as Yup from "yup";
-import { CollectionCenter_createForm } from '../../types/type';
-import { useForm } from 'react-hook-form';
-import MapComponent from '../../Component/MapComponent';
+import { useNavigate } from 'react-router-dom';
 
 import "./collectioncenter.css";
-import { useNavigate } from 'react-router-dom';
 
 const style = {
     cardTitle: {
@@ -15,31 +10,18 @@ const style = {
     },
 }
 
-const CollectionCenter_create = () => {
+const CollectionCenter_update = () => {
     let navigate = useNavigate();
 
     const [successful, setSuccessful] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
 
-    const onSubmit = () => {
+    const onClickCancle = () => {
         navigate("/collectionCenter");
     };
-
-    const validationSchema = Yup.object().shape({
-        description: Yup.string().required(" Description is required!")
-            .min(400, "Exceeds the maximum size!"),
-        picture: Yup.string().required("Collection center picture is required!")
-
-    });
-
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }
-    } = useForm<CollectionCenter_createForm>({
-        resolver: yupResolver(validationSchema)
-    })
+    const onSubmit = () => {
+        navigate("/collectionCenter");
+    }
 
     return (
         <>
@@ -47,7 +29,7 @@ const CollectionCenter_create = () => {
                 <div className='container col-lg-7 '>
                     <div className="card rounded-0">
                         <div style={style.cardTitle} className="p-2 text-center">
-                            <h5 className="fw-bold">Create Your Collection Center</h5>
+                            <h5 className="fw-bold">Update Your Collection Center</h5>
                         </div>
                         {message && (
                             <div className="form-group">
@@ -82,7 +64,7 @@ const CollectionCenter_create = () => {
                                 </div>
                                 <div className="form-outline mb-3">
                                     <label className='py-1 '>Collection Center Picture</label>
-                                    <input type="file" className={`form-control-file px-3 rounded-1 ${errors.picture ? 'is-invalid' : ''}`} />
+                                    <input type="file" className={`form-control-file px-3 rounded-1`} />
                                     {/* <input type="file" className={`form-control-file px-3 rounded-1 ${errors.picture ? 'is-invalid' : ''}`} />
                                     <div className="invalid-feedback">{errors.picture?.message}</div> */}
                                 </div>
@@ -114,9 +96,14 @@ const CollectionCenter_create = () => {
                                     <label className='py-1'>Location</label>
                                     {/* <MapComponent /> */}
                                 </div>
+                                <div className='form-outline mb-3'>
+                                    <label className='py-1'>Collection Center Status</label><br />
+                                    <input type="radio" className='mx-2 ' />Active
+                                    <input type="radio" className='mx-2' />Disable
+                                </div>
                                 <div className="modal-footer my-4">
-                                    <button id="clear-btn" type="button" className="btn btn-dark btn-block mx-4 px-5" onClick={() => reset()}>Clear</button>
-                                    <button type="submit" className="btn btn-dark btn-block px-5">Create</button>
+                                    <button id="clear-btn" type="button" className="btn btn-dark btn-block mx-4 px-5" onClick={onClickCancle}>Cancle</button>
+                                    <button type="submit" className="btn btn-dark btn-block px-5">Update</button>
                                 </div>
                             </form>
                         </div>
@@ -128,4 +115,4 @@ const CollectionCenter_create = () => {
     )
 }
 
-export default CollectionCenter_create
+export default CollectionCenter_update
