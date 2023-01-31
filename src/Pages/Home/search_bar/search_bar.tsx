@@ -1,42 +1,36 @@
-import react, { ChangeEvent, useEffect, useState } from "react";
-import './search_bar.css'
-import collectionCenterData from '../../../data.json'
-import CollectionCenterList from "../CollectionCenterList/CollectionCenterList";
-import MapModal from "../../../Modal/MapModal"
-
+import react, { useEffect, useState } from "react";
+import './search_bar.css';
+import { getcollectionCenterList } from "../../../services/public.service";
 
 const style = {
     search_bar: {
-        background: "rgb(248,248,242)",
+        background: "#EBECE4",
         alignItems: 'center',
     },
 }
 
 const Search_bar = (props: any) => {
+    const collection_center_list = props.collectionList;
+
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [centerData, setCenterData] = useState(collectionCenterData);
-    const [centerSearchData, setCenterSearchData] = useState(collectionCenterData);
+    const [centerData, setCenterData] = useState(collection_center_list);
+    const [centerSearchData, setCenterSearchData] = useState(collection_center_list);
     const [location, setLocation] = useState<string>("")
     const [category, setCategory] = useState<string>("")
 
     useEffect(() => {
-        fetch('../../../data.json')
-            .then((response) =>
-                response.json()
-            )
-            .then(
-                (result) => {
-                    console.log(result)
-                    setCenterData(result);
-                    setCenterSearchData(result)
-                });
+        getcollectionCenterList()
+            .then((data) => {
+                setCenterData(data.response)
+                setCenterSearchData(data.response)
+            });
     }, []);
 
     const handleSearch = () => {
-        debugger
-        const newCenterData = centerData.filter(x => x.location == (location == '' ? x.location : location)
-            && x.waste_type == (category == '' ? x.waste_type : category))
+        // debugger
+        const newCenterData = centerData.filter((x: { location: any; wastetype: any; }) => x.location == (location == '' ? x.location : location)
+            && x.wastetype == (category == '' ? x.wastetype : category))
         props.onCenterData(newCenterData)
     }
 
@@ -50,10 +44,14 @@ const Search_bar = (props: any) => {
                     </div>
                     <div className="col-md-4">
                         <select className="form-select" aria-label="Default select example" onChange={(e) => setCategory(e.target.value)}>
-                            <option selected value="">Category</option>
-                            <option value="Metal">Metal</option>
+                            <option value="">Waste Type</option>
+                            <option value="Plastic">Plastic </option>
+                            <option value="Metal">Metal </option>
+                            <option value="Glass">Glass</option>
+                            <option value="Polythene">Polythene</option>
+                            <option value="E-Waste">E-Waste</option>
                             <option value="Paper">Paper</option>
-                            <option value="Plastic">Plastic</option>
+                            <option value="Rubber">Rubber</option>
                         </select>
                     </div>
                     <div className="col-md-2">
@@ -66,3 +64,5 @@ const Search_bar = (props: any) => {
 }
 
 export default Search_bar
+
+

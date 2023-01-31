@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const API_URL = "http://localhost:8080/api/auth/";
 
 export const ccentersignup = (
@@ -9,6 +10,7 @@ export const ccentersignup = (
   addressLine1: string,
   addressLine2: string,
   addressLine3: string,
+  location: string,
   username: string,
   password: string,
   confirmPassword: string
@@ -22,7 +24,8 @@ export const ccentersignup = (
     email,
     addressLine1,
     addressLine2,
-    addressLine3
+    addressLine3,
+    location
   });
 };
 
@@ -60,7 +63,7 @@ export const login = (username: string, password: string) => {
     })
     .then((response) => {
       if (response) {
-        const userData = JSON.stringify(response);
+        const userData = JSON.stringify(response.data);
         localStorage.setItem("userData", userData);
       }
       return response;
@@ -69,13 +72,9 @@ export const login = (username: string, password: string) => {
 
 export const logout = () => {
   localStorage.removeItem("userData");
-};
+  localStorage.removeItem("userProfile");
+  localStorage.removeItem("userProfileMore");
 
-export const getCurrentUser = () => {
-  const userStr = localStorage.getItem("userData");
-  if (userStr) return JSON.parse(userStr);
-
-  return null;
 };
 
 export const getLoginStatus = () => {

@@ -18,6 +18,7 @@ export type CenterSignupForm = {
     addressline1: string;
     addressline2: string;
     addressline3: string;
+    location: string;
     username: string;
     password: string;
     confirmpassword: string;
@@ -29,18 +30,64 @@ export type LoginForm = {
 }
 
 export type CollectionCenterData = {
-    id: string;
-    name: string;
+    username: string;
+    centerName: string;
     location: string;
-    waste_type: string;
+    wastetype: string;
     image: string;
 }
 
-export type CollectionCenter_createForm = {
-    name: string;
-    waste_type: string;
+export type CollectionCenter_addDetailForm = {
+    wastetype: string;
+    payment: number;
     description: string;
-    picture: File;
+    picture: FileList;
+    working_days: [];
 }
+
+export type Customer_updateForm = {
+    currentUserName: string;
+    firstname: string;
+    lastname: string;
+    contactnumber: string;
+    email: string;
+    addressline1: string;
+    addressline2: string;
+    addressline3: string;
+    username: string;
+    picture: FileList;
+    status: string;
+}
+
+export type CollectionCenter_updateForm = {
+    currentUserName: string;
+    centername: string;
+    contactnumber: string;
+    email: string;
+    addressline1: string;
+    addressline2: string;
+    addressline3: string;
+    location: string;
+    username: string;
+    picture: FileList;
+    wastetype: string;
+    payment: number;
+    description: string;
+    working_days: [];
+    status: string;
+}
+
+export type CollectionRequest = {
+    category: string;
+    customerAddress: string;
+    location: string;
+    cantactNumber: number;
+    note: string;
+    quantity: number;
+    totalPayment: number;
+
+}
+
+
 
 
