@@ -1,0 +1,25 @@
+#header {
+    background-color: #778c17;
+    color: #2c301a;
+}
+
+#active_header_bar {
+    background-color: #edfab6;
+    color: #2c301a;
+}
+
+button {
+    background-color: #052123;
+    color: white;
+}
+
+button:hover {
+    background-color: #0f484c;
+    color: white;
+}
+
+button:focus {
+    background-color: #0f484c;
+    box-shadow: none;
+    color: white;
+}
