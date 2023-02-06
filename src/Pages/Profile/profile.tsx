@@ -1,5 +1,7 @@
 import React from "react";
-import { getCurrentUser, getLoginStatus } from "../../services/auth.service";
+import { getLoginStatus } from "../../services/auth.service";
+import { getCurrentUser } from "../../services/profileManagement.service";
+
 
 const Profile = () => {
   const currentUser = getCurrentUser();
@@ -17,7 +19,7 @@ const Profile = () => {
         <strong>Id:</strong> {currentUser.id}
       </p>
       <p>
-        <strong>Email:</strong> {currentUser.email}
+        Email:{currentUser.email}
       </p>
       <ul>
         {currentUser.roles &&

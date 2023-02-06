@@ -46,7 +46,7 @@ const Login = (props: any) => {
       (response) => {
         if (response) {
           props.loginStatusHandler(true);
-          navigate("/profile");
+          navigate("/");
         } else {
           props.loginStatusHandler(false);
         }
