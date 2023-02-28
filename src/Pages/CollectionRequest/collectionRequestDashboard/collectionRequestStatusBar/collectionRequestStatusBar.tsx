@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./collectionRequestStatusBar.css"
 
-const CollectionRequestStatusBar = () => {
-    const navigate = useNavigate();
+interface Props {
+    onButtonClicked: (buttonName: string) => void;
+}
 
-    const onHandleInprogress = () => {
-        navigate("/collectionRequest/inprogressRequest")
-    }
-    const onHandleActive = () => {
-        navigate("/collectionRequest/activeRequest")
-    }
-    const onHandleComplete = () => {
-        navigate("/collectionRequest/completeRequest")
-    }
+const CollectionRequestStatusBar: React.FC<Props> = ({ onButtonClicked }) => {
+    const handleInprogressClick = () => {
+        onButtonClicked('inprogress');
+    };
+
+    const handleActiveClick = () => {
+        onButtonClicked('active');
+    };
+
+    const handleCompleteClick = () => {
+        onButtonClicked('complete');
+    };
 
     return (
         <>
@@ -21,13 +25,13 @@ const CollectionRequestStatusBar = () => {
                 <div className="container text-center">
                     <div className="row">
                         <div className="col-md-4 col-sm-6 my-1 ">
-                            <button className="btn  rounded-0" type='button' onClick={onHandleInprogress}>Inprogress</button>
+                            <button className="btn  rounded-0" type='button' onClick={handleInprogressClick}>Inprogress</button>
                         </div>
                         <div className="col-md-4 col-sm-6 my-1 ">
-                            <button className="btn  rounded-0" type='button' onClick={onHandleActive}>Active</button>
+                            <button className="btn  rounded-0" type='button' onClick={handleActiveClick}>Active</button>
                         </div>
                         <div className="col-md-4 col-sm-6 my-1 ">
-                            <button className="btn  rounded-0" type='button' onClick={onHandleComplete}>Complete</button>
+                            <button className="btn  rounded-0" type='button' onClick={handleCompleteClick}>Complete</button>
                         </div>
                     </div>
                 </div>
