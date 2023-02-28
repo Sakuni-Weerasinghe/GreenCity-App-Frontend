@@ -74,7 +74,7 @@ export const logout = () => {
   localStorage.removeItem("userData");
   localStorage.removeItem("userProfile");
   localStorage.removeItem("userProfileMore");
-
+  localStorage.removeItem("centerProfile");
 };
 
 export const getLoginStatus = () => {

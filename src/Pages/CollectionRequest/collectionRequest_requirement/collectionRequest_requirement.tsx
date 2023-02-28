@@ -4,6 +4,10 @@ import CustomerRequestConfirmationModal from '../../../Modal/CustomerRequestConf
 import { getCurrentCollectionCenterProfileDetails } from '../../../services/profileManagement.service'
 import { collectionCenterProfileDetailsPublic } from '../../../services/public.service'
 import "./collectionRequest_requirement.css"
+import * as Yup from "yup";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import { CollectionRequest } from '../../../types/type'
 
 const CollectionRequest_requirement = () => {
   const [showRequestConfirmationModal, setShowRequestConfirmationModal] = useState(false)
@@ -11,15 +15,52 @@ const CollectionRequest_requirement = () => {
   const username = location.state.parameter;
   const [quantity, setQuantity] = useState<String>();
 
-  const quantityRef = useRef<HTMLInputElement>(null);
-
-  const handleClick = () => {
-    const quantity = quantityRef.current?.value;
-    setQuantity(quantity);
-  };
-
   collectionCenterProfileDetailsPublic(username, "COLLECTION_CENTER");
   const collectionCenterDetail = getCurrentCollectionCenterProfileDetails();
+
+  const validationSchema = Yup.object().shape({
+    category: Yup.string().required("Mention collecting waste types"),
+    addressline1: Yup.string().required("Address is Required"),
+    addressline2: Yup.string().required("Address is Required"),
+    addressline3: Yup.string().required("Address is Required"),
+    location: Yup.string().required("Location is Required"),
+    payment: Yup.number().required("Mention payment"),
+  });
+
+  // const onSubmit = (data: CollectionRequest) => {
+  //     const { wastetype, payment, description } = data;
+  //     profileManagementService.collectionCenterProfileAddDetails(currentUser.username, wastetype, payment, description).then(
+  //         (response) => {
+  //             setMessage(response.data.response);
+  //             if (response.data.responseStatus) {
+  //                 reset();
+  //                 setSuccessful(true);
+  //             } else {
+  //                 setSuccessful(false);
+  //             }
+  //             navigate("/userProfile/" + currentUser.username)
+  //         },
+  //         (error) => {
+  //             const resMessage =
+  //                 (error.response &&
+  //                     error.response.data &&
+  //                     error.response.data.message) ||
+  //                 error.message ||
+  //                 error.toString();
+  //             setSuccessful(false);
+  //             setMessage(resMessage);
+  //         }
+  //     );
+  // };
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<CollectionRequest>({
+    resolver: yupResolver(validationSchema)
+  })
 
   return (
     <>
@@ -37,7 +78,7 @@ const CollectionRequest_requirement = () => {
                 <div className="form-group mb-3">
                   <label><h6>Category</h6></label>
                   <select className="form-control rounded-1" >
-                    <option value="" selected disabled>Waste Type...</option>
+                    <option value="" selected disabled>Waste Type.....</option>
                     <option value="Metal">Metal</option>
                     <option value="Paper">Paper</option>
                     <option value="Plastic">Plastic</option>
@@ -55,6 +96,10 @@ const CollectionRequest_requirement = () => {
                 <div className="form-group mb-3">
                   <label><h6>Location</h6></label>
                   <input type="text" className='form-control' placeholder='Location'></input>
+                </div>
+                <div className="form-group mb-3">
+                  <label><h6>Contact Number</h6></label>
+                  <input type="text" className='form-control' placeholder='Contact Number'></input>
                 </div>
                 <div className="form-group mb-3">
                   <label><h6>Note</h6></label>
@@ -85,7 +130,7 @@ const CollectionRequest_requirement = () => {
                 <div className="col-auto mb-2">
                   <div className="input-group">
                     <div className="input-group-prepend">
-                      <div id="quantityLabel" className="input-group-text rounded-0" ref={quantityRef} onChange={handleClick}>Quantity :</div>
+                      <div id="quantityLabel" className="input-group-text rounded-0" >Quantity :</div>
                     </div>
                     <input type="text" className="form-control" id="inlineFormInputGroup" placeholder="Enter quantity..." />
                     <div className="input-group-prepend">

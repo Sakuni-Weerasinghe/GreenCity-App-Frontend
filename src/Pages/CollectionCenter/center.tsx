@@ -5,6 +5,7 @@ import center from "../../assets/Images/center1.jpg";
 import "./collectioncenter.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { collectionCenterProfileDetails, getCurrentCollectionCenterProfileDetails } from "../../services/profileManagement.service";
+import { collectionCenterProfileDetailsPublic } from "../../services/public.service";
 
 const BoardCenter = (props: any) => {
   let navigate = useNavigate();
@@ -12,12 +13,10 @@ const BoardCenter = (props: any) => {
   const location = useLocation();
   const username = location.state.parameter;
 
-  collectionCenterProfileDetails(username, "COLLECTION_CENTER");
+  collectionCenterProfileDetailsPublic(username, "COLLECTION_CENTER");
   // useEffect(() => {
 
   const collectionCenterDetails = getCurrentCollectionCenterProfileDetails();
-
-
   // },[])
 
   const onClickRequest = () => {

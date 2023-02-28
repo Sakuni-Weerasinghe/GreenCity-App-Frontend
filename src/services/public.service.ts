@@ -19,11 +19,11 @@ export const collectionCenterProfileDetailsPublic = (username: string, role: str
         .post(API_URL + "collectionCenter", {
             username,
             role,
-        })
+        }, { headers: authHeader() })
         .then((response) => {
             if (response) {
-                const userProfile = JSON.stringify(response.data);
-                localStorage.setItem("userProfile", userProfile);
+                const centerProfile = JSON.stringify(response.data);
+                localStorage.setItem("centerProfile", centerProfile);
             }
             return response;
         });
