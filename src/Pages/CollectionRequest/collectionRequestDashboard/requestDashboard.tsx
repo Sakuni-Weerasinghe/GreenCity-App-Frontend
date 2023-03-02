@@ -8,7 +8,8 @@ import CollectionRequestStatusBar from './collectionRequestStatusBar/collectionR
 import "./requestDashboard.css"
 
 const RequestDashboard = () => {
-    const [showInprogressRequest, setShowInprogressRequest] = useState(false);
+
+    const [showInprogressRequest, setShowInprogressRequest] = useState(true);
     const [showActiveRequest, setShowActiveRequest] = useState(false);
     const [showCompleteRequest, setShowCompleteRequest] = useState(false);
 

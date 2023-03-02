@@ -22,6 +22,12 @@ p {
     color: white;
 }
 
+.parent_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .container input:focus {
     background-color: #dcff8f;
     border: 1px solid #a6f202;

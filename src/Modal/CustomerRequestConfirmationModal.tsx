@@ -19,7 +19,7 @@ const CustomerRequestConfirmationModal = (props: any) => {
             navigate("/collectionRequest/collectionRequest_requirement");
         } else if (value === "confirm") {
             props.onHide();
-            navigate("/collectionRequest/requestDashboard");
+            navigate('/customer/request');
         }
     };
 

@@ -78,10 +78,11 @@ export type CollectionCenter_updateForm = {
 }
 
 export type CollectionRequest = {
-    category: string;
-    customerAddress: string;
+    addressline1: string;
+    addressline2: string;
+    addressline3: string;
+    contactNumber: number;
     location: string;
-    cantactNumber: number;
     note: string;
     quantity: number;
     totalPayment: number;

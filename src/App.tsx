@@ -31,6 +31,7 @@ import CustomerProfile from "./Pages/User/Profile/customerProfile/customerProfil
 import CollectionCenterProfile from './Pages/User/Profile/collectionCenterProfile/collectionCenterProfile';
 import CollectionCenter_addDetails from './Pages/CollectionCenter/collectionCenter_addDetails';
 import Customer_update from './Pages/Customer/customer_update';
+import Request_details from './Pages/Request/request_details/request_details';
 
 function App() {
   const currentUserRole = profileManagementService.getCurrentUser();
@@ -78,11 +79,9 @@ function App() {
             />}
           <Route path='collectionRequest/collectionRequest_requirement' element={<CollectionRequest_requirement />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
-          <Route path='collectionRequest/inprogressRequest' element={<InprogressRequest />} />
-          <Route path='collectionRequest/activeRequest' element={<ActiveRequest />} />
-          <Route path='collectionRequest/completeRequest' element={<CompleteRequest />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
           <Route path='customer/request' element={<Request />} />
+          <Route path='customer/requestDetails' element={<Request_details />} />
           <Route path='customer/request/activeRequest' element={<CustomerActiveRequest />} />
           <Route path='customer/request/cancelRequest' element={<CustomerCancelRequest />} />
           <Route path='customer/request/completeRequest' element={<CustomerCompleteRequest />} />
