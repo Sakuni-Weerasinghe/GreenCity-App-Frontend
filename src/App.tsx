@@ -42,6 +42,11 @@ function App() {
     setLoginStatus(authService.getLoginStatus());
   }, [loginStatus]);
 
+  // to reset scroll to top after refresh
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual';
+  }, [])
+
   const loginStatusHandler = (value: boolean) => {
     setLoginStatus(value);
   };
