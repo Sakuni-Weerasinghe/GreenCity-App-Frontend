@@ -39,7 +39,9 @@ const Home = (props: any) => {
 
       {collectionCenterList && collectionCenterList.length > 0 ?
         <CollectionCenterList collectionList={collectionCenterList} loginStatus={loginStatus} /> :
-        <h6 className="p-5">No Collection Center....</h6>
+        <div className='text-center'>
+          <p className="p-5">Sorry, no results found!</p>
+        </div>
       }
       <nav aria-label="Page navigation example">
         <ul className="pagination pagination-sm justify-content-center">
