@@ -18,6 +18,7 @@ const Home = (props: any) => {
   const [collectionCenterList, setCollectionCenterList] = useState<CollectionCenterData[]>([]);
   const [showMapModal, setShowMapModal] = useState(false);
   const { loginStatus } = props;
+  const [activeView, setActiveView] = useState('list');
 
   useEffect(() => {
     getcollectionCenterList()
@@ -28,38 +29,57 @@ const Home = (props: any) => {
 
   return (
     <>
+      {/* main banner */}
       <div id="main_banner">
         <img src={banner_xl}></img>
       </div>
+      {/* search bar */}
       <HomeSearchBar collectionList={collectionCenterList} onCenterData={setCollectionCenterList} />
-      <div>
-        <button id="mapBtn" className="mx-5 btn btn-sm mt-5" onClick={() => setShowMapModal(true)}>Map View</button>
-        <MapModal show={showMapModal} onHide={() => setShowMapModal(false)} />
+      <div className='container py-5'>
+        {/* toggle for list and map views */}
+        <div className='text-end'>
+          <i className={'list-icon me-2 ' + (activeView === 'list' ? 'active' : '')} onClick={() => { setShowMapModal(false); setActiveView('list') }}></i>
+          <i className={'map-icon ' + (activeView === 'map' ? 'active' : '')} onClick={() => { setShowMapModal(true); setActiveView('map') }}></i>
+        </div>
+        {
+          // map view
+          showMapModal ? <MapModal show={showMapModal} onHide={() => setShowMapModal(false)} /> :
+            // list view
+            <div>
+              {/* collection center list */}
+              {
+                collectionCenterList && collectionCenterList.length > 0 ?
+                  <CollectionCenterList collectionList={collectionCenterList} loginStatus={loginStatus} /> :
+                  <div className='text-center'>
+                    <p className="p-5">No Collection Center....</p>
+                  </div>
+              }
+              {/* pagination */}
+              {
+                collectionCenterList.length > 0 ? (
+                  <nav className='mt-5' aria-label="Page navigation example">
+                    <ul className="pagination pagination-sm justify-content-center">
+                      <li className="page-item m-0">
+                        <a className="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      <li className="page-item m-0"><a className="page-link" href="#">1</a></li>
+                      <li className="page-item m-0"><a className="page-link" href="#">2</a></li>
+                      <li className="page-item m-0"><a className="page-link" href="#">3</a></li>
+                      <li className="page-item m-0">
+                        <a className="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                ) : <></>
+              }
+            </div>
+        }
       </div>
 
-      {collectionCenterList && collectionCenterList.length > 0 ?
-        <CollectionCenterList collectionList={collectionCenterList} loginStatus={loginStatus} /> :
-        <div className='text-center'>
-          <p className="p-5">Sorry, no results found!</p>
-        </div>
-      }
-      <nav aria-label="Page navigation example">
-        <ul className="pagination pagination-sm justify-content-center">
-          <li className="page-item m-0">
-            <a className="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li className="page-item m-0"><a className="page-link" href="#">1</a></li>
-          <li className="page-item m-0"><a className="page-link" href="#">2</a></li>
-          <li className="page-item m-0"><a className="page-link" href="#">3</a></li>
-          <li className="page-item m-0">
-            <a className="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
     </>
   )
 }
