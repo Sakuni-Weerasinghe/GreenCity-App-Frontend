@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from "yup";
 import { LoginForm } from '../../types/type'
 import { login } from '../../services/auth.service';
 import "./login.css"
-import SignupModal from "../../Modal/SignupModal"
 import signupImg from "../../assets/Images/signupImg.jpg"
 
 const style = {
@@ -22,8 +21,6 @@ const Login = (props: any) => {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-
-  const [showSignUpModal, setShowSignUpModal] = useState(false)
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("This field is required!"),
@@ -93,8 +90,9 @@ const Login = (props: any) => {
                     )}
                   </form>
                   <div>
-                    <p className="mb-0 mt-5">Don't have an account? <a className="text-dark-50 fw-bold" onClick={() => { setShowSignUpModal(true) }}>Sign Up</a></p>
-                    <SignupModal show={showSignUpModal} onHide={() => setShowSignUpModal(false)} />
+                    <p className="mb-0 mt-5">Don't have an account?
+                      <Link className="text-dark fw-bold sign-up-link" to='/signup'> Sign Up</Link>
+                    </p>
                   </div>
                 </div>
               </div>

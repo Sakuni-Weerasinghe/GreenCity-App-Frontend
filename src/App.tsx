@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Core/Header/Header"
 import Footer from "./Core/Footer/Footer"
 import Home from "./Pages/Home/Home"
-import UserSignup from "./Pages/SignUp/Components/UserSignup"
-import CcenterSignup from "./Pages/SignUp/Components/CcenterSignup"
+import UserSignup from "./Pages/SignUp/user_signup/UserSignup"
+import CollectionCenterSignUp from "./Pages/SignUp/collection_center_signup/CcenterSignup"
 
 
 import './App.css';
@@ -32,6 +32,7 @@ import CollectionCenterProfile from './Pages/User/Profile/collectionCenterProfil
 import CollectionCenter_addDetails from './Pages/CollectionCenter/collectionCenter_addDetails';
 import Customer_update from './Pages/Customer/customer_update';
 import Request_details from './Pages/Request/request_details/request_details';
+import { SignUp } from './Pages/SignUp/SignUp';
 
 function App() {
   const currentUserRole = profileManagementService.getCurrentUser();
@@ -52,8 +53,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home loginStatus={loginStatus} loginStatusHandler={loginStatusHandler} />} />
           <Route path='login' element={<Login loginStatusHandler={loginStatusHandler} />} />
-          <Route path="signup/userSignup" element={<UserSignup />} />
-          <Route path="signup/centerSignup" element={<CcenterSignup />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="signup/user-signup" element={<UserSignup />} />
+          <Route path="signup/collection-center-signup" element={<CollectionCenterSignUp />} />
           {loginStatus ? <Route path="userProfile/:userName" element={
             currentUserRole.userRole === "USER" ? (<CustomerProfile />) :
               currentUserRole.userRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : <></>

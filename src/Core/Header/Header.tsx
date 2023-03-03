@@ -2,8 +2,7 @@ import { useState } from "react"
 import "./header.css"
 import * as authService from "../../services/auth.service"
 import * as profileManagementService from "../../services/profileManagement.service"
-import SignupModal from "../../Modal/SignupModal"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const style = {
     brand_name: {
@@ -14,9 +13,7 @@ const style = {
 
 const Header = (props: any) => {
     const currentUser = profileManagementService.getCurrentUser();
-    const navigate = useNavigate();
     const { loginStatus } = props;
-    const [showSignUpModal, setShowSignUpModal] = useState(false);
 
     const logOut = () => {
         authService.logout();
@@ -52,9 +49,6 @@ const Header = (props: any) => {
                                 <Link className="nav-link" to='/'>Home</Link>
                             </li>
                             <li className="nav-item mt-2">
-                                <Link className="nav-link" to='/'>About</Link>
-                            </li>
-                            <li className="nav-item mt-2">
                                 {loginStatus && currentUser.userRole === "USER" ? (<Link className="nav-link" to='customer/request'>Request</Link>)
                                     : loginStatus && currentUser.userRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
                                         : <></>}
@@ -68,14 +62,13 @@ const Header = (props: any) => {
                                     : (<Link className="nav-link" to='/login'>Login</Link>)}
                             </li>
                             <li className="nav-item mt-2">
-                                {!loginStatus ? (<a className="nav-link sign-up" onClick={() => setShowSignUpModal(true)}>Sign up</a>)
+                                {!loginStatus ? (<Link className="nav-link" to='/signUp'>Sign Up</Link>)
                                     : <></>}
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <SignupModal show={showSignUpModal} onHide={() => setShowSignUpModal(false)} />
         </>
     )
 }

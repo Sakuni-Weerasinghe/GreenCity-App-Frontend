@@ -35,31 +35,31 @@ const CollectionRequest_requirement = () => {
     payment: Yup.number().required("Mention payment"),
   });
 
-  const onSubmit = (data: CollectionRequest) => {
-      const { addressline1, addressline2, addressline3,contactNumber,location,note,quantity,totalPayment } = data;
-      profileManagementService.collectionCenterProfileAddDetails(currentUser.username, wastetype, payment, description).then(
-          (response) => {
-              setMessage(response.data.response);
-              if (response.data.responseStatus) {
-                  reset();
-                  setSuccessful(true);
-              } else {
-                  setSuccessful(false);
-              }
-              navigate("/userProfile/" + currentUser.username)
-          },
-          (error) => {
-              const resMessage =
-                  (error.response &&
-                      error.response.data &&
-                      error.response.data.message) ||
-                  error.message ||
-                  error.toString();
-              setSuccessful(false);
-              setMessage(resMessage);
-          }
-      );
-  };
+  // const onSubmit = (data: CollectionRequest) => {
+  //     const { addressline1, addressline2, addressline3,contactNumber,location,note,quantity,totalPayment } = data;
+  //     profileManagementService.collectionCenterProfileAddDetails(currentUser.username, wastetype, payment, description).then(
+  //         (response) => {
+  //             setMessage(response.data.response);
+  //             if (response.data.responseStatus) {
+  //                 reset();
+  //                 setSuccessful(true);
+  //             } else {
+  //                 setSuccessful(false);
+  //             }
+  //             navigate("/userProfile/" + currentUser.username)
+  //         },
+  //         (error) => {
+  //             const resMessage =
+  //                 (error.response &&
+  //                     error.response.data &&
+  //                     error.response.data.message) ||
+  //                 error.message ||
+  //                 error.toString();
+  //             setSuccessful(false);
+  //             setMessage(resMessage);
+  //         }
+  //     );
+  // };
 
   const {
     register,
@@ -81,7 +81,7 @@ const CollectionRequest_requirement = () => {
           </div>
         )}
         <div className="row">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form>
             <div className='parent_container'>
               <div className="col-xl-6 col-sm-12 col-lg-6 col-md-6 p-3 mx-auto">
                 <div className="jumbotron jumbotron-fluid py-2 text-center mb-3 py-3">
