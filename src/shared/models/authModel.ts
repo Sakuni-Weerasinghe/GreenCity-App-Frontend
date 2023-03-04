@@ -1,5 +1,5 @@
 export interface UserInfo {
-    authenticationtoken: string;
+    authenticationToken: string;
     userRole: string;
     username: string;
 
@@ -33,4 +33,15 @@ export interface CollectionCenterRegisterRequest {
 export interface RegisterResponse {
     response: string;
     status: boolean;
+}
+
+export interface LoginRequest {
+    username: string;
+    password: string;
+}
+
+export interface LoginResponse {
+    authenticationToken: string;
+    username: string;
+    userRole: string;
 }

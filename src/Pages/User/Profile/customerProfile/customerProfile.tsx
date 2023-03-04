@@ -8,7 +8,7 @@ import "./customerProfile.css"
 
 const CustomerProfile = () => {
   const [loginStatus, setLoginStatus] = useState(false);
-  const currentUser = getCurrentUser();
+  const currentUser = localStorage.getItem('username');
   const navigate = useNavigate();
   const location = useLocation();
   let { } = useParams();
@@ -87,7 +87,7 @@ const CustomerProfile = () => {
               <hr />
             </div>
             <div className='update_btn pt-3'>
-              <button className='btn' onClick={() => navigate("/userProfile/" + currentUser.username + "/customer_update")}>Edit Profile</button>
+              <button className='btn' onClick={() => navigate("/userProfile/" + currentUser + "/customer_update")}>Edit Profile</button>
             </div>
           </div>
         </div>

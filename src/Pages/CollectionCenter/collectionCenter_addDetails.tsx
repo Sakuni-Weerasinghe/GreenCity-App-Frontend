@@ -20,7 +20,7 @@ const CollectionCenter_addDetails = () => {
     const [successful, setSuccessful] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
     const [picture, setPicture] = useState<string>("");
-    const currentUser = profileManagementService.getCurrentUser();
+    const currentUser = localStorage.getItem('username');
 
     const validationSchema = Yup.object().shape({
         description: Yup.string().required(" Description is required!")
@@ -35,7 +35,7 @@ const CollectionCenter_addDetails = () => {
 
     const onSubmit = (data: CollectionCenter_addDetailForm) => {
         const { wastetype, payment, description } = data;
-        profileManagementService.collectionCenterProfileAddDetails(currentUser.username, wastetype, payment, description).then(
+        profileManagementService.collectionCenterProfileAddDetails(currentUser ? currentUser : '', wastetype, payment, description).then(
             (response) => {
                 setMessage(response.data.response);
                 if (response.data.responseStatus) {
@@ -44,7 +44,7 @@ const CollectionCenter_addDetails = () => {
                 } else {
                     setSuccessful(false);
                 }
-                navigate("/userProfile/" + currentUser.username)
+                navigate("/userProfile/" + currentUser)
             },
             (error) => {
                 const resMessage =

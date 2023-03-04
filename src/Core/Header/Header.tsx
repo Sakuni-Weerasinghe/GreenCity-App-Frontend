@@ -4,15 +4,9 @@ import * as authService from "../../shared/services/auth.service"
 import * as profileManagementService from "../../services/profileManagement.service"
 import { Link } from "react-router-dom"
 
-const style = {
-    brand_name: {
-        color: "#778c17",
-        fontSize: "24px",
-    },
-}
-
 const Header = (props: any) => {
-    const currentUser = profileManagementService.getCurrentUser();
+    const currentUser = localStorage.getItem('username');
+    const currentUserRole = localStorage.getItem('userRole');
     const { loginStatus } = props;
 
     const logOut = () => {
@@ -21,15 +15,14 @@ const Header = (props: any) => {
     };
 
     const profile = () => {
-        const userData = localStorage.getItem("userData");
-        if (userData) {
-            const userDataObj = JSON.parse(userData);
-            const userName = userDataObj.username;
-            const userRole = userDataObj.userRole;
+        const username = localStorage.getItem("username");
+        const userRole = localStorage.getItem("userRole");
+
+        if (username && userRole) {
             if (userRole === "USER") {
-                profileManagementService.userProfileDetails(userName, userRole)
+                profileManagementService.userProfileDetails(username, userRole)
             } else if (userRole === "COLLECTION_CENTER") {
-                profileManagementService.collectionCenterProfileDetails(userName, userRole)
+                profileManagementService.collectionCenterProfileDetails(userRole, userRole)
             }
         }
     }
@@ -38,7 +31,7 @@ const Header = (props: any) => {
         <>
             <nav id="navbar" className="navbar navbar-expand-md fixed-top sticky-top shadow py-0">
                 <div className="container-fluid">
-                    <Link className="navbar-brand px-2" to='/'><span style={style.brand_name}>GREEN</span>CITY</Link>
+                    <Link className="navbar-brand px-2" to='/'><span>GREEN</span>CITY</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -49,12 +42,12 @@ const Header = (props: any) => {
                                 <Link className="nav-link" to='/'>Home</Link>
                             </li>
                             <li className="nav-item mt-2">
-                                {loginStatus && currentUser.userRole === "USER" ? (<Link className="nav-link" to='customer/request'>Request</Link>)
-                                    : loginStatus && currentUser.userRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
+                                {loginStatus && currentUserRole === "USER" ? (<Link className="nav-link" to='customer/request'>Request</Link>)
+                                    : loginStatus && currentUserRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
                                         : <></>}
                             </li>
                             <li className="nav-item mt-2">
-                                {loginStatus ? (<Link className="nav-link" to={{ pathname: "/userProfile/" + currentUser.username }} onClick={() => profile()}>{currentUser.username}</Link>)
+                                {loginStatus ? (<Link className="nav-link" to={{ pathname: "/userProfile/" + currentUser }} onClick={() => profile()}>{currentUser}</Link>)
                                     : <></>}
                             </li>
                             <li className="nav-item mt-2">

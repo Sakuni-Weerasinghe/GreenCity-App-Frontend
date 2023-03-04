@@ -3,22 +3,21 @@ import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from "yup";
-import { LoginForm } from '../../types/type'
-import { login } from '../../shared/services/auth.service';
 import "./login.css"
+import { LoginRequest } from '../../shared/models/authModel';
+import { AuthService } from '../../shared/services/auth.service';
 
-const Login = (props: any) => {
+export const Login = (props: any) => {
   // page configurations
   const loginPageConfig = { title: 'Login', message: 'Please enter your username and password!' };
 
   // login form validations
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("This field is required!"),
-    password: Yup.string().required("This field is required!"),
+    password: Yup.string().required("This field is required!")
   });
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginRequest>({ resolver: yupResolver(validationSchema) });
 
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({ resolver: yupResolver(validationSchema) });
-  // login form error handling
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   let navigate: NavigateFunction = useNavigate();
@@ -26,34 +25,27 @@ const Login = (props: any) => {
   const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   /**
-   * This function is used to handle login form
-   * @param data : username, password
+   * This function is used to authenticate users with username and password and
+   * store authenticationToken, username, userRole in localStorage
+   * @param data : LoginRequest
    */
-  const onSubmit = (data: LoginForm) => {
-    const { username, password } = data;
-    setErrorMessage('');
+  const login = async (data: LoginRequest) => {
     setLoading(true);
-    login(username, password)
-      .then(response => {
-        if (response) {
-          props.loginStatusHandler(true);
-          navigate("/");
-        } else {
-          props.loginStatusHandler(false);
-        }
-      },
-        (error) => {
-          if (error.response.data) {
-            console.log();
-            const statusCode = error.response.data.status;
-            const errorMessage = statusCode === 403 ? 'Invalid Username or Password' : '';
-            setErrorMessage(errorMessage);
-          }
-          setLoading(false);
-          props.loginStatusHandler(false);
-        }
-      );
-  };
+    const response = await AuthService.login(data);
+    if (response) {
+      const { authenticationToken, username, userRole } = response;
+      localStorage.setItem("authenticationToken", authenticationToken);
+      localStorage.setItem("username", username);
+      localStorage.setItem("userRole", userRole);
+      props.loginStatusHandler(true);
+      navigate("/");
+    } else {
+      const errorMessage = 'Invalid Username or Password';
+      setErrorMessage(errorMessage);
+      props.loginStatusHandler(false);
+    }
+    setLoading(false);
+  }
 
   return (
     <div className='container my-5'>
@@ -63,16 +55,16 @@ const Login = (props: any) => {
             <div className="card-body p-5 text-center">
               <h3 className="fw-bold mb-3">{loginPageConfig.title}</h3>
               <p className="text-dark-50 mb-5">{loginPageConfig.message}</p>
-              {/* login form */}
-              <form id='loginForm' onSubmit={handleSubmit(onSubmit)}>
-                {/* error message */}
-                {errorMessage && (
-                  <div className="form-outline">
-                    <div className="alert alert-danger" role="alert">
-                      {errorMessage}
-                    </div>
+              {/* error message */}
+              {errorMessage && (
+                <div className="form-outline">
+                  <div className="alert alert-danger" role="alert">
+                    {errorMessage}
                   </div>
-                )}
+                </div>
+              )}
+              {/* login form */}
+              <form id='loginForm' onSubmit={handleSubmit(login)}>
                 <div className="form-outline form-white mb-4">
                   <input type="text" {...register("username")} className="form-control" placeholder="Username" />
                   <div className="invalid-feedback">{errors.username?.message}</div>
@@ -102,4 +94,3 @@ const Login = (props: any) => {
   )
 }
 
-export default Login

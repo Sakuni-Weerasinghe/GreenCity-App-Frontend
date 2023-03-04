@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Core/Header/Header"
 import Footer from "./Core/Footer/Footer"
@@ -6,22 +6,17 @@ import Home from "./Pages/Home/Home"
 import UserSignup from "./Pages/SignUp/user_signup/UserSignup"
 import CollectionCenterSignUp from "./Pages/SignUp/collection_center_signup/CcenterSignup"
 
-
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Login from './Pages/Login/Login';
+import { Login } from './Pages/Login/Login';
 
-import * as authService from '../src/services/auth.service';
-import * as profileManagementService from '../src/services/profileManagement.service';
+import * as authService from './shared/services/auth.service';
 
 // import BoardAdmin from './Pages/Admin/admin';
 import CollectionCenter from './Pages/CollectionCenter/center';
 import CollectionCenter_update from './Pages/CollectionCenter/collectionCenter_update';
 import CollectionRequest_requirement from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
 import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
-import InprogressRequest from './Pages/CollectionRequest/inprogressRequest/inprogressRequest';
-import ActiveRequest from './Pages/CollectionRequest/activeRequest/activeRequest';
-import CompleteRequest from './Pages/CollectionRequest/completeRequest/completeRequest';
 import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';
 import Request from './Pages/Request/request';
 import CustomerActiveRequest from "./Pages/Request/active_request/active_request";
@@ -36,7 +31,7 @@ import { SignUp } from './Pages/SignUp/SignUp';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
 
 function App() {
-  const currentUserRole = profileManagementService.getCurrentUser();
+  const currentUserRole = localStorage.getItem("userRole");
   const [loginStatus, setLoginStatus] = useState(false);
 
   useEffect(() => {
@@ -59,25 +54,25 @@ function App() {
           <Route path="signup/user-signup" element={<UserSignup />} />
           <Route path="signup/collection-center-signup" element={<CollectionCenterSignUp />} />
           {loginStatus ? <Route path="userProfile/:userName" element={
-            currentUserRole.userRole === "USER" ? (<CustomerProfile />) :
-              currentUserRole.userRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : <></>
+            currentUserRole === "USER" ? (<CustomerProfile />) :
+              currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : <></>
           } />
             : <Route path="/" element={<Home />}
             />}
           <Route path="collectionCenter" element={<CollectionCenter loginStatus={loginStatus} loginStatusHandler={loginStatusHandler} />} />
           {loginStatus ? <Route path="userProfile/:userName/collectionCenter_addDetail" element={
-            currentUserRole.userRole === "COLLECTION_CENTER" ? (<CollectionCenter_addDetails />) : <></>
+            currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_addDetails />) : <></>
           } />
             : <Route path="/" element={<Home />}
             />}
           {loginStatus ? <Route path="userProfile/:userName/customer_update" element={
-            currentUserRole.userRole === "USER" ? (<Customer_update />) : <></>
+            currentUserRole === "USER" ? (<Customer_update />) : <></>
           } />
             : <Route path="/" element={<Home />}
             />}
 
           {loginStatus ? <Route path="userProfile/:userName/collectionCenter_update" element={
-            currentUserRole.userRole === "COLLECTION_CENTER" ? (<CollectionCenter_update />) : <></>
+            currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_update />) : <></>
           } />
             : <Route path="/" element={<Home />}
             />}
