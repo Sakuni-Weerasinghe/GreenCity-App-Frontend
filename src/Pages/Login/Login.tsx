@@ -21,8 +21,6 @@ export const Login = (props: any) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   let navigate: NavigateFunction = useNavigate();
-  // show/hide sign-up modal
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   /**
    * This function is used to authenticate users with username and password and
@@ -82,9 +80,8 @@ export const Login = (props: any) => {
               </form>
               <div>
                 <p className="mb-0 mt-5">Don't have an account?
-                  <a className="text-dark fw-bold sign-up-link" onClick={() => { setShowSignUpModal(true) }}> Sign Up</a>
+                  <Link className="text-dark fw-bold sign-up-link" to='/signup'> Sign Up</Link>
                 </p>
-                <SignupModal show={showSignUpModal} onHide={() => setShowSignUpModal(false)} />
               </div>
             </div>
           </div>
