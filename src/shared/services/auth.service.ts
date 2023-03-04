@@ -1,9 +1,7 @@
 import axios from "axios";
-import { CollectionCenterRegisterRequest, RegisterResponse, UserRegisterRequest } from "../models/authModel";
+import { CollectionCenterRegisterRequest, LoginRequest, LoginResponse, RegisterResponse, UserRegisterRequest } from "../models/authModel";
 import { apiEndpoint } from "../api-end-points/api-end-points";
-
-
-const API_URL = "http://localhost:8080/api/auth/";
+import { isExpired } from "react-jwt";
 
 
 /**
@@ -34,35 +32,45 @@ const collectionCenterSignUp = async (request: CollectionCenterRegisterRequest) 
   }
 }
 
-export const login = (username: string, password: string) => {
-  return axios
-    .post(API_URL + "login", {
-      username,
-      password,
-    })
-    .then((response) => {
-      if (response) {
-        const userData = JSON.stringify(response.data);
-        localStorage.setItem("userData", userData);
-      }
-      return response;
-    });
-};
+/**
+ * This function is used to authenticate users using api-end-point
+ * @param request : LoginRequest
+ * @returns : login response
+ */
+const login = async (request: LoginRequest) => {
+  try {
+    const loginResponse: LoginResponse = await axios.post(apiEndpoint.login, request).then(response => response.data);
+    return loginResponse;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
 
+/**
+ * This function is used to remove user details from local storage
+ */
 export const logout = () => {
-  localStorage.removeItem("userData");
+  localStorage.removeItem("authenticationToken");
+  localStorage.removeItem("username");
+  localStorage.removeItem("userRole");
   localStorage.removeItem("userProfile");
   localStorage.removeItem("userProfileMore");
   localStorage.removeItem("centerProfile");
 };
 
+/**
+ * This function is used to check jwt validation
+ * @returns : login status
+ */
 export const getLoginStatus = () => {
-  if (localStorage.getItem("userData")) {
-    return true;
+  const jwt = localStorage.getItem("authenticationToken");
+  if (jwt) {
+    return !isExpired(jwt);
   } else {
     return false;
   }
 }
 
 
-export const AuthService = { userSignUp, collectionCenterSignUp };
+export const AuthService = { userSignUp, collectionCenterSignUp, login };
