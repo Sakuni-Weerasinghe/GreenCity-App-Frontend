@@ -18,9 +18,9 @@ const CollectionCenterList = (props: any) => {
 
     return (
         <div className="row">
-            {collectionList.map((center_data: CollectionCenterData) => {
+            {collectionList.map((center_data: CollectionCenterData, index: number) => {
                 return (
-                    <div className="col-3 my-3">
+                    <div className="col-3 my-3" key={index}>
                         <div className="card shadow ">
                             <div className="card">
                                 <div onClick={() => navigate("/collectionCenter", { state: { parameter: center_data.username } })}>

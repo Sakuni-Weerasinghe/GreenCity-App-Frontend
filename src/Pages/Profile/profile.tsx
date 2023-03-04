@@ -1,5 +1,5 @@
 import React from "react";
-import { getLoginStatus } from "../../services/auth.service";
+import { getLoginStatus } from "../../shared/services/auth.service";
 import { getCurrentUser } from "../../services/profileManagement.service";
 
 

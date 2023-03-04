@@ -1,6 +1,6 @@
 import { useState } from "react"
 import "./header.css"
-import * as authService from "../../services/auth.service"
+import * as authService from "../../shared/services/auth.service"
 import * as profileManagementService from "../../services/profileManagement.service"
 import { Link } from "react-router-dom"
 

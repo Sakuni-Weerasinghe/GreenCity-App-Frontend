@@ -1,19 +1,4 @@
-.logincontainer {
-  border: 1px solid #c5c7c0;
-  border-radius: 10px;
-}
-
-
-.container button {
-  background-color: #2c2c29;
-}
-
-.container input:focus {
-  border: 2px solid #778c17;
-  box-shadow: none;
-}
-
-.container button:focus {
-  box-shadow: none;
-  background-color: #778c17;
+.sign-up-link:hover {
+  cursor: pointer;
+  color: #186d3e !important;
 }
