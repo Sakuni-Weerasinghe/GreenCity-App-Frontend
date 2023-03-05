@@ -1,15 +1,8 @@
 import react, { useEffect, useState } from "react";
-import './search_bar.css';
+import './SearchPanel.css';
 import { getcollectionCenterList } from "../../../services/public.service";
 
-const style = {
-    search_bar: {
-        background: "#EBECE4",
-        alignItems: 'center',
-    },
-}
-
-const Search_bar = (props: any) => {
+export const SearchPanel = (props: any) => {
     const collection_center_list = props.collectionList;
 
     const [error, setError] = useState(null);
@@ -36,7 +29,7 @@ const Search_bar = (props: any) => {
 
     return (
         <div>
-            <div className='container border rounded-bottom border-1 p-3 pb-0 col-12' style={style.search_bar}>
+            <div className='container border rounded-bottom border-1 p-3 pb-0 col-12'>
                 <h6 className='pb-2 '>FIND YOUR COLLECTION CENTER</h6>
                 <div className="row mb-3 mx-4">
                     <div className="col-md-6 ">
@@ -63,6 +56,5 @@ const Search_bar = (props: any) => {
     )
 }
 
-export default Search_bar
 
 

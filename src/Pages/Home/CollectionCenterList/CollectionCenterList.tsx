@@ -2,16 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { CollectionCenterData } from '../../../types/type';
 import thumbnail from '../../../assets/Images/Collection_center_thumbnail.png'
 
-const CollectionCenterList = (props: any) => {
+export const CollectionCenterList = (props: any) => {
     const { loginStatus, collectionList } = props;
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const onClickRequest = (center_data: CollectionCenterData) => {
         if (loginStatus) {
-            navigate("/collectionRequest/collectionRequest_requirement",
-                { state: { parameter: center_data.username } })
+            navigate("/collectionRequest/collectionRequest_requirement", { state: { parameter: center_data.username } });
         } else {
-            alert("Please Login to your profile");
             navigate("/login");
         }
     }
@@ -45,4 +43,3 @@ const CollectionCenterList = (props: any) => {
     )
 }
 
-export default CollectionCenterList

@@ -47,7 +47,7 @@ const Header = (props: any) => {
                                         : <></>}
                             </li>
                             <li className="nav-item mt-2">
-                                {loginStatus ? (<Link className="nav-link" to={{ pathname: "/userProfile/" + currentUser }} onClick={() => profile()}>{currentUser}</Link>)
+                                {loginStatus ? (<Link className="nav-link" to={{ pathname: "/profile/" + currentUser }} onClick={() => profile()}>{currentUser}</Link>)
                                     : <></>}
                             </li>
                             <li className="nav-item mt-2">
