@@ -1,23 +1,17 @@
 import { useState, useEffect } from 'react'
 import './home.css';
 import { CollectionCenterData } from '../../types/type';
-
-//import { getPublicContent } from '../../services/user.service'
-import HomeSearchBar from '../Home/search_bar/search_bar'
+import { SearchPanel } from './search_bar/SearchPanel';
 
 import banner_xl from '../../assets/Images/main_banner.jpg';
-import CollectionCenterList from './CollectionCenterList/CollectionCenterList';
+import { CollectionCenterList } from './CollectionCenterList/CollectionCenterList';
 import MapModal from '../../Modal/MapModal';
-import { useNavigate } from 'react-router-dom';
-import * as authService from "../../shared/services/auth.service"
 import { getcollectionCenterList } from '../../services/public.service';
 
 
-const Home = (props: any) => {
-  const navigate = useNavigate();
+export const Home = () => {
   const [collectionCenterList, setCollectionCenterList] = useState<CollectionCenterData[]>([]);
   const [showMapModal, setShowMapModal] = useState(false);
-  const { loginStatus } = props;
   const [activeView, setActiveView] = useState('list');
 
   useEffect(() => {
@@ -27,6 +21,14 @@ const Home = (props: any) => {
       });
   }, []);
 
+  /**
+ * This function is used to filter collection centers according to the searched criteria
+ * @param searchedCriteria : location, category
+ */
+  const searchCollectionCenters = (searchedCriteria: { location: string, category: string }) => {
+    console.log(searchedCriteria);
+  }
+
   return (
     <>
       {/* main banner */}
@@ -34,7 +36,7 @@ const Home = (props: any) => {
         <img src={banner_xl}></img>
       </div>
       {/* search bar */}
-      <HomeSearchBar collectionList={collectionCenterList} onCenterData={setCollectionCenterList} />
+      <SearchPanel collectionList={collectionCenterList} searchCollectionCenters={searchCollectionCenters} />
       <div className='container py-5'>
         {/* toggle for list and map views */}
         <div className='text-end'>
@@ -48,8 +50,7 @@ const Home = (props: any) => {
             <div>
               {/* collection center list */}
               {
-                collectionCenterList && collectionCenterList.length > 0 ?
-                  <CollectionCenterList collectionList={collectionCenterList} loginStatus={loginStatus} /> :
+                collectionCenterList && collectionCenterList.length > 0 ? <CollectionCenterList collectionList={collectionCenterList} /> :
                   <div className='text-center'>
                     <p className="p-5">No Collection Center....</p>
                   </div>
@@ -84,5 +85,4 @@ const Home = (props: any) => {
   )
 }
 
-export default Home
 

@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import center from "../../../../assets/Images/center1.jpg"
-import CollectionCenterDeleteModal from '../../../../Modal/CollectionCenterDeleteModal';
-import { getCurrentCollectionCenterProfileDetails, getCurrentUser } from '../../../../services/profileManagement.service';
+import center from "../../../assets/Images/center1.jpg"
+import CollectionCenterDeleteModal from '../../../Modal/CollectionCenterDeleteModal';
+import { getCurrentCollectionCenterProfileDetails, getCurrentUser } from '../../../services/profileManagement.service';
+import "./CenterProfile.css"
 
-import "./collectionCenterProfile.css"
-
-const CollectionCenterProfile = () => {
+export const CollectionCenterProfile = () => {
     const [showCollectionCenterDeleteModal, setShowCollectionCenterDeleteModal] = useState(false)
     const currentUser = getCurrentUser();
     const navigate = useNavigate();
@@ -142,4 +141,3 @@ const CollectionCenterProfile = () => {
     )
 }
 
-export default CollectionCenterProfile

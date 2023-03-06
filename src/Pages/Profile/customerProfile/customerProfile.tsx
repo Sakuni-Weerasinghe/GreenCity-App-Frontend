@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import center from "../../../../assets/Images/center1.jpg"
-import { getLoginStatus } from '../../../../shared/services/auth.service';
-import { getCurrentUser, getCurrentUserProfileDetails, userProfileDetails } from '../../../../services/profileManagement.service';
+import center from "../../../assets/Images/center1.jpg"
+import { getLoginStatus } from '../../../shared/services/auth.service';
+import { getCurrentUser, getCurrentUserProfileDetails, userProfileDetails } from '../../../services/profileManagement.service';
 
 import "./customerProfile.css"
 
