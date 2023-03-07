@@ -4,7 +4,7 @@ import { getCenterBoard } from "../../services/user.service";
 import center from "../../assets/Images/center1.jpg";
 import "./collectioncenter.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import { collectionCenterProfileDetails, getCurrentCollectionCenterProfileDetails } from "../../services/profileManagement.service";
+import { collectionCenterProfileDetails, getCurrentCollectionCenterProfileDetails } from "../../shared/services/profileManagement.service";
 import { collectionCenterProfileDetailsPublic } from "../../services/public.service";
 
 const BoardCenter = (props: any) => {

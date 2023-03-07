@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import center from "../../../assets/Images/center1.jpg"
 import CollectionCenterDeleteModal from '../../../Modal/CollectionCenterDeleteModal';
-import { getCurrentCollectionCenterProfileDetails, getCurrentUser } from '../../../services/profileManagement.service';
+import { getCurrentCollectionCenterProfileDetails, getCurrentUser } from '../../../shared/services/profileManagement.service';
 import "./CenterProfile.css"
 
 export const CollectionCenterProfile = () => {

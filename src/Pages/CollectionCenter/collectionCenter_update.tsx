@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 import "./collectioncenter.css"
 import { useNavigate } from 'react-router-dom';
-import * as profileManagementService from "../../services/profileManagement.service"
+import * as profileManagementService from "../../shared/services/profileManagement.service"
 
 const style = {
     cardTitle: {

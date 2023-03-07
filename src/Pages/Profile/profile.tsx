@@ -1,5 +1,5 @@
 import { getLoginStatus } from "../../shared/services/auth.service";
-import { getCurrentUser } from "../../services/profileManagement.service";
+import { getCurrentUser } from "../../shared/services/profileManagement.service";
 
 
 const Profile = () => {
