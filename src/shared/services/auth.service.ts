@@ -50,7 +50,7 @@ const login = async (request: LoginRequest) => {
 /**
  * This function is used to remove user details from local storage
  */
-export const logout = () => {
+const logout = () => {
   localStorage.removeItem("authenticationToken");
   localStorage.removeItem("username");
   localStorage.removeItem("userRole");
@@ -63,7 +63,7 @@ export const logout = () => {
  * This function is used to check jwt validation
  * @returns : login status
  */
-export const getLoginStatus = () => {
+const getLoginStatus = () => {
   const jwt = localStorage.getItem("authenticationToken");
   if (jwt) {
     return !isExpired(jwt);
@@ -72,5 +72,6 @@ export const getLoginStatus = () => {
   }
 }
 
-
-export const AuthService = { userSignUp, collectionCenterSignUp, login };
+export const AuthService = {
+  userSignUp, collectionCenterSignUp, login, getLoginStatus, logout
+};

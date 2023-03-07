@@ -10,9 +10,6 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Login } from './Pages/Login/Login';
 
-import * as authService from './shared/services/auth.service';
-
-// import BoardAdmin from './Pages/Admin/admin';
 import CollectionCenter from './Pages/CollectionCenter/center';
 import CollectionCenter_update from './Pages/CollectionCenter/collectionCenter_update';
 import CollectionRequest_requirement from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
@@ -22,20 +19,22 @@ import Request from './Pages/Request/request';
 import CustomerActiveRequest from "./Pages/Request/active_request/active_request";
 import CustomerCancelRequest from "./Pages/Request/cancel_request/cancel_request";
 import CustomerCompleteRequest from "./Pages/Request/complete_request/complete_request";
-import CustomerProfile from "./Pages/Profile/customerProfile/customerProfile";
 import CollectionCenter_addDetails from './Pages/CollectionCenter/collectionCenter_addDetails';
 import Customer_update from './Pages/Customer/customer_update';
 import Request_details from './Pages/Request/request_details/request_details';
 import { SignUp } from './Pages/SignUp/SignUp';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
-import { CollectionCenterProfile } from "./Pages/Profile/collectionCenterProfile/collectionCenterProfile";
+import Profile from './Pages/Profile/profile';
+
+import { AuthService } from './shared/services/auth.service';
+
 
 function App() {
   const currentUserRole = localStorage.getItem("userRole");
   const [loginStatus, setLoginStatus] = useState(false);
 
   useEffect(() => {
-    setLoginStatus(authService.getLoginStatus());
+    setLoginStatus(AuthService.getLoginStatus());
   }, [loginStatus]);
 
   /**
@@ -66,9 +65,7 @@ function App() {
           <Route path='customer/request/activeRequest' element={<CustomerActiveRequest />} />
           <Route path='customer/request/cancelRequest' element={<CustomerCancelRequest />} />
           <Route path='customer/request/completeRequest' element={<CustomerCompleteRequest />} />
-          {/* profile route for user and collection center */}
-          <Route path="profile/:userName"
-            element={currentUserRole === "USER" ? (<CustomerProfile />) : currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : ''} />
+          <Route path="profile/:userName" element={<Profile />} />
           {/* profile details route for user and collection center */}
           <Route path="profile/:userName/settings"
             element={currentUserRole === "USER" ? (<Customer_update />) : currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_update />) : ''} />
