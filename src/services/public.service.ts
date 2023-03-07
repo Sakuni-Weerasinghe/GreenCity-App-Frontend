@@ -1,5 +1,5 @@
 import axios from "axios";
-import authHeader from "../config/auth-headers";
+import { getRequestHeaders } from "../config/request-headers";
 
 const API_URL = "http://localhost:8080/api/public/";
 
@@ -19,7 +19,7 @@ export const collectionCenterProfileDetailsPublic = (username: string, role: str
         .post(API_URL + "collectionCenter", {
             username,
             role,
-        }, { headers: authHeader() })
+        }, { headers: getRequestHeaders() })
         .then((response) => {
             if (response) {
                 const centerProfile = JSON.stringify(response.data);
