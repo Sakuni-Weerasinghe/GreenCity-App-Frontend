@@ -1,0 +1,53 @@
+.profile-picture img {
+
+    width: 250px;
+
+    height: auto;
+
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+
+    .profile-picture {
+
+        text-align: center;
+
+    }
+
+
+
+
+    .profile-settings .value {
+
+        text-align: right !important;
+
+    }
+
+}
+
+
+
+
+@media screen and (max-width: 380px) {
+
+    .profile-picture img {
+
+        width: 200px;
+
+        height: auto;
+
+    }
+
+
+
+
+    h6 {
+
+        font-size: 14px;
+
+    }
+
+}

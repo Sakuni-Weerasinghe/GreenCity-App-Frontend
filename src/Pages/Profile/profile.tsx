@@ -5,6 +5,7 @@ import { ProfileManagementService } from "../../shared/services/profileManagemen
 import { CollectionCenterProfile } from "./collectionCenterProfile/collectionCenterProfile";
 import CustomerProfile from "./customerProfile/customerProfile";
 import { CollectionCenterSettingsResponse, ProfileRequest, UserSettingsResponse } from "../../shared/models/profileModel";
+import './profile.css';
 
 export const Profile = () => {
   const userRole = localStorage.getItem('userRole');
