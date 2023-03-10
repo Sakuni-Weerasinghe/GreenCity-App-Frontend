@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import thumbnail from "../../../assets/Images/collection_center_profile.svg"
-import "./CenterProfile.css"
+import "./CollectionCenterProfile.css";
+import { useEffect, useState } from 'react';
 
 export const CollectionCenterProfile = (props: any) => {
-    const { profileSettings } = props;
+    const { profileSettings, profileDetails } = props;
+    const [detailButtonTitle, setDetailButtonTitle] = useState('');
     const navigate = useNavigate();
 
     /**
@@ -14,6 +16,14 @@ export const CollectionCenterProfile = (props: any) => {
         const path = `/profile/${profileSettings.username}/${page}`;
         navigate(path);
     }
+
+    useEffect(() => {
+        if (profileSettings && !profileSettings.active) {
+            setDetailButtonTitle('Publish Center');
+        } else {
+            setDetailButtonTitle('Update Center');
+        }
+    }, [profileSettings])
 
     return (
         <>
@@ -74,56 +84,44 @@ export const CollectionCenterProfile = (props: any) => {
                     </div>
                 </div>
             </div>
-            <hr className="mt-5"></hr>
-            {profileSettings.moreDetailStatus ?
-                (
-                    <div className="col-xl-9 col-lg-8 col-md-7  col-sm-12 pt-3">
-                        <div className='pb-2'>
-                            <h4>More About Us .....</h4>
-                        </div>
-                        <div className="row">
-                            <div className="col col-xl-3 col-lg-3 col-sm-4">
-                                <h5>Waste Type</h5>
-                            </div>
-                            <div className="col">
-                                <h5>{profileSettings.wastetype}</h5>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col col-xl-3 col-lg-3 col-sm-4">
-                                <h5>Payment for 1kg </h5>
-                            </div>
-                            <div className="col">
-                                <h5>Rs. {profileSettings.payment}</h5>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col col-xl-3 col-lg-3 col-sm-4">
-                                <h5>Working days </h5>
-                            </div>
-                            <div className="col">
-                                <h5> </h5>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col col-xl-3 col-lg-3 col-sm-4">
-                                <h5>Description</h5>
-                            </div>
-                            <div className="col">
-                                <h5>{profileSettings.description}</h5>
-                            </div>
-                        </div>
-                    </div>
-                )
-                : (
-                    <div className="col-xl-9 col-lg-8 col-md-7  col-sm-12 pt-3">
-                        <div className='pb-2'>
-                            <span>Details</span>
-                            <button className='btn float-end' onClick={() => onClickHandler('details')}>Update Details</button>
-                        </div>
-                    </div>
 
-                )}
+            {/* Collection center details */}
+            <div className='row mt-5'>
+                <div className='col text-start'><h4 className='m-0'>Center Details</h4></div>
+                <div className='col text-end'>
+                    <button className='btn btn-dark px-4 btn-custom-1' onClick={() => onClickHandler('details')}>{detailButtonTitle}</button>
+                </div>
+            </div>
+            <hr></hr>
+
+            <div className="text-left profile-settings">
+                <div className="row">
+                    <div className="col col-xl-3 col-lg-3 col-sm-4 text-secondary"><h5>Waste Type : </h5></div>
+                    <div className="col"><h5>{profileDetails && profileDetails.wasteType ? profileDetails.wasteType : '-'}</h5></div>
+                </div>
+                <hr className="my-2" />
+                <div className="row">
+                    <div className="col col-xl-3 col-lg-3 col-sm-4 text-secondary"><h5>Payment for 1kg :</h5></div>
+                    <div className="col"> <h5>{profileDetails && profileDetails.payment ? profileDetails.payment : '-'}</h5></div>
+                </div>
+                <hr className="my-2" />
+                <div className="row">
+                    <div className="col col-xl-3 col-lg-3 col-sm-4 text-secondary"><h5>Working Days :</h5></div>
+                    <div className="col">
+                        <h5>
+                            {profileDetails && profileDetails.workingDays && profileDetails.workingDays.length > 0 ? profileDetails.workingDays.toString() : '-'}
+                        </h5>
+                    </div>
+                </div>
+                <hr className="my-2" />
+                <div className="row">
+                    <div className="col col-xl-3 col-lg-3 col-sm-4 text-secondary"> <h5>Description :</h5></div>
+                    <div className="col">
+                        <h5> {profileDetails && profileDetails.description ? profileDetails.description : '-'}</h5>
+                    </div>
+                </div>
+                <hr className="my-2" />
+            </div>
         </>
     )
 }
