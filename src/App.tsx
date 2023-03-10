@@ -7,7 +7,7 @@ import { UserSignUp } from "./Pages/SignUp/user_signup/UserSignup"
 import { CollectionCenterSignUp } from "./Pages/SignUp/collection_center_signup/CcenterSignup"
 
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Login } from './Pages/Login/Login';
 
 import CollectionCenter from './Pages/CollectionCenter/center';
@@ -31,11 +31,19 @@ import { AuthService } from './shared/services/auth.service';
 
 function App() {
   const currentUserRole = localStorage.getItem("userRole");
-  const [loginStatus, setLoginStatus] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [loginStatus, setLoginStatus] = useState<boolean>();
 
   useEffect(() => {
     setLoginStatus(AuthService.getLoginStatus());
-  }, [loginStatus]);
+    if (loginStatus !== undefined && loginStatus === false) {
+      // prevent unauthorized route access
+      if (location.pathname.includes('/profile/')) {
+        navigate('/login');
+      }
+    }
+  }, [location, loginStatus]);
 
   /**
    * This function is used to handle login status

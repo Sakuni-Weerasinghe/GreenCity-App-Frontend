@@ -1,6 +1,5 @@
 import "./header.css"
 import { AuthService } from "../../shared/services/auth.service"
-import * as profileManagementService from "../../shared/services/profileManagement.service"
 import { Link } from "react-router-dom"
 
 const Header = (props: any) => {
