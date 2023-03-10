@@ -4,27 +4,14 @@ import * as profileManagementService from "../../shared/services/profileManageme
 import { Link } from "react-router-dom"
 
 const Header = (props: any) => {
-    const currentUser = localStorage.getItem('username');
-    const currentUserRole = localStorage.getItem('userRole');
+    const username = localStorage.getItem('username');
+    const userRole = localStorage.getItem('userRole');
     const { loginStatus } = props;
 
     const logOut = () => {
         AuthService.logout();
         props.loginStatusHandler(false);
     };
-
-    const profile = () => {
-        const username = localStorage.getItem("username");
-        const userRole = localStorage.getItem("userRole");
-
-        if (username && userRole) {
-            if (userRole === "USER") {
-                profileManagementService.userProfileDetails(username, userRole)
-            } else if (userRole === "COLLECTION_CENTER") {
-                profileManagementService.collectionCenterProfileDetails(userRole, userRole)
-            }
-        }
-    }
 
     return (
         <>
@@ -41,12 +28,12 @@ const Header = (props: any) => {
                                 <Link className="nav-link" to='/'>Home</Link>
                             </li>
                             <li className="nav-item mt-2">
-                                {loginStatus && currentUserRole === "USER" ? (<Link className="nav-link" to='customer/request'>Request</Link>)
-                                    : loginStatus && currentUserRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
+                                {loginStatus && userRole === "USER" ? (<Link className="nav-link" to='customer/request'>Request</Link>)
+                                    : loginStatus && userRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
                                         : <></>}
                             </li>
                             <li className="nav-item mt-2">
-                                {loginStatus ? (<Link className="nav-link" to={{ pathname: "/profile/" + currentUser }} onClick={() => profile()}>{currentUser}</Link>)
+                                {loginStatus ? (<Link className="nav-link" to={{ pathname: "/profile/" + username }}>{username}</Link>)
                                     : <></>}
                             </li>
                             <li className="nav-item mt-2">

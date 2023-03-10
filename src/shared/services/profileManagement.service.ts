@@ -1,19 +1,47 @@
 import axios from "axios";
-import authHeader from "../../config/request-headers";
+import { CollectionCenterSettingsResponse, ProfileRequest, UserSettingsResponse } from "../models/profileModel";
+import { apiEndpoint } from "../api-end-points/api-end-points";
+import { getRequestHeaders } from "../../config/request-headers";
+
+/**
+ * This function is used to get collection center settings from backend
+ * @param request : ProfileRequest
+ * @returns : collection center settings
+ */
+const getCollectionCenterSettings = async (request: ProfileRequest) => {
+    const collectionCenterSettingsResponse: CollectionCenterSettingsResponse = await axios
+        .post(apiEndpoint.collectionCenterSettings, request, { headers: getRequestHeaders() }).then(response => response.data);
+
+    if (collectionCenterSettingsResponse) {
+        return collectionCenterSettingsResponse;
+    }
+    return null;
+}
+
+/**
+ * This function is used to get user settings from backend
+ * @param request : ProfileRequest
+ * @returns : user settings
+ */
+const getUserSettings = async (request: ProfileRequest) => {
+    const userSettingsResponse: UserSettingsResponse = await axios
+        .post(apiEndpoint.userSettings, request, { headers: getRequestHeaders() }).then(response => response.data);
+
+    if (userSettingsResponse) {
+        return userSettingsResponse;
+    }
+    return null;
+}
 
 const API_URL = "http://localhost:8080/api/profile/";
 
-// const headers = {
-//     'Content-Type': 'application/json',
-//     'Authorization': authHeader()
-// }
 
 export const userProfileDetails = (username: string, role: string) => {
     return axios
         .post(API_URL + "user", {
             username,
             role,
-        }, { headers: authHeader() })
+        }, { headers: getRequestHeaders() })
         .then((response) => {
             if (response) {
                 const userProfile = JSON.stringify(response.data);
@@ -28,7 +56,7 @@ export const collectionCenterProfileDetails = (username: string, role: string) =
         .post(API_URL + "collectionCenter", {
             username,
             role,
-        }, { headers: authHeader() })
+        }, { headers: getRequestHeaders() })
         .then((response) => {
             if (response) {
                 const centerProfile = JSON.stringify(response.data);
@@ -68,7 +96,7 @@ export const collectionCenterProfileAddDetails = (
             wastetype,
             payment,
             description,
-        }, { headers: authHeader() })
+        }, { headers: getRequestHeaders() })
         .then((response) => {
             if (response) {
                 collectionCenterProfileDetails(currentUserName, "COLLECTION_CENTER")
@@ -101,7 +129,7 @@ export const customerProfileUpdate = (
             addressLine3,
             username,
             status
-        }, { headers: authHeader() })
+        }, { headers: getRequestHeaders() })
         .then((response) => {
             if (response) {
                 userProfileDetails(currentUserName, "USER")
@@ -142,7 +170,7 @@ export const fullcollectionCenterProfileUpdate = (
             payment,
             description,
             status
-        }, { headers: authHeader() })
+        }, { headers: getRequestHeaders() })
         .then((response) => {
             if (response) {
                 collectionCenterProfileDetails(currentUserName, "COLLECTION_CENTER")
@@ -177,7 +205,7 @@ export const collectionCenterProfileUpdate = (
             addressline3,
             location,
             status
-        }, { headers: authHeader() })
+        }, { headers: getRequestHeaders() })
         .then((response) => {
             if (response) {
                 collectionCenterProfileDetails(currentUserName, "COLLECTION_CENTER")
@@ -186,4 +214,9 @@ export const collectionCenterProfileUpdate = (
             }
             return response;
         });
+};
+
+export const ProfileManagementService = {
+    getCollectionCenterSettings,
+    getUserSettings,
 };
