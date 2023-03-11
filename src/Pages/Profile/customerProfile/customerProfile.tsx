@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import thumbnail from "../../../assets/Images/collection_center_profile.svg";
+import thumbnail from "../../../assets/Images/customer_profile.svg";
 
 import "./customerProfile.css"
 
@@ -68,7 +68,6 @@ export const CustomerProfile = (props: any) => {
           </div>
         </div>
       </div>
-      <hr className="mt-5"></hr>
     </>
   )
 }
