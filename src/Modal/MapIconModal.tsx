@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from 'react-router-dom';
-import center from "../assets/Images/center1.jpg";
+import center from "../assets/Images/Collection_center_thumbnail.png";
 
 const style = {
     button: {

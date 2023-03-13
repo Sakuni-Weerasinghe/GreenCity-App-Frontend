@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { getCenterBoard } from "../../services/user.service";
-import center from "../../assets/Images/center1.jpg";
+import center from "../../assets/Images/Collection_center_thumbnail.png";
 import "./collectioncenter.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { collectionCenterProfileDetails, getCurrentCollectionCenterProfileDetails } from "../../shared/services/profileManagement.service";
