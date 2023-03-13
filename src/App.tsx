@@ -24,7 +24,7 @@ import Customer_update from './Pages/Customer/customer_update';
 import Request_details from './Pages/Request/request_details/request_details';
 import { SignUp } from './Pages/SignUp/SignUp';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
-import { Profile } from './Pages/Profile/profilex';
+import { Profile } from './Pages/Profile/profile';
 
 import { AuthService } from './shared/services/auth.service';
 
