@@ -1,12 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect, useState } from 'react'
 import * as Yup from "yup";
-import { CollectionCenter_addDetailForm, CollectionCenter_updateForm, Customer_updateForm } from '../../types/type';
+import { CollectionCenter_addDetailForm, CollectionCenter_updateForm, Customer_updateForm } from '../../../../types/type';
 import { useForm } from 'react-hook-form';
 
 import "./collectioncenter.css"
 import { useNavigate } from 'react-router-dom';
-import * as profileManagementService from "../../shared/services/profileManagement.service"
+import * as profileManagementService from "../../../../shared/services/profileManagement.service"
 
 const style = {
     cardTitle: {
