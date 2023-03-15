@@ -1,13 +1,9 @@
 body {
 	margin: 0;
 	font-family: Open Sans, Roboto Slab, and Lora, "DIN W05 Light", "Arial Narrow", Arial, sans-serif;
-
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-
 }
-
-
 
 .preloader {
 	position: fixed;

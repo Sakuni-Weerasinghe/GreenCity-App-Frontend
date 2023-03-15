@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Core/Header/Header"
 import Footer from "./Core/Footer/Footer"
 import { Home } from "./Pages/Home/Home"
@@ -11,7 +10,6 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Login } from './Pages/Login/Login';
 
 import CollectionCenter from './Pages/CollectionCenter/center';
-import CollectionCenter_update from './Pages/Profile/modals/collectionCenterProfileSettings/collectionCenter_update';
 import CollectionRequest_requirement from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
 import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
 import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';
@@ -19,8 +17,6 @@ import Request from './Pages/Request/request';
 import CustomerActiveRequest from "./Pages/Request/active_request/active_request";
 import CustomerCancelRequest from "./Pages/Request/cancel_request/cancel_request";
 import CustomerCompleteRequest from "./Pages/Request/complete_request/complete_request";
-import CollectionCenter_addDetails from './Pages/Profile/modals/collectionCenterProfileDetails/collectionCenter_addDetails';
-import Customer_update from './Pages/Profile/modals/userProfileSettings/customer_update';
 import Request_details from './Pages/Request/request_details/request_details';
 import { SignUp } from './Pages/SignUp/SignUp';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
@@ -64,7 +60,6 @@ function App() {
           <Route path="signup/user-signup" element={<UserSignUp />} />
           <Route path="signup/collection-center-signup" element={<CollectionCenterSignUp />} />
           <Route path="collectionCenter" element={<CollectionCenter />} />
-          <Route path="profile/:userName/update" element={<CollectionCenter_addDetails />} />
           <Route path='collectionRequest/collectionRequest_requirement' element={<CollectionRequest_requirement />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
@@ -74,9 +69,6 @@ function App() {
           <Route path='customer/request/cancelRequest' element={<CustomerCancelRequest />} />
           <Route path='customer/request/completeRequest' element={<CustomerCompleteRequest />} />
           <Route path="profile/:userName" element={<Profile />} />
-          {/* profile details route for user and collection center */}
-          <Route path="profile/:userName/settings"
-            element={currentUserRole === "USER" ? (<Customer_update />) : currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_update />) : ''} />
         </Routes>
       </div>
       <Footer />
