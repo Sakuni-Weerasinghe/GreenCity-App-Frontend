@@ -2,19 +2,23 @@ import { useNavigate } from 'react-router-dom';
 import thumbnail from "../../../assets/Images/collection_center_profile.svg"
 import "./CollectionCenterProfile.css";
 import { useEffect, useState } from 'react';
+import { CollectionCenterProfileSettings } from '../modals/collectionCenterProfileSettings/collectionCenterProfileSetting';
+import { CollectionCenterProfileDetails } from '../modals/collectionCenterProfileDetails/collectionCenterProfileDetails';
+
 
 export const CollectionCenterProfile = (props: any) => {
     const { profileSettings, profileDetails } = props;
     const [detailButtonTitle, setDetailButtonTitle] = useState('');
     const navigate = useNavigate();
+    const [showSettingsModal, setShowSettingsModal] = useState(false);
+    const [showDetailsModal, setShowDetailsModal] = useState(false);
 
     /**
-     * This function is used to handle onclick events of Update Settings & Update Details buttons
-     * @param page : settings, details
+     * This function is used to hide open modals
      */
-    const onClickHandler = (page: string) => {
-        const path = `/profile/${profileSettings.username}/${page}`;
-        navigate(path);
+    const hideModals = () => {
+        setShowSettingsModal(false);
+        setShowDetailsModal(false);
     }
 
     useEffect(() => {
@@ -37,7 +41,7 @@ export const CollectionCenterProfile = (props: any) => {
                     <div className='row'>
                         <div className='col text-start'><h3 className='m-0'>{profileSettings.centerName}</h3></div>
                         <div className='col text-end'>
-                            <button className='btn btn-dark px-4 btn-custom-1' onClick={() => onClickHandler('settings')}>Update Settings</button>
+                            <button className='btn btn-dark px-4 btn-custom-1' onClick={() => setShowSettingsModal(true)}>Update Settings</button>
                         </div>
                     </div>
                     <hr />
@@ -89,7 +93,7 @@ export const CollectionCenterProfile = (props: any) => {
             <div className='row mt-5'>
                 <div className='col text-start'><h4 className='m-0'>Center Details</h4></div>
                 <div className='col text-end'>
-                    <button className='btn btn-dark px-4 btn-custom-1' onClick={() => onClickHandler('details')}>{detailButtonTitle}</button>
+                    <button className='btn btn-dark px-4 btn-custom-1' onClick={() => setShowDetailsModal(true)}>{detailButtonTitle}</button>
                 </div>
             </div>
             <hr></hr>
