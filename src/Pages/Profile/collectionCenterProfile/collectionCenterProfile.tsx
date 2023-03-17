@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import thumbnail from "../../../assets/Images/collection_center_profile.svg"
 import "./CollectionCenterProfile.css";
 import { useEffect, useState } from 'react';
@@ -9,7 +8,6 @@ import { CollectionCenterProfileDetails } from '../modals/collectionCenterProfil
 export const CollectionCenterProfile = (props: any) => {
     const { profileSettings, profileDetails } = props;
     const [detailButtonTitle, setDetailButtonTitle] = useState('');
-    const navigate = useNavigate();
     const [showSettingsModal, setShowSettingsModal] = useState(false);
     const [showDetailsModal, setShowDetailsModal] = useState(false);
 
@@ -21,6 +19,7 @@ export const CollectionCenterProfile = (props: any) => {
         setShowDetailsModal(false);
     }
 
+    // Change button text according to the collection center active value
     useEffect(() => {
         if (profileSettings && !profileSettings.active) {
             setDetailButtonTitle('Publish Center');
@@ -126,6 +125,10 @@ export const CollectionCenterProfile = (props: any) => {
                 </div>
                 <hr className="my-2" />
             </div>
+            {/* Settings modal */}
+            <CollectionCenterProfileSettings isShowModal={showSettingsModal} hideModal={hideModals} settings={profileSettings} settingsUpdateHandler={props.settingsUpdateHandler} />
+            {/* Details Modal */}
+            <CollectionCenterProfileDetails isShowModal={showDetailsModal} hideModal={hideModals} details={profileDetails} />
         </>
     )
 }

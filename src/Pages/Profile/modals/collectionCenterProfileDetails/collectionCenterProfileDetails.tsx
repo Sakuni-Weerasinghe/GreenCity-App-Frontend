@@ -1,24 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import './CollectionCenterProfileDetails.css';
 import { Modal } from 'bootstrap';
 
 export const CollectionCenterProfileDetails = (props: any) => {
     const { isShowModal, hideModal } = props;
+    const modalRef = useRef(null);
 
+    // Handle show/hide settings modal
     useEffect(() => {
-        const element = document.getElementById('collection-center-details-modal');
-        if (isShowModal) {
-            const modal = new Modal(element ? element : '', { keyboard: false });
-            modal.show();
-        } else {
-            const modal = new Modal(element ? element : '', { keyboard: false });
-            modal.hide();
+        const element = modalRef.current;
+        if (element) {
+            if (isShowModal) {
+                const modal = new Modal(element);
+                modal?.show();
+            } else {
+                const modal = Modal.getInstance(element);
+                modal?.hide();
+            }
         }
     }, [isShowModal])
 
     return (
         <>
-            <div id="collection-center-details-modal" className="modal fade" data-bs-backdrop="static" tabIndex={-1} aria-hidden="true">
+            <div className="modal fade" data-bs-backdrop="static" tabIndex={-1} aria-hidden="true" ref={modalRef}>
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">

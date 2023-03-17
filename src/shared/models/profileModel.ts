@@ -3,10 +3,15 @@ export interface ProfileRequest {
     role: string;
 }
 
+export interface ProfileResponse {
+    response: string;
+    status: boolean;
+}
+
 export interface CollectionCenterSettingsResponse {
     username: string;
     centerName: string;
-    contactNumber: number;
+    contactNumber: string;
     email: string;
     addressLine1: string;
     addressLine2: string;
@@ -41,4 +46,14 @@ export interface CollectionCenterDetailsResponse {
     active: boolean;
     accountStatus: boolean;
     workingDays: string[];
+}
+
+export interface CollectionCenterSettingsUpdateRequest {
+    username: string;
+    centerName: string;
+    contactNumber: string;
+    addressLine1: string;
+    addressLine2: string;
+    addressLine3: string;
+    location: string;
 }
