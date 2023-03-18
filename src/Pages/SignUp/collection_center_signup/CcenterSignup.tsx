@@ -15,15 +15,22 @@ export const CollectionCenterSignUp = () => {
   // Collection center register form validations
   const validationSchema = Yup.object().shape({
     centerName: Yup.string().required("Center Name is required"),
-    contactNumber: Yup.string().required("Contact Number is required"),
+    contactNumber: Yup.string().required("Contact Number is required")
+      .matches(/^[0-9]{10}$/, "Mobile number must be 10 digits")
+      .matches(/^0\d{9}$/, "Invalid mobile number format"),
     email: Yup.string().email("This is not a valid email.").required("This field is required!"),
     addressLine1: Yup.string().required("Address is Required"),
     addressLine2: Yup.string().required("Address is Required"),
     addressLine3: Yup.string().required("Address is Required"),
-    username: Yup.string().required('Username is required').min(6, 'Username must be at least 6 characters').max(20, 'Username must not exceed 20 characters'),
+    username: Yup.string().required('Username is required')
+      .min(6, 'Username must be at least 6 characters')
+      .max(20, 'Username must not exceed 20 characters'),
     location: Yup.string().required("Location is Required"),
-    password: Yup.string().required('Password is required').min(8, 'Password must be at least 6 characters').max(20, 'Password must not exceed 20 characters'),
-    confirmPassword: Yup.string().required('Confirm Password is required').oneOf([Yup.ref('password'), null], 'Confirm Password does not match'),
+    password: Yup.string().required('Password is required')
+      .min(8, 'Password must be at least 6 characters')
+      .max(20, 'Password must not exceed 20 characters'),
+    confirmPassword: Yup.string().required('Confirm Password is required')
+      .oneOf([Yup.ref('password'), null], 'Confirm Password does not match'),
   });
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<CollectionCenterRegisterRequest>({ resolver: yupResolver(validationSchema) });

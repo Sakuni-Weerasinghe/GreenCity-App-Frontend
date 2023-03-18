@@ -16,6 +16,7 @@ export const Login = (props: any) => {
     username: Yup.string().required("This field is required!"),
     password: Yup.string().required("This field is required!")
   });
+  // useForm configurations
   const { register, handleSubmit, formState: { errors } } = useForm<LoginRequest>({ resolver: yupResolver(validationSchema) });
 
   const [errorMessage, setErrorMessage] = useState<string>('');
