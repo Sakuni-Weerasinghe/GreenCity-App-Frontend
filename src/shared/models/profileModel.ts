@@ -34,7 +34,7 @@ export interface UserSettingsResponse {
 export interface CollectionCenterDetailsResponse {
     username: string;
     centerName: string;
-    contactNumber: number;
+    contactNumber: string;
     email: string;
     addressLine1: string;
     addressLine2: string;
@@ -42,10 +42,10 @@ export interface CollectionCenterDetailsResponse {
     location: string;
     description: string;
     wasteType: string;
-    payment: number;
+    payment: string;
     active: boolean;
     accountStatus: boolean;
-    workingDays: string[];
+    workingDays: string;
 }
 
 export interface CollectionCenterSettingsUpdateRequest {
@@ -56,4 +56,12 @@ export interface CollectionCenterSettingsUpdateRequest {
     addressLine2: string;
     addressLine3: string;
     location: string;
+}
+
+export interface CollectionCenterDetailsUpdateRequest {
+    username: string;
+    wasteType: string;
+    payment: string;
+    description: string;
+    active: boolean;
 }

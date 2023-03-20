@@ -1,5 +1,11 @@
 import axios from "axios";
-import { CollectionCenterDetailsResponse, CollectionCenterSettingsResponse, CollectionCenterSettingsUpdateRequest, ProfileRequest, ProfileResponse, UserSettingsResponse } from "../models/profileModel";
+import {
+    CollectionCenterDetailsResponse,
+    CollectionCenterDetailsUpdateRequest,
+    CollectionCenterSettingsResponse,
+    CollectionCenterSettingsUpdateRequest, ProfileRequest,
+    ProfileResponse, UserSettingsResponse
+} from "../models/profileModel";
 import { apiEndpoint } from "../api-end-points/api-end-points";
 import { getRequestHeaders } from "../../config/request-headers";
 
@@ -59,6 +65,21 @@ const updateCollectionCenterSettings = async (request: CollectionCenterSettingsU
 
     if (collectionCenterSettingsUpdateResponse) {
         return collectionCenterSettingsUpdateResponse;
+    }
+    return null;
+}
+
+/**
+ * This function is used to get collection center settings from backend
+ * @param request : ProfileRequest
+ * @returns : collection center settings
+ */
+const updateCollectionCenterDetails = async (request: CollectionCenterDetailsUpdateRequest) => {
+    const collectionCenterDetailsUpdateResponse: ProfileResponse = await axios
+        .put(apiEndpoint.CollectionCenterDetails, request, { headers: getRequestHeaders() }).then(response => response.data);
+
+    if (collectionCenterDetailsUpdateResponse) {
+        return collectionCenterDetailsUpdateResponse;
     }
     return null;
 }
@@ -252,5 +273,6 @@ export const ProfileManagementService = {
     getCollectionCenterSettings,
     getUserSettings,
     getCollectionCenterDetails,
-    updateCollectionCenterSettings
+    updateCollectionCenterSettings,
+    updateCollectionCenterDetails
 };

@@ -4,7 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { ProfileManagementService } from "../../shared/services/profileManagement.service";
 import { CollectionCenterProfile } from "./collectionCenterProfile/collectionCenterProfile";
 import { CustomerProfile } from "./userProfile/userProfile";
-import { CollectionCenterDetailsResponse, CollectionCenterSettingsResponse, CollectionCenterSettingsUpdateRequest, ProfileRequest, UserSettingsResponse } from "../../shared/models/profileModel";
+import {
+  CollectionCenterDetailsResponse,
+  CollectionCenterDetailsUpdateRequest,
+  CollectionCenterSettingsResponse,
+  CollectionCenterSettingsUpdateRequest, ProfileRequest,
+  UserSettingsResponse
+} from "../../shared/models/profileModel";
 import './profile.css';
 
 export const Profile = () => {
@@ -20,39 +26,25 @@ export const Profile = () => {
       navigate('/login');
     } else {
       /**
-       * This function is used to get Collection center settings or User settings according the role
+       * This function is used to get Collection center settings or User profile data according the role
        * @param request : ProfileRequest
        */
-      const getSettings = async (request: ProfileRequest) => {
+      const getProfileData = async (request: ProfileRequest) => {
         if (userRole && userRole === 'COLLECTION_CENTER') {
           const settings = await ProfileManagementService.getCollectionCenterSettings(request);
-          if (settings) {
-            setCollectionCenterSettings(settings);
-            if (settings.active) {
-              /**
-               * This function is used to get Collection center details
-               * @param detailsRequest : ProfileRequest
-               */
-              const getDetails = async (detailsRequest: ProfileRequest) => {
-                const details = await ProfileManagementService.getCollectionCenterDetails(detailsRequest);
-                if (details) {
-                  setCollectionCenterDetails(details);
-                }
-              }
-              getDetails(request);
-            }
-          }
+          const details = await ProfileManagementService.getCollectionCenterDetails(request);
+
+          settings && setCollectionCenterSettings(settings);
+          details && setCollectionCenterDetails(details);
         } else if (userRole && userRole === 'USER') {
           const settings = await ProfileManagementService.getUserSettings(request);
-          if (settings) {
-            setUserSettings(settings);
-          }
+          settings && setUserSettings(settings);
         }
       }
       const profileRequest = { username, role: userRole };
-      getSettings(profileRequest);
+      getProfileData(profileRequest);
     }
-  }, [])
+  }, [navigate, userRole, username])
 
   /**
    * This function is used to update collection center settings
@@ -64,11 +56,22 @@ export const Profile = () => {
     }
   }
 
+  /**
+   * This function is used to update collection center details
+   * @param updatedSettings : CollectionCenterDetailsUpdateRequest
+   */
+  const updateCollectionCenterDetails = (updatedDetails: CollectionCenterDetailsUpdateRequest) => {
+    if (updatedDetails && collectionCenterDetails) {
+      setCollectionCenterDetails({ ...collectionCenterDetails, ...updatedDetails })
+    }
+  }
+
   return (
     <div className="container mt-5">
       {
-        userRole === 'COLLECTION_CENTER' && collectionCenterSettings ? <CollectionCenterProfile profileSettings={collectionCenterSettings}
-          profileDetails={collectionCenterDetails} settingsUpdateHandler={updateCollectionCenterSettings} />
+        userRole === 'COLLECTION_CENTER' && collectionCenterSettings ?
+          <CollectionCenterProfile profileSettings={collectionCenterSettings} profileDetails={collectionCenterDetails}
+            settingsUpdateHandler={updateCollectionCenterSettings} detailsUpdateHandler={updateCollectionCenterDetails} />
           : userRole === 'USER' && userSettings ? <CustomerProfile profileSettings={userSettings} /> : <></>
       }
     </div>

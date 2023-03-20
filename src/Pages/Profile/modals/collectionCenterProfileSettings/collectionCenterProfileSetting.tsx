@@ -30,11 +30,11 @@ export const CollectionCenterProfileSettings = (props: any) => {
         resolver: yupResolver(validationSchema),
         defaultValues: {
             centerName: settings.centerName,
-            contactNumber: settings.contactNumber,
-            addressLine1: settings.addressLine1,
-            addressLine2: settings.addressLine2,
-            addressLine3: settings.addressLine3,
-            location: settings.location
+            contactNumber: settings?.contactNumber,
+            addressLine1: settings?.addressLine1,
+            addressLine2: settings?.addressLine2,
+            addressLine3: settings?.addressLine3,
+            location: settings?.location
         }
     });
 
@@ -75,6 +75,7 @@ export const CollectionCenterProfileSettings = (props: any) => {
             } else {
                 const modal = Modal.getInstance(element);
                 modal?.hide();
+                setMessage('');
             }
         }
     }, [isShowModal])
@@ -85,7 +86,7 @@ export const CollectionCenterProfileSettings = (props: any) => {
                 <div className="modal-dialog modal-lg modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Update Your Profile Details</h5>
+                            <h5 className="modal-title">Update Collection Center Settings</h5>
                             <button type="button" className="btn-close" aria-label="Close" onClick={hideModal}></button>
                         </div>
                         <div className="modal-body">

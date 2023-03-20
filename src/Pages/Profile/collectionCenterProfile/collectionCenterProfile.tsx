@@ -128,7 +128,7 @@ export const CollectionCenterProfile = (props: any) => {
             {/* Settings modal */}
             <CollectionCenterProfileSettings isShowModal={showSettingsModal} hideModal={hideModals} settings={profileSettings} settingsUpdateHandler={props.settingsUpdateHandler} />
             {/* Details Modal */}
-            <CollectionCenterProfileDetails isShowModal={showDetailsModal} hideModal={hideModals} details={profileDetails} />
+            <CollectionCenterProfileDetails isShowModal={showDetailsModal} hideModal={hideModals} details={profileDetails} detailsUpdateHandler={props.detailsUpdateHandler} />
         </>
     )
 }
