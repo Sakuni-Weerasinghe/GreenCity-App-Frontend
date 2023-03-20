@@ -4,7 +4,7 @@ import {
     CollectionCenterDetailsUpdateRequest,
     CollectionCenterSettingsResponse,
     CollectionCenterSettingsUpdateRequest, ProfileRequest,
-    ProfileResponse, UserSettingsResponse
+    ProfileResponse, UserSettingsResponse, UserSettingsUpdateRequest
 } from "../models/profileModel";
 import { apiEndpoint } from "../api-end-points/api-end-points";
 import { getRequestHeaders } from "../../config/request-headers";
@@ -267,6 +267,21 @@ export const collectionCenterProfileUpdate = (
         });
 };
 
+/**
+ * This function is used to update user settings of database
+ * @param request : UserSettingsUpdateRequest
+ * @returns : ProfileResponse
+ */
+const updateUserSettings = async (request: UserSettingsUpdateRequest) => {
+    const userSettingsUpdateResponse: ProfileResponse = await axios
+        .put(apiEndpoint.userSettings, request, { headers: getRequestHeaders() }).then(response => response.data);
+
+    if (userSettingsUpdateResponse) {
+        return userSettingsUpdateResponse;
+    }
+    return null;
+}
+
 export const ProfileManagementService = {
     fullcollectionCenterProfileUpdate,
     collectionCenterProfileUpdate,
@@ -274,5 +289,6 @@ export const ProfileManagementService = {
     getUserSettings,
     getCollectionCenterDetails,
     updateCollectionCenterSettings,
-    updateCollectionCenterDetails
+    updateCollectionCenterDetails,
+    updateUserSettings
 };

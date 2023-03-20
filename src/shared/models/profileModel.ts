@@ -65,3 +65,13 @@ export interface CollectionCenterDetailsUpdateRequest {
     description: string;
     active: boolean;
 }
+
+export interface UserSettingsUpdateRequest {
+    username: string;
+    firstName: string;
+    lastName: string;
+    contactNumber: string;
+    addressLine1: string;
+    addressLine2: string;
+    addressLine3: string;
+}
