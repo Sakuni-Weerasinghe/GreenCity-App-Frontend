@@ -19,8 +19,8 @@ const Customer_update = () => {
     let navigate = useNavigate();
     const [successful, setSuccessful] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
-    const currentUser = profileManagementService.getCurrentUser();
-    const currentUserDetails = profileManagementService.getCurrentUserProfileDetails();
+    //const currentUser = profileManagementService.getCurrentUser();
+    //const currentUserDetails = profileManagementService.getCurrentUserProfileDetails();
 
     const validationSchema = Yup.object().shape({
         firstname: Yup.string().required("First Name is required"),
@@ -40,29 +40,29 @@ const Customer_update = () => {
     })
 
     const onSubmit = (data: Customer_updateForm) => {
-        const { firstname, lastname, contactnumber, email, addressline1, addressline2, addressline3, username, status } = data;
-        profileManagementService.customerProfileUpdate(currentUser.username, firstname, lastname, contactnumber, email, addressline1, addressline2, addressline3, username, status).then(
-            (response) => {
-                setMessage(response.data.response);
-                if (response.data.responseStatus) {
-                    reset();
-                    setSuccessful(true);
-                } else {
-                    setSuccessful(false);
-                }
-                navigate("/userProfile/" + currentUser.username)
-            },
-            (error) => {
-                const resMessage =
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                    error.message ||
-                    error.toString();
-                setSuccessful(false);
-                setMessage(resMessage);
-            }
-        );
+        // const { firstname, lastname, contactnumber, email, addressline1, addressline2, addressline3, username, status } = data;
+        // profileManagementService.customerProfileUpdate(currentUser.username, firstname, lastname, contactnumber, email, addressline1, addressline2, addressline3, username, status).then(
+        //     (response) => {
+        //         setMessage(response.data.response);
+        //         if (response.data.responseStatus) {
+        //             reset();
+        //             setSuccessful(true);
+        //         } else {
+        //             setSuccessful(false);
+        //         }
+        //         navigate("/userProfile/" + currentUser.username)
+        //     },
+        //     (error) => {
+        //         const resMessage =
+        //             (error.response &&
+        //                 error.response.data &&
+        //                 error.response.data.message) ||
+        //             error.message ||
+        //             error.toString();
+        //         setSuccessful(false);
+        //         setMessage(resMessage);
+        //     }
+        // );
     };
 
     const {
@@ -95,21 +95,21 @@ const Customer_update = () => {
                                     <div className="col-md-6 mb-4">
                                         <div className='form-outline'>
                                             <label className='py-1'>First Name</label>
-                                            <input type="text"{...register("firstname")} className={`form-control ${errors.firstname ? 'is-invalid' : ''}`} value={currentUserDetails.firstName} />
+                                            {/* <input type="text"{...register("firstname")} className={`form-control ${errors.firstname ? 'is-invalid' : ''}`} value={currentUserDetails.firstName} /> */}
                                             <div className="invalid-feedback">{errors.firstname?.message}</div>
                                         </div>
                                     </div>
                                     <div className="col-md-6 mb-4">
                                         <div className='form-outline'>
                                             <label className='py-1'>Last Name</label>
-                                            <input type="text"{...register("lastname")} className={`form-control ${errors.lastname ? 'is-invalid' : ''}`} value={currentUserDetails.lastName} />
+                                            {/* <input type="text"{...register("lastname")} className={`form-control ${errors.lastname ? 'is-invalid' : ''}`} value={currentUserDetails.lastName} /> */}
                                             <div className="invalid-feedback">{errors.lastname?.message}</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="form-outline mb-4">
                                     <label className='py-1'>Contact Number</label>
-                                    <input type="text"{...register("contactnumber")} className={`form-control ${errors.contactnumber ? 'is-invalid' : ''}`} value={currentUserDetails.contactNumber} />
+                                    {/* <input type="text"{...register("contactnumber")} className={`form-control ${errors.contactnumber ? 'is-invalid' : ''}`} value={currentUserDetails.contactNumber} /> */}
                                     <div className="invalid-feedback">{errors.contactnumber?.message}</div>
                                 </div>
                                 <div className="form-outline mb-4">
@@ -119,14 +119,14 @@ const Customer_update = () => {
                                 </div>
                                 <div className="form-outline mb-4">
                                     <label className='py-1'>Address</label>
-                                    <input type="text"{...register("addressline1")} className={`form-control ${errors.addressline1 ? 'is-invalid' : ''}`} value={currentUserDetails.addressLine1} />
+                                    {/* <input type="text"{...register("addressline1")} className={`form-control ${errors.addressline1 ? 'is-invalid' : ''}`} value={currentUserDetails.addressLine1} />
                                     <input type="text"{...register("addressline2")} className={`form-control  mt-1 ${errors.addressline2 ? 'is-invalid' : ''}`} value={currentUserDetails.addressLine2} />
-                                    <input type="text"{...register("addressline3")} className={`form-control  mt-1 ${errors.addressline3 ? 'is-invalid' : ''}`} value={currentUserDetails.addressLine3} />
+                                    <input type="text"{...register("addressline3")} className={`form-control  mt-1 ${errors.addressline3 ? 'is-invalid' : ''}`} value={currentUserDetails.addressLine3} /> */}
                                     <div className="invalid-feedback">{errors.addressline1?.message}</div>
                                 </div>
                                 <div className="form-outline mb-4">
                                     <label className='py-1'>User Name</label>
-                                    <input type="text"{...register("username")} className={`form-control ${errors.username ? 'is-invalid' : ''}`} value={currentUserDetails.username} />
+                                    {/* <input type="text"{...register("username")} className={`form-control ${errors.username ? 'is-invalid' : ''}`} value={currentUserDetails.username} /> */}
                                     <div className="invalid-feedback">{errors.username?.message}</div>
                                 </div>
                                 <div className="form-outline mb-3">

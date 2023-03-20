@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import CustomerRequestConfirmationModal from '../../../Modal/CustomerRequestConfirmationModal'
-import { getCurrentCollectionCenterProfileDetails } from '../../../shared/services/profileManagement.service'
+//import { getCurrentCollectionCenterProfileDetails } from '../../../shared/services/profileManagement.service'
 import { collectionCenterProfileDetailsPublic } from '../../../services/public.service'
 import "./collectionRequest_requirement.css"
 import * as Yup from "yup";
@@ -23,7 +23,7 @@ const CollectionRequest_requirement = () => {
   };
 
   collectionCenterProfileDetailsPublic(username, "COLLECTION_CENTER");
-  const collectionCenterDetail = getCurrentCollectionCenterProfileDetails();
+  //const collectionCenterDetail = getCurrentCollectionCenterProfileDetails();
 
   const validationSchema = Yup.object().shape({
     addressline1: Yup.string().required("Address is Required"),
@@ -120,15 +120,15 @@ const CollectionRequest_requirement = () => {
                 </div>
                 <div className="mt-2 p-3 border">
                   <div>
-                    <h6>Collection Center Name : {collectionCenterDetail.centerName}</h6>
+                    {/* <h6>Collection Center Name : {collectionCenterDetail.centerName}</h6> */}
                   </div>
                   <hr />
                   <div className="border p-3 mb-3">
                     <ul className="list-group list-group-flush text-center">
-                      <li className="list-group-item">Waste Types : {collectionCenterDetail.wastetype}</li>
-                      <li className="list-group-item">Payment for 1kg : Rs.{collectionCenterDetail.payment}</li>
+                      {/* <li className="list-group-item">Waste Types : {collectionCenterDetail.wastetype}</li>
+                      <li className="list-group-item">Payment for 1kg : Rs.{collectionCenterDetail.payment}</li> */}
                       <li className="list-group-item">Collecting days : Days </li>
-                      <li className="list-group-item">Location : {collectionCenterDetail.location} </li>
+                      {/* <li className="list-group-item">Location : {collectionCenterDetail.location} </li> */}
                     </ul>
                   </div>
 

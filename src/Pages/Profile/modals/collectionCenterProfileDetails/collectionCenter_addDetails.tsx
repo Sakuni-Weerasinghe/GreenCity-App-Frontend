@@ -33,29 +33,29 @@ const CollectionCenter_addDetails = () => {
     });
 
     const onSubmit = (data: CollectionCenter_addDetailForm) => {
-        const { wastetype, payment, description } = data;
-        profileManagementService.collectionCenterProfileAddDetails(currentUser ? currentUser : '', wastetype, payment, description).then(
-            (response) => {
-                setMessage(response.data.response);
-                if (response.data.responseStatus) {
-                    reset();
-                    setSuccessful(true);
-                } else {
-                    setSuccessful(false);
-                }
-                navigate("/userProfile/" + currentUser)
-            },
-            (error) => {
-                const resMessage =
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                    error.message ||
-                    error.toString();
-                setSuccessful(false);
-                setMessage(resMessage);
-            }
-        );
+        // const { wastetype, payment, description } = data;
+        // profileManagementService.collectionCenterProfileAddDetails(currentUser ? currentUser : '', wastetype, payment, description).then(
+        //     (response) => {
+        //         setMessage(response.data.response);
+        //         if (response.data.responseStatus) {
+        //             reset();
+        //             setSuccessful(true);
+        //         } else {
+        //             setSuccessful(false);
+        //         }
+        //         navigate("/userProfile/" + currentUser)
+        //     },
+        //     (error) => {
+        //         const resMessage =
+        //             (error.response &&
+        //                 error.response.data &&
+        //                 error.response.data.message) ||
+        //             error.message ||
+        //             error.toString();
+        //         setSuccessful(false);
+        //         setMessage(resMessage);
+        //     }
+        // );
     };
 
     const {
