@@ -26,7 +26,6 @@ import { AuthService } from './shared/services/auth.service';
 
 
 function App() {
-  const currentUserRole = localStorage.getItem("userRole");
   const location = useLocation();
   const navigate = useNavigate();
   const [loginStatus, setLoginStatus] = useState<boolean>();
@@ -39,7 +38,7 @@ function App() {
         navigate('/login');
       }
     }
-  }, [location, loginStatus]);
+  }, [location, loginStatus, navigate]);
 
   /**
    * This function is used to handle login status
