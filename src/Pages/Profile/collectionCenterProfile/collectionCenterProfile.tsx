@@ -21,12 +21,12 @@ export const CollectionCenterProfile = (props: any) => {
 
     // Change button text according to the collection center active value
     useEffect(() => {
-        if (profileSettings && !profileSettings.active) {
+        if (profileDetails && profileDetails.active === 'false') {
             setDetailButtonTitle('Publish Center');
         } else {
             setDetailButtonTitle('Update Center');
         }
-    }, [profileSettings])
+    }, [profileDetails])
 
     return (
         <>
