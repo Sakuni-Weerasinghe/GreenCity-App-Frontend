@@ -14,7 +14,7 @@ const Header = (props: any) => {
 
     return (
         <>
-            <nav id="navbar" className="navbar navbar-expand-md fixed-top sticky-top shadow py-0">
+            <nav id="navbar" className="navbar navbar-expand-lg navbar-dark sticky-top shadow">
                 <div className="container-fluid">
                     <Link className="navbar-brand px-2" to='/'><span>GREEN</span>CITY</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
