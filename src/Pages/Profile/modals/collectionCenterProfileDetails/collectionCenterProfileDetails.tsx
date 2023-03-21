@@ -17,7 +17,8 @@ export const CollectionCenterProfileDetails = (props: any) => {
     const validationSchema = Yup.object().shape({
         wasteType: Yup.string().required("Waste type is required"),
         payment: Yup.string().required("Payment is required").matches(/^[0-9]+$/, "Invalid payment"),
-        description: Yup.string().required(" Description is required!").max(400, "Exceeds the maximum size!"),
+        description: Yup.string().required("Description is required!").max(400, "Exceeds the maximum size!"),
+        workingDays: Yup.array().nullable().required('Please select at least one option').min(1, 'Please select at least one option'),
         active: Yup.string().required("Active is required")
     })
 
@@ -28,6 +29,7 @@ export const CollectionCenterProfileDetails = (props: any) => {
             wasteType: details?.wasteType,
             payment: details?.payment,
             description: details?.description,
+            workingDays: details?.workingDays,
             active: details?.active.toString(),
         }
     });
@@ -115,11 +117,22 @@ export const CollectionCenterProfileDetails = (props: any) => {
                                         <input type="text"{...register("description")} className={`form-control ${errors.description ? 'is-invalid' : ''}`} onChange={(e) => setValue('description', e.target.value)} />
                                         <div className="invalid-feedback">{errors.description?.message}</div>
                                     </div>
+                                    <div className="form-outline mb-3">
+                                        <label className='py-1'>Working Days</label><br />
+                                        <input {...register('workingDays')} type='checkbox' className='mx-3' value="Monday" />Monday
+                                        <input {...register('workingDays')} type="checkbox" className="mx-3" value="Tuesday" />Tuesday
+                                        <input {...register('workingDays')} type="checkbox" className="mx-3" value="Wednesday" />Wednesday
+                                        <input {...register('workingDays')} type="checkbox" className="mx-3" value="Thursday" />Thursday
+                                        <input {...register('workingDays')} type="checkbox" className="mx-3" value="Friday" />Friday<br />
+                                        <input {...register('workingDays')} type="checkbox" className="mx-3" value="Saturday" />Saturday
+                                        <input {...register('workingDays')} type="checkbox" className="mx-3" value="Sunday" />Sunday
+                                        <div className="invalid-feedback d-block">{errors.workingDays?.message}</div>
+                                    </div>
                                     <div className='form-outline mb-3'>
                                         <label className='py-1'>Collection Center Status</label><br />
                                         <input className='mx-2' type="radio" value="true" name='active' onChange={(e) => setValue("active", e.target.value)} checked={watch("active") === "true"} />Active
                                         <input className='mx-2' type="radio" value="false" name='active' onChange={(e) => setValue("active", e.target.value)} checked={watch("active") === "false"} />Disable
-                                        <div className="invalid-feedback">{errors.active?.message}</div>
+                                        <div className="invalid-feedback d-block">{errors.active?.message}</div>
                                     </div>
                                 </form>
                             )}

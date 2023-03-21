@@ -45,7 +45,7 @@ export interface CollectionCenterDetailsResponse {
     payment: string;
     active: string;
     accountStatus: boolean;
-    workingDays: string;
+    workingDays: string[];
 }
 
 export interface CollectionCenterSettingsUpdateRequest {
@@ -64,6 +64,7 @@ export interface CollectionCenterDetailsUpdateRequest {
     payment: string;
     description: string;
     active: string;
+    workingDays: string[];
 }
 
 export interface UserSettingsUpdateRequest {
