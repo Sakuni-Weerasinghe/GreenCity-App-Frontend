@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from "react-bootstrap/Modal";
+//import Modal from "react-bootstrap/Modal";
 import { useNavigate } from 'react-router-dom';
 import center from "../assets/Images/Collection_center_thumbnail.png";
 
@@ -26,7 +26,7 @@ const MapIconModal = (props: any) => {
 
     return (
         <>
-            <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
+            {/* <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Header closeButton></Modal.Header>
                 <Modal.Body>
                     <h5>Center Name</h5>
@@ -39,7 +39,7 @@ const MapIconModal = (props: any) => {
                     </div>
                     <button onClick={() => modalStateHandler("user")} className="btn btn-dark btn-block px-3 mb-3 mt-3" style={style.button}> Request </button>
                 </Modal.Footer>
-            </Modal>
+            </Modal> */}
         </>
     );
 };
