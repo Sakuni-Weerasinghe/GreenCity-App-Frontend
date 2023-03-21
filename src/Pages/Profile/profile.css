@@ -34,20 +34,16 @@
 @media screen and (max-width: 380px) {
 
     .profile-picture img {
-
         width: 200px;
-
         height: auto;
-
     }
-
-
 
 
     h6 {
-
         font-size: 14px;
-
     }
+}
 
+.profile-form label {
+    font-weight: 500;
 }

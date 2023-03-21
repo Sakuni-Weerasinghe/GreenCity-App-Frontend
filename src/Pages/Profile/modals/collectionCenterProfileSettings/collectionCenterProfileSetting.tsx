@@ -96,7 +96,7 @@ export const CollectionCenterProfileSettings = (props: any) => {
                                 </div>
                             )}
                             <div className="card-body px-5 mx-3 py-4 ">{settings && (
-                                <form>
+                                <form className='profile-form'>
                                     <div className="form-outline mb-4">
                                         <label className='py-1'>Center Name</label>
                                         <input type="text"{...register("centerName")} className={`form-control ${errors.centerName ? 'is-invalid' : ''}`} onChange={(e) => setValue('centerName', e.target.value)} />

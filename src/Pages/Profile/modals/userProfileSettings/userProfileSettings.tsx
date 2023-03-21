@@ -90,7 +90,7 @@ export const UserProfileSettings = (props: any) => {
                                 </div>
                             )}
                             <div className="card-body px-5 mx-3 py-4 ">{settings && (
-                                <form>
+                                <form className='profile-form'>
                                     <div className="form-outline mb-4">
                                         <label className='py-1'>First Name</label>
                                         <input type="text"{...register("firstName")} className={`form-control ${errors.firstName ? 'is-invalid' : ''}`} onChange={(e) => setValue('firstName', e.target.value)} />
