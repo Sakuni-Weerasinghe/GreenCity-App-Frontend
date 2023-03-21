@@ -43,7 +43,7 @@ export interface CollectionCenterDetailsResponse {
     description: string;
     wasteType: string;
     payment: string;
-    active: boolean;
+    active: string;
     accountStatus: boolean;
     workingDays: string;
 }
@@ -63,7 +63,7 @@ export interface CollectionCenterDetailsUpdateRequest {
     wasteType: string;
     payment: string;
     description: string;
-    active: boolean;
+    active: string;
 }
 
 export interface UserSettingsUpdateRequest {

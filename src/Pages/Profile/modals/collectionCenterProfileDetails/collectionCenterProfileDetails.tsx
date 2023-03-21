@@ -22,13 +22,13 @@ export const CollectionCenterProfileDetails = (props: any) => {
     })
 
     // useForm configurations
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm<CollectionCenterDetailsUpdateRequest>({
+    const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<CollectionCenterDetailsUpdateRequest>({
         resolver: yupResolver(validationSchema),
         defaultValues: {
             wasteType: details?.wasteType,
             payment: details?.payment,
             description: details?.description,
-            active: details?.active,
+            active: details?.active.toString(),
         }
     });
 
@@ -90,10 +90,19 @@ export const CollectionCenterProfileDetails = (props: any) => {
                                 </div>
                             )}
                             <div className="card-body px-5 mx-3 py-4 ">{details && (
-                                <form>
+                                <form className='profile-form'>
                                     <div className="form-outline mb-4">
                                         <label className='py-1'>Waste Type</label>
-                                        <input type="text"{...register("wasteType")} className={`form-control ${errors.wasteType ? 'is-invalid' : ''}`} onChange={(e) => setValue('wasteType', e.target.value)} />
+                                        <select {...register("wasteType")} className={`form-control rounded-1 ${errors.wasteType ? 'is-invalid' : ''}`} >
+                                            <option value="">Waste Type</option>
+                                            <option value="Plastic">Plastic </option>
+                                            <option value="Metal">Metal </option>
+                                            <option value="Glass">Glass</option>
+                                            <option value="Polythene">Polythene</option>
+                                            <option value="E-Waste">E-Waste</option>
+                                            <option value="Paper">Paper</option>
+                                            <option value="Rubber">Rubber</option>
+                                        </select>
                                         <div className="invalid-feedback">{errors.wasteType?.message}</div>
                                     </div>
                                     <div className="form-outline mb-4">
@@ -106,9 +115,10 @@ export const CollectionCenterProfileDetails = (props: any) => {
                                         <input type="text"{...register("description")} className={`form-control ${errors.description ? 'is-invalid' : ''}`} onChange={(e) => setValue('description', e.target.value)} />
                                         <div className="invalid-feedback">{errors.description?.message}</div>
                                     </div>
-                                    <div className="form-outline mb-4">
-                                        <label className='py-1'>Active</label>
-                                        <input type="text"{...register("active")} className={`form-control ${errors.active ? 'is-invalid' : ''}`} onChange={(e) => setValue('active', true)} />
+                                    <div className='form-outline mb-3'>
+                                        <label className='py-1'>Collection Center Status</label><br />
+                                        <input className='mx-2' type="radio" value="true" name='active' onChange={(e) => setValue("active", e.target.value)} checked={watch("active") === "true"} />Active
+                                        <input className='mx-2' type="radio" value="false" name='active' onChange={(e) => setValue("active", e.target.value)} checked={watch("active") === "false"} />Disable
                                         <div className="invalid-feedback">{errors.active?.message}</div>
                                     </div>
                                 </form>
