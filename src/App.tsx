@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Header from "./Core/Header/Header"
-import Footer from "./Core/Footer/Footer"
+import { Footer } from "./Core/Footer/Footer"
 import { Home } from "./Pages/Home/Home"
 import { UserSignUp } from "./Pages/SignUp/user_signup/UserSignup"
 import { CollectionCenterSignUp } from "./Pages/SignUp/collection_center_signup/CcenterSignup"
@@ -58,7 +58,7 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="signup/user-signup" element={<UserSignUp />} />
           <Route path="signup/collection-center-signup" element={<CollectionCenterSignUp />} />
-          <Route path="collectionCenter" element={<CollectionCenter />} />
+          <Route path="collectionCenterDetails" element={<CollectionCenter />} />
           <Route path='collectionRequest/collectionRequest_requirement' element={<CollectionRequest_requirement />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />

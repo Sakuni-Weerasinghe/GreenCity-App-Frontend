@@ -1,12 +1,12 @@
-import React from 'react'
 import "./footer.css"
 
-const footer = () => {
+const year = new Date().getFullYear();
+
+export const Footer = () => {
   return (
-    <footer className="text-center text-light">
-      <div id="footer" className="py-4">@Green City</div>
+    <footer className="footer d-flex align-items-center justify-content-center text-center bg-dark text-light px-3">
+      <span>Copyright © {year} GreenCity: All rights reserved.</span>
     </footer>
   )
 }
 
-export default footer
