@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { CollectionCenterData } from '../../../types/type';
 import thumbnail from '../../../assets/Images/Collection_center_thumbnail.png';
 import { CollectionCenterSummary } from '../../../shared/models/homeModals';
 
