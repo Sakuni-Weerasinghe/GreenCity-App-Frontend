@@ -34,3 +34,9 @@
 .active::before {
     background-color: #186d3e;
 }
+
+@media screen and (max-width: 500px) {
+    #home-content {
+        padding: 20px !important;
+    }
+}

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import CustomerRequestConfirmationModal from '../../../Modal/CustomerRequestConfirmationModal'
 //import { getCurrentCollectionCenterProfileDetails } from '../../../shared/services/profileManagement.service'
-import { collectionCenterProfileDetailsPublic } from '../../../services/public.service'
+import { collectionCenterProfileDetailsPublic } from '../../../shared/services/public.service'
 import "./collectionRequest_requirement.css"
 import * as Yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';

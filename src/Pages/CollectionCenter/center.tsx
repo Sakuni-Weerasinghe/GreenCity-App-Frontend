@@ -5,7 +5,7 @@ import center from "../../assets/Images/Collection_center_thumbnail.png";
 import "./collectioncenter.css";
 import { useNavigate, useLocation } from "react-router-dom";
 // import { collectionCenterProfileDetails, getCurrentCollectionCenterProfileDetails } from "../../shared/services/profileManagement.service";
-import { collectionCenterProfileDetailsPublic } from "../../services/public.service";
+import { collectionCenterProfileDetailsPublic } from "../../shared/services/public.service";
 
 const BoardCenter = (props: any) => {
   let navigate = useNavigate();

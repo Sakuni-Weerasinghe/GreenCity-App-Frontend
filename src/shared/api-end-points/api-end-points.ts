@@ -9,4 +9,5 @@ export const apiEndpoint = {
     userSettings: `${BASE_URL}/profile/userSettings`,
     collectionCenterSettings: `${BASE_URL}/profile/collectionCenterSettings`,
     CollectionCenterDetails: `${BASE_URL}/profile/collectionCenterDetails`,
+    getCollectionCenterSummaryList: `${BASE_URL}/public/collectionCenters`,
 };
