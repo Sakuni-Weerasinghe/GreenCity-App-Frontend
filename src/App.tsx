@@ -9,8 +9,8 @@ import './App.css';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Login } from './Pages/Login/Login';
 
-import CollectionCenter from './Pages/CollectionCenter/center';
-import CollectionRequest_requirement from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
+import { CollectionCenterDetails } from './Pages/CollectionCenter/collectionCenterDetails';
+import { PickupRequest } from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
 import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
 import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';
 import Request from './Pages/Request/request';
@@ -58,8 +58,8 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="signup/user-signup" element={<UserSignUp />} />
           <Route path="signup/collection-center-signup" element={<CollectionCenterSignUp />} />
-          <Route path="collectionCenterDetails" element={<CollectionCenter />} />
-          <Route path='collectionRequest/collectionRequest_requirement' element={<CollectionRequest_requirement />} />
+          <Route path="collectionCenterDetails/:username" element={<CollectionCenterDetails />} />
+          <Route path='pickupRequest' element={<PickupRequest />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
           <Route path='customer/request' element={<Request />} />
@@ -67,7 +67,7 @@ function App() {
           <Route path='customer/request/activeRequest' element={<CustomerActiveRequest />} />
           <Route path='customer/request/cancelRequest' element={<CustomerCancelRequest />} />
           <Route path='customer/request/completeRequest' element={<CustomerCompleteRequest />} />
-          <Route path="profile/:userName" element={<Profile />} />
+          <Route path="profile/:username" element={<Profile />} />
         </Routes>
       </div>
       <Footer />

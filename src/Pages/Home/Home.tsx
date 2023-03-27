@@ -6,7 +6,7 @@ import banner_xl from '../../assets/Images/main_banner.jpg';
 import { CollectionCenterList } from './CollectionCenterList/CollectionCenterList';
 import MapModal from '../../Modal/MapModal';
 import { PublicService } from '../../shared/services/public.service';
-import { CollectionCenterSummary } from '../../shared/models/homeModals';
+import { CollectionCenterSummary } from '../../shared/models/publicModals';
 
 
 export const Home = () => {

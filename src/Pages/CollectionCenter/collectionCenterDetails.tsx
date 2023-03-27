@@ -1,34 +1,35 @@
-import { useState, useEffect } from "react";
-
-import { getCenterBoard } from "../../services/user.service";
 import center from "../../assets/Images/Collection_center_thumbnail.png";
-import "./collectioncenter.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import "./collectionCenterDetails.css";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 // import { collectionCenterProfileDetails, getCurrentCollectionCenterProfileDetails } from "../../shared/services/profileManagement.service";
 import { collectionCenterProfileDetailsPublic } from "../../shared/services/public.service";
 
-const BoardCenter = (props: any) => {
-  let navigate = useNavigate();
-  const { loginStatus } = props;
-  const location = useLocation();
-  const username = location.state.parameter;
+export const CollectionCenterDetails = (props: any) => {
+  const { username } = useParams();
+  console.log(username);
 
-  collectionCenterProfileDetailsPublic(username, "COLLECTION_CENTER");
+  let navigate = useNavigate();
+  // const { loginStatus } = props;
+  // const location = useLocation();
+  // const username = location.state.parameter;
+
+  //collectionCenterProfileDetailsPublic(username, "COLLECTION_CENTER");
   // useEffect(() => {
 
   // const collectionCenterDetails = getCurrentCollectionCenterProfileDetails();
   // },[])
 
   const onClickRequest = () => {
-    if (loginStatus) {
-      // navigate("/collectionRequest/collectionRequest_requirement",
-      //   { state: { parameter: collectionCenterDetails.username } });
-    } else
-      alert("Please Login Your Profile")
+    // if (loginStatus) {
+    //   // navigate("/collectionRequest/collectionRequest_requirement",
+    //   //   { state: { parameter: collectionCenterDetails.username } });
+    // } else
+    //   alert("Please Login Your Profile")
   }
 
   return (
     <>
+      <p>ddddddddddddddddddd</p>
       {/* <div id="main_banner">
          <img src={banner} alt="" />
         
@@ -77,5 +78,3 @@ const BoardCenter = (props: any) => {
   );
 
 };
-
-export default BoardCenter;

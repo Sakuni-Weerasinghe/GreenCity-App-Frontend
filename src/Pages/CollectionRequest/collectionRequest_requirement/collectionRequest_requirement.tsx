@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { CollectionRequest } from '../../../types/type'
 
-const CollectionRequest_requirement = () => {
+export const PickupRequest = () => {
   const [showRequestConfirmationModal, setShowRequestConfirmationModal] = useState(false)
   const location = useLocation();
   const username = location.state.parameter;
@@ -171,4 +171,3 @@ const CollectionRequest_requirement = () => {
 
 }
 
-export default CollectionRequest_requirement
