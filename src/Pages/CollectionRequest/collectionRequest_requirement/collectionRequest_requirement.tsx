@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import CustomerRequestConfirmationModal from '../../../Modal/CustomerRequestConfirmationModal'
 //import { getCurrentCollectionCenterProfileDetails } from '../../../shared/services/profileManagement.service'
-import { collectionCenterProfileDetailsPublic } from '../../../shared/services/public.service'
+//import { collectionCenterProfileDetailsPublic } from '../../../shared/services/public.service'
 import "./collectionRequest_requirement.css"
 import * as Yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -22,7 +22,7 @@ export const PickupRequest = () => {
     setQuantity(newQuantity);
   };
 
-  collectionCenterProfileDetailsPublic(username, "COLLECTION_CENTER");
+  //collectionCenterProfileDetailsPublic(username, "COLLECTION_CENTER");
   //const collectionCenterDetail = getCurrentCollectionCenterProfileDetails();
 
   const validationSchema = Yup.object().shape({

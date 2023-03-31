@@ -1,7 +1,6 @@
 import axios from "axios";
-import { getRequestHeaders } from "../../config/request-headers";
 import { apiEndpoint } from "../api-end-points/api-end-points";
-import { CollectionCenterListResponse } from "../models/homeModals";
+import { CollectionCenterDetailsResponse, CollectionCenterListResponse } from "../models/publicModals";
 
 /**
  * This function is used to get collection center settings from backend
@@ -19,21 +18,20 @@ const getCollectionCenterSummaryList = async (pageNumber: number, count: number)
     return null;
 }
 
-const API_URL = "http://localhost:8080/api/public/";
+/**
+ * This function is used to get collection center settings from backend
+ * @param request : ProfileRequest
+ * @returns : collection center settings
+ */
+const getCollectionCenterDetails = async (collectionCenterUsername: string) => {
+    const url = `${apiEndpoint.getCollectionCenterDetails}/${collectionCenterUsername}`;
+    const collectionCenterDetailsResponse: CollectionCenterDetailsResponse = await axios.get(url, { headers: { 'Content-Type': 'application/json' } })
+        .then(response => response.data);
 
-export const collectionCenterProfileDetailsPublic = (username: string, role: string) => {
-    return axios
-        .post(API_URL + "collectionCenter", {
-            username,
-            role,
-        }, { headers: getRequestHeaders() })
-        .then((response) => {
-            if (response) {
-                const centerProfile = JSON.stringify(response.data);
-                localStorage.setItem("centerProfile", centerProfile);
-            }
-            return response;
-        });
-};
+    if (collectionCenterDetailsResponse) {
+        return collectionCenterDetailsResponse;
+    }
+    return null;
+}
 
-export const PublicService = { getCollectionCenterSummaryList };
+export const PublicService = { getCollectionCenterSummaryList, getCollectionCenterDetails };

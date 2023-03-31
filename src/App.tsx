@@ -9,7 +9,7 @@ import './App.css';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Login } from './Pages/Login/Login';
 
-import { CollectionCenterDetails } from './Pages/CollectionCenter/collectionCenterDetails';
+import { CollectionCenterDetails } from './Pages/CollectionCenterDetails/collectionCenterDetails';
 import { PickupRequest } from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
 import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
 import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';

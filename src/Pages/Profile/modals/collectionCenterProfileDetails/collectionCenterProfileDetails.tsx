@@ -30,7 +30,7 @@ export const CollectionCenterProfileDetails = (props: any) => {
             payment: details?.payment,
             description: details?.description,
             workingDays: details?.workingDays,
-            active: details?.active.toString(),
+            active: details?.active?.toString(),
         }
     });
 

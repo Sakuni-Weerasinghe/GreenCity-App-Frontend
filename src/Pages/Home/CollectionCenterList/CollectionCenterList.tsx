@@ -21,7 +21,7 @@ export const CollectionCenterList = (props: any) => {
                                 </div>
                             </div>
                             <button className="btn btn-dark rounded-0 text-center btn-custom-1"
-                                onClick={() => navigate("/pickupRequest", { state: { parameter: data?.username } })}>Request PickUp</button>
+                                onClick={() => navigate("/pickupRequest", { state: { parameter: data?.username } })}>Request a PickUp</button>
                         </div>
                     </div>
                 )
