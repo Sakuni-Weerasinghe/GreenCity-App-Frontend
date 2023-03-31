@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './CollectionCenterProfileDetails.css';
+import './collectionCenterProfileDetails.css';
 import { Modal } from 'bootstrap';
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from "yup";

@@ -1,6 +1,7 @@
 import "./header.css"
 import { AuthService } from "../../shared/services/auth.service"
 import { Link } from "react-router-dom"
+import logo from "../../assets/Images/greencity_logo.png"
 
 const Header = (props: any) => {
     const username = localStorage.getItem('username');
@@ -16,7 +17,7 @@ const Header = (props: any) => {
         <>
             <nav id="navbar" className="navbar navbar-expand-lg navbar-dark sticky-top shadow">
                 <div className="container-fluid">
-                    <Link className="navbar-brand px-2" to='/'><span>GREEN</span>CITY</Link>
+                    <Link className="navbar-brand px-2" to='/'><img src={logo} alt="" height="60" /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -26,11 +27,23 @@ const Header = (props: any) => {
                             <li className="nav-item mt-2">
                                 <Link className="nav-link" to='/'>Home</Link>
                             </li>
-                            <li className="nav-item mt-2">
-                                {loginStatus && userRole === "USER" ? (<Link className="nav-link" to='customer/request'>Request</Link>)
-                                    : loginStatus && userRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
-                                        : <></>}
-                            </li>
+                            {
+                                loginStatus ? (
+                                    <li className="nav-item mt-2">
+                                        {userRole === "USER" ? (<Link className="nav-link" to='customer/request'>Request</Link>)
+                                            : userRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
+                                                : <></>}
+                                    </li>
+                                ) : <></>
+                            }
+                            {
+                                loginStatus ? (
+                                    <li className="nav-item mt-2">
+                                        <Link className="nav-link" to={{ pathname: "/profile/" + username }} >{username}</Link>
+                                    </li>
+                                ) : <></>
+
+                            }
                             <li className="nav-item mt-2">
                                 {loginStatus ? (<Link className="nav-link" to={{ pathname: "/profile/" + username }}>{username}</Link>)
                                     : <></>}

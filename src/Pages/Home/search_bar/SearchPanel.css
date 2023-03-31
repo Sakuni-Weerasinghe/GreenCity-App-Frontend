@@ -1,11 +1,9 @@
-#request_btn {
-    border: 1px solid #778c17;
-    color: #778c17;
-    background-color: white;
+.search-bar {
+    background-color: #186d3e;
 }
 
-#request_btn:hover,
-#request_btn:focus {
-    background-color: #778c17;
-    color: white;
+.search-btn:hover,
+.search-btn:focus {
+    background-color: #d2ff00 !important;
+    color: #186d3e !important;
 }
