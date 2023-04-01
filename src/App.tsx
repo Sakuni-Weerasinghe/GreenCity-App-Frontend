@@ -23,20 +23,24 @@ import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
 import { Profile } from './Pages/Profile/profile';
 
 import { AuthService } from './shared/services/auth.service';
+import { Error } from './Core/error/Error';
 
-
-function App() {
+export function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const [loginStatus, setLoginStatus] = useState<boolean>();
 
   useEffect(() => {
+    const userRole = localStorage.getItem('userRole');
     setLoginStatus(AuthService.getLoginStatus());
     if (loginStatus !== undefined && loginStatus === false) {
       // prevent unauthorized route access
-      if (location.pathname.includes('/profile/')) {
+      if (location.pathname.includes('/profile/') || location.pathname.includes('/pickupRequest')) {
         navigate('/login');
       }
+    }
+    if (loginStatus && location.pathname.includes('/pickupRequest') && userRole && userRole !== 'USER') {
+      navigate('/404');
     }
   }, [location, loginStatus, navigate]);
 
@@ -59,7 +63,9 @@ function App() {
           <Route path="signup/user-signup" element={<UserSignUp />} />
           <Route path="signup/collection-center-signup" element={<CollectionCenterSignUp />} />
           <Route path="collectionCenterDetails/:username" element={<CollectionCenterDetails />} />
+          <Route path="profile/:username" element={<Profile />} />
           <Route path='pickupRequest' element={<PickupRequest />} />
+          <Route path='404' element={<Error />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
           <Route path='customer/request' element={<Request />} />
@@ -67,7 +73,6 @@ function App() {
           <Route path='customer/request/activeRequest' element={<CustomerActiveRequest />} />
           <Route path='customer/request/cancelRequest' element={<CustomerCancelRequest />} />
           <Route path='customer/request/completeRequest' element={<CustomerCompleteRequest />} />
-          <Route path="profile/:username" element={<Profile />} />
         </Routes>
       </div>
       <Footer />
@@ -76,4 +81,3 @@ function App() {
   );
 }
 
-export default App;
