@@ -3,7 +3,7 @@ import './collectionCenterProfileSetting.css';
 import { Modal } from 'bootstrap';
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from "yup";
-import { ProfileManagementService } from '../../../../shared/services/profileManagement.service';
+import { ProfileService } from '../../../../shared/services/profile.service';
 import { CollectionCenterSettingsUpdateRequest } from '../../../../shared/models/profileModel';
 import { useForm } from 'react-hook-form';
 
@@ -45,7 +45,7 @@ export const CollectionCenterProfileSettings = (props: any) => {
     const updateCollectionCenterSettings = async (request: CollectionCenterSettingsUpdateRequest) => {
         try {
             // attaching username to the update request
-            const response = await ProfileManagementService.updateCollectionCenterSettings({ ...request, username: settings.username });
+            const response = await ProfileService.updateCollectionCenterSettings({ ...request, username: settings.username });
             if (response && response.status) {
                 setSuccessful(true);
                 setMessage(response.response);

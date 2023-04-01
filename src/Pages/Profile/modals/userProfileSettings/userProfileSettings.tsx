@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from "yup";
 import { useForm } from 'react-hook-form';
 import { UserSettingsUpdateRequest } from '../../../../shared/models/profileModel';
-import { ProfileManagementService } from '../../../../shared/services/profileManagement.service';
+import { ProfileService } from '../../../../shared/services/profile.service';
 import { Modal } from 'bootstrap';
 export const UserProfileSettings = (props: any) => {
     const { isShowModal, hideModal, settings, settingsUpdateHandler } = props;
@@ -41,7 +41,7 @@ export const UserProfileSettings = (props: any) => {
     const updateUserSettings = async (request: UserSettingsUpdateRequest) => {
         try {
             // attaching username to the update request
-            const response = await ProfileManagementService.updateUserSettings({ ...request, username: settings.username });
+            const response = await ProfileService.updateUserSettings({ ...request, username: settings.username });
             if (response && response.status) {
                 setSuccessful(true);
                 setMessage(response.response);

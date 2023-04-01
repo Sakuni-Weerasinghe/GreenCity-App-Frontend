@@ -282,7 +282,7 @@ const updateUserSettings = async (request: UserSettingsUpdateRequest) => {
     return null;
 }
 
-export const ProfileManagementService = {
+export const ProfileService = {
     fullcollectionCenterProfileUpdate,
     collectionCenterProfileUpdate,
     getCollectionCenterSettings,

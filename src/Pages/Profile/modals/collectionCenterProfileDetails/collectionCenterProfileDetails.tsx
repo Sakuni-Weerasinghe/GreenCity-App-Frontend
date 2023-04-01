@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from "yup";
 import { CollectionCenterDetailsUpdateRequest } from '../../../../shared/models/profileModel';
 import { useForm } from 'react-hook-form';
-import { ProfileManagementService } from '../../../../shared/services/profileManagement.service';
+import { ProfileService } from '../../../../shared/services/profile.service';
 
 export const CollectionCenterProfileDetails = (props: any) => {
     const { isShowModal, hideModal, details, detailsUpdateHandler } = props;
@@ -41,7 +41,7 @@ export const CollectionCenterProfileDetails = (props: any) => {
     const updateCollectionCenterDetails = async (request: CollectionCenterDetailsUpdateRequest) => {
         try {
             // attaching username to the update request
-            const response = await ProfileManagementService.updateCollectionCenterDetails({ ...request, username: details.username });
+            const response = await ProfileService.updateCollectionCenterDetails({ ...request, username: details.username });
             if (response && response.status) {
                 setSuccessful(true);
                 setMessage(response.response);

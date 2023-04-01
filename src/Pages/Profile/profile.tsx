@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AuthService } from '../../shared/services/auth.service'
 import { useNavigate } from "react-router-dom";
-import { ProfileManagementService } from "../../shared/services/profileManagement.service";
+import { ProfileService } from "../../shared/services/profile.service";
 import { CollectionCenterProfile } from "./collectionCenterProfile/collectionCenterProfile";
 import { CustomerProfile } from "./userProfile/userProfile";
 import {
@@ -31,13 +31,13 @@ export const Profile = () => {
        */
       const getProfileData = async (request: ProfileRequest) => {
         if (userRole && userRole === 'COLLECTION_CENTER') {
-          const settings = await ProfileManagementService.getCollectionCenterSettings(request);
-          const details = await ProfileManagementService.getCollectionCenterDetails(request);
+          const settings = await ProfileService.getCollectionCenterSettings(request);
+          const details = await ProfileService.getCollectionCenterDetails(request);
 
           settings && setCollectionCenterSettings(settings);
           details && setCollectionCenterDetails(details);
         } else if (userRole && userRole === 'USER') {
-          const settings = await ProfileManagementService.getUserSettings(request);
+          const settings = await ProfileService.getUserSettings(request);
           settings && setUserSettings(settings);
         }
       }
