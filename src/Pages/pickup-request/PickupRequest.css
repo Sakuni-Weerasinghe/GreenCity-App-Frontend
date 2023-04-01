@@ -1,0 +1,55 @@
+.pick-up-request-container .jumbotron {
+    background-color: #186d3e;
+    color: white;
+}
+
+#totalPrice {
+    background-color: #dcff8f;
+}
+
+#totalPrice:focus {
+    box-shadow: none;
+    background-color: #dcff8f;
+    border: 1px solid #ced4da;
+}
+
+.pick-up-request-container .container input:focus {
+    background-color: #dcff8f;
+    border: 1px solid #a6f202;
+    box-shadow: none;
+}
+
+.pick-up-request-container .container select:focus {
+    border: 1px solid #a6f202;
+    box-shadow: none;
+}
+
+.pick-up-request-container .container textarea:focus {
+    background-color: #dcff8f;
+    border: 1px solid #a6f202;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 420px) {
+    .pick-up-request-container .input-group-text {
+        font-size: 14px;
+    }
+
+    .pick-up-request-container .col-auto {
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 342px) {
+    .pick-up-request-container h5 {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .pick-up-request-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
