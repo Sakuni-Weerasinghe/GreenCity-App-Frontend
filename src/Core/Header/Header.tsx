@@ -30,9 +30,7 @@ const Header = (props: any) => {
                             {
                                 loginStatus ? (
                                     <li className="nav-item mt-2">
-                                        {userRole === "USER" ? (<Link className="nav-link" to='dashboard'>Request</Link>)
-                                            : userRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
-                                                : <></>}
+                                        <Link className="nav-link" to='/dashboard'>Dashboard</Link>
                                     </li>
                                 ) : <></>
                             }

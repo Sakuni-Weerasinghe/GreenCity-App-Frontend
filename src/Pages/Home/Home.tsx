@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './home.css';
 import { SearchPanel } from './search_bar/SearchPanel';
 
-import banner_xl from '../../assets/Images/main_banner.png';
+import main_banner from '../../assets/Images/main_banner.png';
 import { CollectionCenterList } from './CollectionCenterList/CollectionCenterList';
 import MapModal from '../../Modal/MapModal';
 import { PublicService } from '../../shared/services/public.service';
@@ -45,7 +45,7 @@ export const Home = () => {
     <>
       {/* main banner */}
       <div id="main_banner">
-        <img src={banner_xl} alt='welcome_banner'></img>
+        <img src={main_banner} alt='welcome_banner'></img>
       </div>
       {/* search bar */}
       <SearchPanel collectionList={collectionCenterList} searchCollectionCenters={searchCollectionCenters} />

@@ -7,3 +7,7 @@
     background-color: #d2ff00 !important;
     color: #186d3e !important;
 }
+
+search-bar .search-btn {
+    border: 1px solid white;
+}

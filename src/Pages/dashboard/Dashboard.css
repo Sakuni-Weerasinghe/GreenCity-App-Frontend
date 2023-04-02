@@ -1,0 +1,29 @@
+#dashboard-banner img {
+    width: 100%;
+}
+
+.dashboard-tab-panel {
+    background-color: #186d3e;
+}
+
+.dashboard-tab-panel .tab {
+    border: 1px solid white;
+}
+
+.dashboard-tab-panel .tab:hover {
+    background-color: #d2ff00 !important;
+    color: black !important;
+}
+
+.dashboard-tab-panel .active {
+    background-color: #d2ff00 !important;
+    color: black !important;
+}
+
+.dashboard-header {
+    background-color: #186d3e;
+}
+
+.dashboard-card {
+    background-color: #c8f1cf;
+}

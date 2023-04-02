@@ -6,8 +6,8 @@ const Cancel_request = () => {
     return (
         <div>
             <div className="container mt-5 mb-5">
-                <div id="header" className="py-3 text-light text-center mb-3">
-                    <h5>Cancle Request</h5>
+                <div className="dashboard-header py-3 text-light text-center mb-3">
+                    <h5>Canceled Request</h5>
                 </div>
                 {/* <div className="message alert text-center" role="alert">
                     <h5 className="alert-heading">There is no inprogress orders for your shops.</h5>

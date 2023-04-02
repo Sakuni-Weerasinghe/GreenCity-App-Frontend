@@ -13,7 +13,7 @@ import { CollectionCenterDetails } from './Pages/CollectionCenterDetails/collect
 import { PickupRequest } from './Pages/pickup-request/PickupRequest';
 import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
 import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';
-import Request from './Pages/Request/request';
+import { Dashboard } from './Pages/dashboard/Dashboard';
 import CustomerActiveRequest from "./Pages/Request/active_request/active_request";
 import CustomerCancelRequest from "./Pages/Request/cancel_request/cancel_request";
 import CustomerCompleteRequest from "./Pages/Request/complete_request/complete_request";
@@ -65,7 +65,7 @@ export function App() {
           <Route path="collectionCenterDetails/:username" element={<CollectionCenterDetails />} />
           <Route path="profile/:username" element={<Profile />} />
           <Route path='pickupRequest' element={<PickupRequest />} />
-          <Route path='dashboard' element={<Request />} />
+          <Route path='dashboard' element={<Dashboard />} />
           <Route path='404' element={<Error />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />

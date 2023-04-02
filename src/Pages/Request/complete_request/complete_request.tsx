@@ -6,8 +6,8 @@ const Complete_request = () => {
     return (
         <div>
             <div className="container mt-5 mb-5">
-                <div id="header" className="py-3 text-light text-center mb-3">
-                    <h5>Complete Requests</h5>
+                <div className="dashboard-header py-3 text-light text-center mb-3">
+                    <h5>Completed Requests</h5>
                 </div>
                 {/* <div className="message alert text-center" role="alert">
                     <h5 className="alert-heading">There is no inprogress orders for your shops.</h5>
@@ -15,7 +15,7 @@ const Complete_request = () => {
                 <div className="message alert text-center" role="alert">
                     <h5 className="alert-heading">There are no inprogress orders ordered by you.</h5>
                 </div> */}
-                <div id="complete_header_bar" className="jumbotron p-4 mb-2">
+                <div className="jumbotron p-4 mb-2 dashboard-card">
                     <div className="row">
                         <div className="col-xl-10 col-lg-9 col-md-9 col-sm-12">
                             <h5>Category : </h5>
