@@ -1,10 +1,10 @@
 import "./Dashboard.css"
 import { useState } from 'react'
 import dashboard_banner from "../../assets/Images/dashboard_banner.svg"
-import CustomerInprogressRequest from '../Request/inprogress_request/inprogress_request';
-import CustomerCancelRequest from '../Request/cancel_request/cancel_request';
-import CustomerActiveRequest from '../Request/active_request/active_request';
-import CustomerCompleteRequest from '../Request/complete_request/complete_request';
+import { InprogressRequestList } from "./inprogress-request-list/InprogressRequestList";
+import { CanceledRequestList } from "./canceled-request-list/CanceledRequestList";
+import { ActiveRequestList } from "./active-request-list/ActiveRequestList";
+import { CompletedRequestList } from "./completed-request-list/CompletedRequestList";
 
 export const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('inprogress');
@@ -34,10 +34,10 @@ export const Dashboard = () => {
             </div>
             {/* Active tab */}
             {
-                activeTab === 'inprogress' ? <CustomerInprogressRequest />
-                    : activeTab === 'active' ? <CustomerActiveRequest />
-                        : activeTab === 'completed' ? <CustomerCompleteRequest />
-                            : activeTab === 'canceled' ? <CustomerCancelRequest /> : <></>
+                activeTab === 'inprogress' ? <InprogressRequestList />
+                    : activeTab === 'active' ? <ActiveRequestList />
+                        : activeTab === 'completed' ? <CompletedRequestList />
+                            : activeTab === 'canceled' ? <CanceledRequestList /> : <></>
             }
         </>
     )

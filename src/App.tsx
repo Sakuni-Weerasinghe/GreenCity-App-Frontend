@@ -14,10 +14,7 @@ import { PickupRequest } from './Pages/pickup-request/PickupRequest';
 import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
 import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';
 import { Dashboard } from './Pages/dashboard/Dashboard';
-import CustomerActiveRequest from "./Pages/Request/active_request/active_request";
-import CustomerCancelRequest from "./Pages/Request/cancel_request/cancel_request";
-import CustomerCompleteRequest from "./Pages/Request/complete_request/complete_request";
-import Request_details from './Pages/Request/request_details/request_details';
+import { RequestDetails } from './Pages/dashboard/request-details/RequestDetails';
 import { SignUp } from './Pages/SignUp/SignUp';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
 import { Profile } from './Pages/Profile/profile';
@@ -69,10 +66,7 @@ export function App() {
           <Route path='404' element={<Error />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
-          <Route path='customer/requestDetails' element={<Request_details />} />
-          <Route path='customer/request/activeRequest' element={<CustomerActiveRequest />} />
-          <Route path='customer/request/cancelRequest' element={<CustomerCancelRequest />} />
-          <Route path='customer/request/completeRequest' element={<CustomerCompleteRequest />} />
+          <Route path='dashboard/request/:requestId' element={<RequestDetails />} />
         </Routes>
       </div>
       <Footer />

@@ -1,12 +1,11 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import "./inprogress_request.css"
+import "./InprogressRequestList.css"
 
-const InprogressRequest = () => {
+export const InprogressRequestList = () => {
     const navigate = useNavigate()
 
     const onRequestConfirm = () => {
-        navigate('customer/requestDetails')
+        navigate(`request/${12345}`)
     }
 
     return (
@@ -39,5 +38,3 @@ const InprogressRequest = () => {
         </>
     )
 }
-
-export default InprogressRequest

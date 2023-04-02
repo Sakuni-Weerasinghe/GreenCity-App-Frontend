@@ -1,13 +1,11 @@
-import React from 'react'
+import "./CompletedRequestList.css"
 
-import "./active_request.css"
-
-const Active_request = () => {
+export const CompletedRequestList = () => {
     return (
-        <>
+        <div>
             <div className="container mt-5 mb-5">
                 <div className="dashboard-header py-3 text-light text-center mb-3">
-                    <h5>Active Requests</h5>
+                    <h5>Completed Requests</h5>
                 </div>
                 {/* <div className="message alert text-center" role="alert">
                     <h5 className="alert-heading">There is no inprogress orders for your shops.</h5>
@@ -27,8 +25,7 @@ const Active_request = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
-export default Active_request
