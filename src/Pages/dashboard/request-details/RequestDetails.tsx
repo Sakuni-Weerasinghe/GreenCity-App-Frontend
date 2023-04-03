@@ -185,7 +185,7 @@ export const RequestDetails = () => {
                         </div>
                     </div>
                 </div>
-                {requestStatus !== 'completed' && userRole === 'COLLECTION_CENTER' &&
+                {requestStatus !== 'completed' && userRole === 'USER' &&
                     <>
                         <hr />
                         <div className="d-grid gap-2 mx-auto mt-3 mb-5">
