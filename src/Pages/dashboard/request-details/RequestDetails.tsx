@@ -185,11 +185,15 @@ export const RequestDetails = () => {
                         </div>
                     </div>
                 </div>
-                <hr />
-                <div className="d-grid gap-2 mx-auto mt-3 mb-5">
-                    <button className="btn btn-dark px-3 mb-3 mt-1 btn-custom-1 py-3" type="button"
-                        onClick={() => requestConfirmationAlertHandler('completed')}>Complete Pickup</button>
-                </div>
+                {requestStatus !== 'completed' && userRole === 'COLLECTION_CENTER' &&
+                    <>
+                        <hr />
+                        <div className="d-grid gap-2 mx-auto mt-3 mb-5">
+                            <button className="btn btn-dark px-3 mb-3 mt-1 btn-custom-1 py-3" type="button"
+                                onClick={() => requestConfirmationAlertHandler('completed')}>Complete Pickup</button>
+                        </div>
+                    </>
+                }
             </div>
         </>
     )
