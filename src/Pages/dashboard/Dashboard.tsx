@@ -21,13 +21,13 @@ export const Dashboard = () => {
                         <div className={`col-md-3 col-sm-6 my-2 px-0 py-3 tab bg-dark text-light d-flex align-items-center justify-content-center ${activeTab === 'inprogress' ? 'active' : ''}`}
                             onClick={() => setActiveTab('inprogress')}>Inprogress</div>
 
-                        <div className="col-md-3 col-sm-6 my-2 px-0 py-3 tab bg-dark text-light d-flex align-items-center justify-content-center"
+                        <div className={`col-md-3 col-sm-6 my-2 px-0 py-3 tab bg-dark text-light d-flex align-items-center justify-content-center ${activeTab === 'active' ? 'active' : ''}`}
                             onClick={() => setActiveTab('active')}>Active</div>
 
-                        <div className="col-md-3 col-sm-6 my-2 px-0 py-3 tab bg-dark text-light d-flex align-items-center justify-content-center"
+                        <div className={`col-md-3 col-sm-6 my-2 px-0 py-3 tab bg-dark text-light d-flex align-items-center justify-content-center ${activeTab === 'completed' ? 'active' : ''}`}
                             onClick={() => setActiveTab('completed')}>Completed</div>
 
-                        <div className="col-md-3 col-sm-6 my-2 px-0 py-3 tab bg-dark text-light d-flex align-items-center justify-content-center"
+                        <div className={`col-md-3 col-sm-6 my-2 px-0 py-3 tab bg-dark text-light d-flex align-items-center justify-content-center ${activeTab === 'canceled' ? 'active' : ''}`}
                             onClick={() => setActiveTab('canceled')}>Canceled</div>
                     </div>
                 </div>
