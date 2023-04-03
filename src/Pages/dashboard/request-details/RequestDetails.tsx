@@ -73,7 +73,7 @@ export const RequestDetails = () => {
                     </div>
                 }
                 {/* Request confirmation alert */}
-                {requestStatus === 'inprogress' &&
+                {userRole === 'COLLECTION_CENTER' && requestStatus === 'inprogress' &&
                     (<div className="jumbotron p-3 mb-3 success">
                         <h5>Pickup Confirmation</h5>
                         <hr />
