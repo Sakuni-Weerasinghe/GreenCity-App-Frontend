@@ -32,7 +32,7 @@ export function App() {
     setLoginStatus(AuthService.getLoginStatus());
     if (loginStatus !== undefined && loginStatus === false) {
       // prevent unauthorized route access
-      if (location.pathname.includes('/profile/') || location.pathname.includes('/pickupRequest')) {
+      if (location.pathname.includes('/profile/') || location.pathname.includes('/pickupRequest') || location.pathname.includes('/dashboard')) {
         navigate('/login');
       }
     }
@@ -63,10 +63,10 @@ export function App() {
           <Route path="profile/:username" element={<Profile />} />
           <Route path='pickupRequest' element={<PickupRequest />} />
           <Route path='dashboard' element={<Dashboard />} />
+          <Route path='dashboard/request/:requestId' element={<RequestDetails />} />
           <Route path='404' element={<Error />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
-          <Route path='dashboard/request/:requestId' element={<RequestDetails />} />
         </Routes>
       </div>
       <Footer />
