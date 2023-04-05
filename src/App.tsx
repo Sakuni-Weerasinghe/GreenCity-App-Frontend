@@ -11,8 +11,6 @@ import { Login } from './Pages/Login/Login';
 
 import { CollectionCenterDetails } from './Pages/CollectionCenterDetails/collectionCenterDetails';
 import { PickupRequest } from './Pages/pickup-request/PickupRequest';
-import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
-import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';
 import { Dashboard } from './Pages/dashboard/Dashboard';
 import { RequestDetails } from './Pages/dashboard/request-details/RequestDetails';
 import { SignUp } from './Pages/SignUp/SignUp';
@@ -65,8 +63,6 @@ export function App() {
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='dashboard/request/:requestId' element={<RequestDetails />} />
           <Route path='404' element={<Error />} />
-          <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
-          <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
         </Routes>
       </div>
       <Footer />
