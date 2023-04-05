@@ -12,4 +12,5 @@ export const apiEndpoint = {
     getCollectionCenterSummaryList: `${BASE_URL}/public/collectionCenters`,
     getCollectionCenterDetails: `${BASE_URL}/public/collectionCenter`,
     createPickupRequest: `${BASE_URL}/pickup/newRequest`,
+    getSummaryList: `${BASE_URL}/pickup/summaryList`,
 };

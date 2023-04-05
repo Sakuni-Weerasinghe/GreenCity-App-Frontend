@@ -90,11 +90,11 @@ export const PickupRequest = () => {
 
         try {
             const response = await RequestService.createNewPickupRequest(finalRequest);
-            if (response && response.status) {
+            if (response && response.status && typeof response.response === 'string') {
                 setSuccessful(true);
                 setMessage(response.response);
                 navigate("/dashboard", { state: { parameter: username } })
-            } else if (response) {
+            } else if (response && typeof response.response === 'string') {
                 setSuccessful(false);
                 setMessage(response.response);
             }

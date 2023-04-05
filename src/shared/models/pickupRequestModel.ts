@@ -12,6 +12,20 @@ export interface PickupRequestRequest {
 }
 
 export interface PickupRequestResponse {
-    response: string;
+    response: string | PickupRequestSummaryListResponse[];
     status: boolean;
+}
+
+export interface PickupRequestSummaryListRequest {
+    username: string;
+    userRole: string;
+    listType: string;
+}
+
+export interface PickupRequestSummaryListResponse {
+    requestId: string;
+    customerName: string;
+    collectionCenterName: string;
+    wasteType: string;
+    createdDate: string;
 }

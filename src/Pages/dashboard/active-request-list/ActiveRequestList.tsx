@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "./ActiveRequestList.css"
+import { formatDateTime } from "../../../config/request-headers";
 
-export const ActiveRequestList = () => {
+export const ActiveRequestList = (props: any) => {
+    const { requestList } = props;
     const userRole = localStorage.getItem('userRole');
     const navigate = useNavigate()
-    const requestList = [
-        { requestId: '1234', customerName: 'Sakuni Weerasinghe', wasteType: 'plastic', createdDate: '2023-01-03' }
-    ];
+
     return (
         <>
             <div className="container mt-5 mb-5">
@@ -20,10 +20,10 @@ export const ActiveRequestList = () => {
                                 <div className="jumbotron p-4 mb-2 dashboard-card">
                                     <div className="row">
                                         <div className="col-xl-10 col-lg-9 col-md-9 col-sm-12">
-                                            <h5>{`${userRole === 'COLLECTION_CENTER' ? 'Customer Name' : 'Collection Center'}: ${request?.customerName}`}</h5>
+                                            <h5>{userRole === 'COLLECTION_CENTER' ? `Customer Name: ${request?.customerName}` : userRole === 'USER' ? `Collection Center: ${request?.collectionCenterName}` : ''}</h5>
                                             <h6>Waste Type: {request?.wasteType}</h6>
                                             <hr className="my-0 mt-3 mb-2" />
-                                            <p className="mb-0">Created On: {request?.createdDate}</p>
+                                            <p className="mb-0">Created On: {formatDateTime(request?.createdDate)}</p>
                                         </div>
                                         <div className="col-xl-2 col-lg-3 col-md-3 col-sm-12 text-end d-flex align-items-center">
                                             <button className="btn btn-dark w-100 my-3 btn-custom-1 rounded-0" type='button' onClick={() => navigate(`request/${request?.requestId}`)}>View</button>
