@@ -1,19 +1,38 @@
 import { useState, useEffect } from 'react';
 import './RequestDetails.css';
+import { RequestService } from '../../../shared/services/request.service';
+import { useParams } from 'react-router-dom';
+import { PickupRequestDetailsResponse } from '../../../shared/models/pickupRequestModel';
+import { formatDateTime } from '../../../config/request-headers';
 
 export const RequestDetails = () => {
     const userRole = localStorage.getItem('userRole');
-    const [pickupRequestDetails, setPickupRequestDetails] = useState<any>();
+    const [pickupRequestDetails, setPickupRequestDetails] = useState<PickupRequestDetailsResponse>();
     const [success, setSuccess] = useState<Boolean>();
     const [successMessage, setSuccessMessage] = useState<String>();
     const [requestStatus, setRequestStatus] = useState('');
     const [time, setTime] = useState(new Date().getSeconds());
 
     useEffect(() => {
-        const note = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consectetur quam justo, ut rutrum sapien porta accumsan. Maecenas sit amet molestie urna, id rutrum leo. Nullam viverra venenatis nisl, at tempor mauris viverra vitae. Mauris mattis vel sapien egestas placerat. Mauris orci aliquam.';
-        const response = { status: 'inprogress', note, collectionCenterName: 'Kandy Cleaner', customerName: 'Sakuni Weerasinghe', createdDate: '2023-01-03', acceptedDate: '2023-01-04', canceledDate: '2023-01-05', completedDate: '2023-01-06' };
-
-        setPickupRequestDetails(response);
+        /**
+         * This function is used to get pickup request details using pickup request ID
+         * @param id : string
+         */
+        const getPickupRequestDetails = async (id: string) => {
+            try {
+                const response = await RequestService.getPickupRequestDetails(id);
+                if (response) {
+                    if (response.status && typeof response.response === "object") {
+                        setPickupRequestDetails(response.response as PickupRequestDetailsResponse);
+                    }
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        if (requestId) {
+            getPickupRequestDetails(requestId);
+        }
 
         /**
          * This function will calculate elapsed duration of the pickup request using accepted time
@@ -24,10 +43,10 @@ export const RequestDetails = () => {
 
         // cleanup function to clear the interval when the component unmounts
         return () => clearInterval(timer);
-    }, []);
+    }, [requestId]);
 
     useEffect(() => {
-        setRequestStatus(pickupRequestDetails?.status);
+        setRequestStatus(pickupRequestDetails?.status as string);
     }, [pickupRequestDetails?.status])
 
     /**
@@ -73,7 +92,7 @@ export const RequestDetails = () => {
                     </div>
                 }
                 {/* Request confirmation alert */}
-                {userRole === 'COLLECTION_CENTER' && requestStatus === 'inprogress' &&
+                {userRole === 'COLLECTION_CENTER' && requestStatus === 'INPROGRESS' &&
                     (<div className="jumbotron p-3 mb-3 success">
                         <h5>Pickup Confirmation</h5>
                         <hr />
@@ -86,7 +105,7 @@ export const RequestDetails = () => {
                     </div>)
                 }
                 {/* Request completed alert */}
-                {requestStatus === 'completed' &&
+                {requestStatus === 'COMPLETED' &&
                     <div className="jumbotron p-3 mb-3 text-center success">
                         <h4>Whoooha! This Pick request is Completed!.</h4>
                     </div>
@@ -102,15 +121,15 @@ export const RequestDetails = () => {
                     <hr />
                     <div className="row my-3">
                         <div className="col-lg-6 col-xl-6 col-md-6 col-sm-12 text-md-start text-sm-center">
-                            <p className="mb-1">Created On: {pickupRequestDetails?.createdDate}</p>
+                            <p className="mb-1">Created On: {formatDateTime(pickupRequestDetails?.createdDate as string)}</p>
                         </div>
-                        {requestStatus && requestStatus !== 'inprogress' &&
+                        {requestStatus && requestStatus !== 'INPROGRESS' &&
                             <div className="col-lg-6 col-xl-6 col-md-6 col-sm-12 text-md-end text-sm-center">
                                 <p className="mb-1">
                                     {
-                                        requestStatus === 'active' ? `Accepted On: ${pickupRequestDetails.acceptedDate}`
-                                            : requestStatus === 'completed' ? `Completed On: ${pickupRequestDetails.completedDate}`
-                                                : `Canceled On: ${pickupRequestDetails.canceledDate}`
+                                        requestStatus === 'ACTIVE' ? `Accepted On: ${formatDateTime(pickupRequestDetails.acceptedDate as string)}`
+                                            : requestStatus === 'COMPLETED' ? `Completed On: ${formatDateTime(pickupRequestDetails.completedDate as string)}`
+                                                : `Canceled On: ${formatDateTime(pickupRequestDetails.canceledDate as string)}`
                                     }
                                 </p>
                             </div>
@@ -118,7 +137,7 @@ export const RequestDetails = () => {
                     </div>
                 </div>
                 {/* Countdown CLOCK */}
-                {requestStatus === 'active' &&
+                {requestStatus === 'ACTIVE' &&
                     <div className="text-center">
                         <div className="title jumbotron-fluid py-3">
                             <h4>Elapsed Duration</h4>
@@ -155,37 +174,39 @@ export const RequestDetails = () => {
                     <div className="row p-2">
                         <div className="col">
                             <p className="title p-2">Waste Type</p>
-                            <p>Plastic</p>
+                            <p>{pickupRequestDetails?.wasteType}</p>
                         </div>
                     </div>
                     <div className="row p-2">
                         <div className="col">
                             <p className="title p-2">Collecting in</p>
-                            <p>Monday, Tuesday</p>
+                            <p>{pickupRequestDetails?.workingDays && pickupRequestDetails?.workingDays.length > 0 && pickupRequestDetails?.workingDays.toString()}</p>
                         </div>
                         <div className="col">
                             <p className="title p-2">Quantity</p>
-                            <p>400 kg</p>
+                            <p>{pickupRequestDetails?.quantity}</p>
                         </div>
                     </div>
                     <div className="row p-2">
                         <div className="col">
                             <p className="title p-2">Total Payment</p>
-                            <p>4500.00 LKR</p>
+                            <p>{pickupRequestDetails?.totalPayment}</p>
                         </div>
                         <div className="col">
                             <p className="title p-2">Location</p>
-                            <p>Kandy</p>
+                            <p>{pickupRequestDetails?.location}</p>
                         </div>
                     </div>
                     <div className="row p-2">
                         <div className="col">
                             <p className="title p-2">Collecting Address</p>
-                            <p>125/B, Thennekumbura, Kandy</p>
+                            <p>{`${pickupRequestDetails?.addressLine1}, 
+                                 ${pickupRequestDetails?.addressLine2}, 
+                                 ${pickupRequestDetails?.addressLine3}.`}</p>
                         </div>
                     </div>
                 </div>
-                {requestStatus !== 'active' && userRole === 'USER' &&
+                {requestStatus !== 'ACTIVE' && userRole === 'USER' &&
                     <>
                         <hr />
                         <div className="d-grid gap-2 mx-auto mt-3 mb-5">

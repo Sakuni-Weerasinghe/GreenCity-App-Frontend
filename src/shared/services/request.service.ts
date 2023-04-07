@@ -1,6 +1,6 @@
 import axios from "axios";
 import { apiEndpoint } from "../api-end-points/api-end-points";
-import { PickupRequestRequest, PickupRequestResponse, PickupRequestSummaryListRequest, PickupRequestSummaryListResponse } from "../models/pickupRequestModel";
+import { PickupRequestRequest, PickupRequestResponse, PickupRequestStatusUpdateRequest, PickupRequestSummaryListRequest } from "../models/pickupRequestModel";
 import { getRequestHeaders } from "../../config/request-headers";
 
 /**
@@ -33,4 +33,40 @@ const getPickupRequestSummaryList = async (request: PickupRequestSummaryListRequ
     return null;
 }
 
-export const RequestService = { createNewPickupRequest, getPickupRequestSummaryList };
+/**
+ * This function is used to get pickup request details using request id
+ * @param requestId : pickup request id
+ * @returns : PickupRequestResponse
+ */
+const getPickupRequestDetails = async (requestId: string) => {
+    const url = `${apiEndpoint.getPickupRequestDetails}/${requestId}`;
+    const pickupRequestDetailsResponse: PickupRequestResponse = await axios.get(url, { headers: getRequestHeaders() })
+        .then(response => response.data);
+
+    if (pickupRequestDetailsResponse) {
+        return pickupRequestDetailsResponse;
+    }
+    return null;
+}
+
+/**
+ * This function is used to update pickup request status
+ * @param request : PickupRequestSummaryListRequest
+ * @returns : PickupRequestResponse
+ */
+const updatePickupRequestStatus = async (request: PickupRequestStatusUpdateRequest) => {
+    const pickupRequestStatusUpdateResponse: PickupRequestResponse = await axios.put(apiEndpoint.updatePickupRequest, request, { headers: getRequestHeaders() })
+        .then(response => response.data);
+
+    if (pickupRequestStatusUpdateResponse) {
+        return pickupRequestStatusUpdateResponse;
+    }
+    return null;
+}
+
+export const RequestService = {
+    createNewPickupRequest,
+    getPickupRequestSummaryList,
+    getPickupRequestDetails,
+    updatePickupRequestStatus
+};

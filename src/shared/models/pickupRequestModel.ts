@@ -12,7 +12,7 @@ export interface PickupRequestRequest {
 }
 
 export interface PickupRequestResponse {
-    response: string | PickupRequestSummaryListResponse[];
+    response: string | PickupRequestSummaryListResponse[] | PickupRequestDetailsResponse | PickupRequestStatusUpdateRequest;
     status: boolean;
 }
 
@@ -29,3 +29,32 @@ export interface PickupRequestSummaryListResponse {
     wasteType: string;
     createdDate: string;
 }
+
+export interface PickupRequestDetailsResponse {
+    requestId: string;
+    status: string;
+    note: string;
+    collectionCenterName: string;
+    customerName: string;
+    createdDate: string;
+    acceptedDate: string;
+    completedDate: string;
+    canceledDate: string;
+
+    wasteType: string;
+    workingDays: string[];
+    quantity: number;
+    totalPayment: string;
+    location: string;
+    addressLine1: string;
+    addressLine2: string;
+    addressLine3: string;
+}
+
+export interface PickupRequestStatusUpdateRequest {
+    username: string;
+    userRole: string;
+    updatedStatus: string;
+    requestId: string;
+}
+

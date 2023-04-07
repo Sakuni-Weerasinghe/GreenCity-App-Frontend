@@ -13,4 +13,6 @@ export const apiEndpoint = {
     getCollectionCenterDetails: `${BASE_URL}/public/collectionCenter`,
     createPickupRequest: `${BASE_URL}/pickup/newRequest`,
     getSummaryList: `${BASE_URL}/pickup/summaryList`,
+    getPickupRequestDetails: `${BASE_URL}/pickup/request`,
+    updatePickupRequest: `${BASE_URL}/pickup/request/statusUpdate`
 };
