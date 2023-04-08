@@ -7,6 +7,7 @@ import { formatDateTime } from '../../../config/request-headers';
 
 export const RequestDetails = () => {
     const userRole = localStorage.getItem('userRole');
+    const username = localStorage.getItem('username');
     const [pickupRequestDetails, setPickupRequestDetails] = useState<PickupRequestDetailsResponse>();
     const [success, setSuccess] = useState<Boolean>();
     const [successMessage, setSuccessMessage] = useState<String>();
@@ -53,21 +54,35 @@ export const RequestDetails = () => {
      * This function is used to handle pickup request confirmation alert and update pickup request status
      * @param value : boolean
      */
-    const requestConfirmationAlertHandler = (value: string) => {
-        setRequestStatus(value);
-
-        // when true
-        setSuccess(true);
-        setSuccessMessage('Successfully updated pickup request!');
-        // when false
-        // setSuccess(false);
-        // setSuccessMessage('Sorry, pickup request update is Failed!');
-        setTimeout(() => {
-            setSuccessMessage('');
-        }, 2000);
-
-        if (value === 'completed') {
-            window.scrollTo(0, 0);
+    const onClickHandler = async (value: string) => {
+        try {
+            if (value === 'completed') {
+                window.scrollTo(0, 0);
+            }
+            if (username && userRole && requestId) {
+                const request = { username, userRole, updatedStatus: value, requestId: requestId };
+                const response = await RequestService.updatePickupRequestStatus(request);
+                if (response) {
+                    if (response.status) {
+                        setRequestStatus(value);
+                        setSuccess(true);
+                        setSuccessMessage(response.response as string);
+                    } else {
+                        setSuccess(false);
+                        setSuccessMessage(response.response as string);
+                    }
+                    setTimeout(() => {
+                        setSuccessMessage('');
+                    }, 2000);
+                }
+            }
+        } catch (error) {
+            console.error(error);
+            setSuccess(false);
+            setSuccessMessage('Sorry, pickup request update is Failed!')
+            setTimeout(() => {
+                setSuccessMessage('');
+            }, 2000);
         }
     }
 
@@ -99,8 +114,8 @@ export const RequestDetails = () => {
                         <p>This pickup request is still not accepted, Do you want to accept and continue?</p>
                         <hr />
                         <div className="text-end">
-                            <button type="button" className="btn btn-danger mx-1" onClick={() => requestConfirmationAlertHandler('canceled')}>Decline</button>
-                            <button type="button" className="btn btn-success mx-1" onClick={() => requestConfirmationAlertHandler('active')}>Accept</button>
+                            <button type="button" className="btn btn-danger mx-1" onClick={() => onClickHandler('CANCELED')}>Decline</button>
+                            <button type="button" className="btn btn-success mx-1" onClick={() => onClickHandler('ACTIVE')}>Accept</button>
                         </div>
                     </div>)
                 }
@@ -211,7 +226,7 @@ export const RequestDetails = () => {
                         <hr />
                         <div className="d-grid gap-2 mx-auto mt-3 mb-5">
                             <button className="btn btn-dark px-3 mb-3 mt-1 btn-custom-1 py-3" type="button"
-                                onClick={() => requestConfirmationAlertHandler('completed')}>Complete Pickup</button>
+                                onClick={() => onClickHandler('COMPLETED')}>Complete Pickup</button>
                         </div>
                     </>
                 }
