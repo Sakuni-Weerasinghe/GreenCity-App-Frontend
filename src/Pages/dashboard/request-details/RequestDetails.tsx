@@ -145,9 +145,10 @@ export const RequestDetails = () => {
                             <div className="col-lg-6 col-xl-6 col-md-6 col-sm-12 text-md-end text-sm-center">
                                 <p className="mb-1">
                                     {
-                                        requestStatus === 'ACTIVE' ? `Accepted On: ${formatDateTime(pickupRequestDetails.acceptedDate as string)}`
-                                            : requestStatus === 'COMPLETED' ? `Completed On: ${formatDateTime(pickupRequestDetails.completedDate as string)}`
-                                                : `Canceled On: ${formatDateTime(pickupRequestDetails.canceledDate as string)}`
+                                        requestStatus === 'ACTIVE' && pickupRequestDetails?.acceptedDate ? `Accepted On: ${formatDateTime(pickupRequestDetails?.acceptedDate as string)}`
+                                            : requestStatus === 'COMPLETED' && pickupRequestDetails?.completedDate ? `Completed On: ${formatDateTime(pickupRequestDetails?.completedDate as string)}`
+                                                : requestStatus === 'CANCELED' && pickupRequestDetails?.canceledDate ? `Canceled On: ${formatDateTime(pickupRequestDetails?.canceledDate as string)}`
+                                                    : ''
                                     }
                                 </p>
                             </div>
