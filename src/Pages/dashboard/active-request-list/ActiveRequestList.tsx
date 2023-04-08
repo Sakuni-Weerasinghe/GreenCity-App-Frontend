@@ -15,9 +15,9 @@ export const ActiveRequestList = (props: any) => {
                 </div>
                 {
                     requestList && requestList.length > 0 ?
-                        (requestList.map((request: any) => {
+                        (requestList.map((request: any, index: number) => {
                             return (
-                                <div className="jumbotron p-4 mb-2 dashboard-card">
+                                <div className="jumbotron p-4 mb-2 dashboard-card" key={index}>
                                     <div className="row">
                                         <div className="col-xl-10 col-lg-9 col-md-9 col-sm-12">
                                             <h5>{userRole === 'COLLECTION_CENTER' ? `Customer Name: ${request?.customerName}` : userRole === 'USER' ? `Collection Center: ${request?.collectionCenterName}` : ''}</h5>
