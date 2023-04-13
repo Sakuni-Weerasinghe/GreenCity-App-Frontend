@@ -4,7 +4,7 @@ import { SearchPanel } from './search_bar/SearchPanel';
 
 import main_banner from '../../assets/Images/main_banner.png';
 import { CollectionCenterList } from './CollectionCenterList/CollectionCenterList';
-import MapModal from '../../Modal/MapModal';
+import MapModal from '../map/modals/map-modal/MapModal';
 import { PublicService } from '../../shared/services/public.service';
 import { CollectionCenterSummary } from '../../shared/models/publicModals';
 

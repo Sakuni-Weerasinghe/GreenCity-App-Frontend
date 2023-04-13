@@ -1,6 +1,3 @@
-//import Modal from "react-bootstrap/Modal";
-import MapComponent from "../Component/MapComponent";
-
 const MapModal = (props: any) => {
 
     return (

@@ -1,7 +1,7 @@
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
-import MapIconModal from '../Modal/MapIconModal'
 import { useCallback, useState } from "react";
+import MapIconModal from './modals/map-icon-modal/MapIconModal';
 
 // interface Marker = {
 
@@ -14,7 +14,7 @@ const containerStyle = {
 
 const center = { lat: 7.284637177276179, lng: 80.6544941178496 };
 
-const MapComponent = () => {
+export const Map = () => {
     const marker = [
         {
             id: 1,
@@ -66,4 +66,3 @@ const MapComponent = () => {
         </>
     )
 }
-export default MapComponent
