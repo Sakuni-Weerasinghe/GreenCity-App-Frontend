@@ -3,7 +3,7 @@ import { AuthService } from '../../shared/services/auth.service'
 import { useNavigate } from "react-router-dom";
 import { ProfileService } from "../../shared/services/profile.service";
 import { CollectionCenterProfile } from "./collectionCenterProfile/collectionCenterProfile";
-import { CustomerProfile } from "./userProfile/userProfile";
+import { UserProfile } from "./userProfile/userProfile";
 import {
   CollectionCenterDetailsResponse,
   CollectionCenterDetailsUpdateRequest,
@@ -26,7 +26,7 @@ export const Profile = () => {
       navigate('/login');
     } else {
       /**
-       * This function is used to get Collection center settings or User profile data according the role
+       * This function is used to get Collection center or User profile data according the role
        * @param request : ProfileRequest
        */
       const getProfileData = async (request: ProfileRequest) => {
@@ -72,7 +72,7 @@ export const Profile = () => {
         userRole === 'COLLECTION_CENTER' && collectionCenterSettings ?
           <CollectionCenterProfile profileSettings={collectionCenterSettings} profileDetails={collectionCenterDetails}
             settingsUpdateHandler={updateCollectionCenterSettings} detailsUpdateHandler={updateCollectionCenterDetails} />
-          : userRole === 'USER' && userSettings ? <CustomerProfile profileSettings={userSettings} /> : <></>
+          : userRole === 'USER' && userSettings ? <UserProfile profileSettings={userSettings} /> : <></>
       }
     </div>
   );

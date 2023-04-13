@@ -3,7 +3,7 @@ import thumbnail from "../../../assets/Images/customer_profile.svg";
 
 import "./userProfile.css"
 
-export const CustomerProfile = (props: any) => {
+export const UserProfile = (props: any) => {
   const { profileSettings } = props;
   const navigate = useNavigate();
 
