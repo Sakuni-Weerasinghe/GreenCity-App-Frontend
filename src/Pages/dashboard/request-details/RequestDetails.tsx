@@ -6,6 +6,7 @@ import { PickupRequestDetailsResponse } from '../../../shared/models/pickupReque
 import { formatDateTime } from '../../../config/request-headers';
 
 export const RequestDetails = () => {
+    const { requestId } = useParams();
     const userRole = localStorage.getItem('userRole');
     const username = localStorage.getItem('username');
     const [pickupRequestDetails, setPickupRequestDetails] = useState<PickupRequestDetailsResponse>();
