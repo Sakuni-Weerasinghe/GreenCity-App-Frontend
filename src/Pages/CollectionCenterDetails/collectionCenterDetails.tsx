@@ -1,5 +1,5 @@
 import thumbnail from "../../assets/Images/collection_center_details_thumbnail.png";
-import "./collectionCenterDetails.css";
+import "./CollectionCenterDetails.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { PublicService } from "../../shared/services/public.service";
 import { CollectionCenterDetailsResponse } from "../../shared/models/publicModals";

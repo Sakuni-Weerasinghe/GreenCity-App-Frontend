@@ -9,7 +9,7 @@ import './App.css';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Login } from './Pages/Login/Login';
 
-import { CollectionCenterDetails } from './Pages/CollectionCenterDetails/collectionCenterDetails';
+import { CollectionCenterDetails } from './Pages/CollectionCenterDetails/CollectionCenterDetails';
 import { PickupRequest } from './Pages/pickup-request/PickupRequest';
 import { Dashboard } from './Pages/dashboard/Dashboard';
 import { RequestDetails } from './Pages/dashboard/request-details/RequestDetails';
@@ -63,6 +63,8 @@ export function App() {
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='dashboard/request/:requestId' element={<RequestDetails />} />
           <Route path='404' element={<Error />} />
+          <Route path='*' element={<Error />} />
+
         </Routes>
       </div>
       <Footer />
