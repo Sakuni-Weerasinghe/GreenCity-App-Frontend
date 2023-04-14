@@ -1,11 +1,8 @@
+import "./Map.css"
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 import { useCallback, useState } from "react";
 import MapIconModal from './modals/map-icon-modal/MapIconModal';
-
-// interface Marker = {
-
-// }
 
 const containerStyle = {
     width: '100%',

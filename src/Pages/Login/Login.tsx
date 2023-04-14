@@ -18,7 +18,7 @@ export const Login = (props: any) => {
   });
   // useForm configurations
   const { register, handleSubmit, formState: { errors } } = useForm<LoginRequest>({ resolver: yupResolver(validationSchema) });
-
+  // login form error handling
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   let navigate: NavigateFunction = useNavigate();

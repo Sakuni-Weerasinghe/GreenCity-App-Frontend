@@ -11,7 +11,7 @@ export const CanceledRequestList = (props: any) => {
         <div>
             <div className="container mt-5 mb-5">
                 <div className="dashboard-header py-3 text-light text-center mb-3">
-                    <h5>Canceled Request</h5>
+                    <h5>Canceled Requests</h5>
                 </div>
                 {
                     requestList && requestList.length > 0 ?

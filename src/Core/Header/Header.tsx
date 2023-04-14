@@ -17,7 +17,7 @@ const Header = (props: any) => {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark sticky-top shadow">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to='/'><img src={logo} alt="" height="60" /></Link>
+                    <Link className="navbar-brand" to='/'> <img src={logo} alt="" height="60" /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

@@ -55,8 +55,8 @@ const getCollectionCenterDetails = async (request: ProfileRequest) => {
 }
 
 /**
- * This function is used to get collection center settings from backend
- * @param request : ProfileRequest
+ * This function is used to update collection center settings from backend
+ * @param request : CollectionCenterSettingsUpdateRequest
  * @returns : collection center settings
  */
 const updateCollectionCenterSettings = async (request: CollectionCenterSettingsUpdateRequest) => {
