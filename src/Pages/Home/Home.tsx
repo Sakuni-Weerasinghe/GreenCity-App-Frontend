@@ -64,7 +64,7 @@ export const Home = () => {
               {
                 collectionCenterList && collectionCenterList.length > 0 ? <CollectionCenterList dataList={collectionCenterList} /> :
                   <div className='text-center'>
-                    <p className="p-5">No Collection Center....</p>
+                    <p className="p-5">Sorry, no results found!</p>
                   </div>
               }
               {/* pagination */}
