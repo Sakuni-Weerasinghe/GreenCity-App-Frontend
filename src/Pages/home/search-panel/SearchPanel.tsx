@@ -18,25 +18,25 @@ export const SearchPanel = (props: any) => {
                 <h6 className='pb-2 text-white'>FIND YOUR COLLECTION CENTER</h6>
                 <div className="row mb-3">
                     <div className="col-md-6 mb-2">
-                        <input type="search" className='form-control py-2 rounded-0' placeholder="Location" onChange={(e) => setLocation(e.target.value)} />                    </div>
-                </div>
-                <div className="col-md-4 justify-content-md-center mb-3">
-                    <select className="form-select py-2 rounded-0" aria-label="Default select example" onChange={(e) => setWasteType(e.target.value)}>                            <option value="">Waste Type</option>
-                        <option value="">Waste Type</option>
-                        <option value="Plastic">Plastic </option>
-                        <option value="Metal">Metal </option>
-                        <option value="Glass">Glass</option>
-                        <option value="Polythene">Polythene</option>
-                        <option value="E-Waste">E-Waste</option>
-                        <option value="Paper">Paper</option>
-                        <option value="Rubber">Rubber</option>
-                    </select>
-                </div>
-                <div className="col-md-2 text-center">
-                    <button className="search-btn btn btn-dark d-block w-100 py-2 rounded-0" onClick={handleSearch}>Search</button>
+                        <input type="search" className='form-control py-2 rounded-0' placeholder="Location" onChange={(e) => setLocation(e.target.value)} />
+                    </div>
+                    <div className="col-md-4 justify-content-md-center mb-3">
+                        <select className="form-select py-2 rounded-0" aria-label="Default select example" onChange={(e) => setWasteType(e.target.value)}>
+                            <option value="">Waste Type</option>
+                            <option value="Plastic">Plastic </option>
+                            <option value="Metal">Metal </option>
+                            <option value="Glass">Glass</option>
+                            <option value="Polythene">Polythene</option>
+                            <option value="E-Waste">E-Waste</option>
+                            <option value="Paper">Paper</option>
+                            <option value="Rubber">Rubber</option>
+                        </select>
+                    </div>
+                    <div className="col-md-2 text-center">
+                        <button className="search-btn btn btn-dark d-block w-100 py-2 rounded-0" onClick={handleSearch}>Search</button>
+                    </div>
                 </div>
             </div>
-        </div>
         </div >
     )
 }
