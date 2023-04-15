@@ -204,13 +204,13 @@ export const RequestDetails = () => {
                         </div>
                         <div className="col">
                             <p className="title p-2">Quantity</p>
-                            <p>{pickupRequestDetails?.quantity}</p>
+                            <p>{pickupRequestDetails?.quantity} kg</p>
                         </div>
                     </div>
                     <div className="row p-2">
                         <div className="col">
                             <p className="title p-2">Total Payment</p>
-                            <p>{pickupRequestDetails?.totalPayment}</p>
+                            <p>{pickupRequestDetails?.totalPayment} LKR</p>
                         </div>
                         <div className="col">
                             <p className="title p-2">Location</p>
@@ -226,7 +226,7 @@ export const RequestDetails = () => {
                         </div>
                     </div>
                 </div>
-                {requestStatus !== 'ACTIVE' && userRole === 'USER' &&
+                {requestStatus === 'ACTIVE' && userRole === 'USER' &&
                     <>
                         <hr />
                         <div className="d-grid gap-2 mx-auto mt-3 mb-5">
