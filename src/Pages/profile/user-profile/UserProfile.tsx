@@ -1,21 +1,20 @@
-import { useNavigate } from 'react-router-dom';
 import thumbnail from "../../../assets/Images/customer_profile.svg";
 
 import "./UserProfile.css"
+import { UserProfileSettings } from '../modals/user-profile-settings/UserProfileSettings';
+import { useState } from 'react';
 
 export const UserProfile = (props: any) => {
   const { profileSettings } = props;
-  const navigate = useNavigate();
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
+
 
   /**
-   * This function is used to handle onclick events of Update Settings & Update Details buttons
-   * @param page : settings, details
-   */
-  const onClickHandler = (page: string) => {
-    const path = `/profile/${profileSettings.username}/${page}`;
-    navigate(path);
+  * This function is used to hide opened modals
+  */
+  const hideModals = () => {
+    setShowSettingsModal(false);
   }
-
   return (
     <>
       <div className="row">
@@ -28,7 +27,7 @@ export const UserProfile = (props: any) => {
           <div className='row'>
             <div className='col text-start'><h3 className='m-0'>{`${profileSettings.firstName} ${profileSettings.lastName}`}</h3></div>
             <div className='col text-end'>
-              <button className='btn btn-dark px-4 btn-custom-1' onClick={() => onClickHandler('settings')}>Update Settings</button>
+              <button className='btn btn-dark px-4 btn-custom-1' onClick={() => setShowSettingsModal(true)}>Update Settings</button>
             </div>
           </div>
           <hr />
@@ -64,10 +63,12 @@ export const UserProfile = (props: any) => {
                 </h5>
               </div>
             </div>
-            <hr />
+            <hr className="my-2" />
           </div>
         </div>
       </div>
+      {/* Settings modal */}
+      <UserProfileSettings isShowModal={showSettingsModal} hideModal={hideModals} settings={profileSettings} settingsUpdateHandler={props.settingsUpdateHandler} />
     </>
   )
 }

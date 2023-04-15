@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './collectionCenterProfileDetails.css';
+import './CollectionCenterProfileDetails.css';
 import { Modal } from 'bootstrap';
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from "yup";
@@ -30,7 +30,7 @@ export const CollectionCenterProfileDetails = (props: any) => {
             payment: details?.payment,
             description: details?.description,
             workingDays: details?.workingDays,
-            active: details?.active?.toString(),
+            active: details?.active?.toString()
         }
     });
 

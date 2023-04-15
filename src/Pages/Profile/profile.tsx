@@ -11,7 +11,7 @@ import {
   CollectionCenterSettingsUpdateRequest, ProfileRequest,
   UserSettingsResponse
 } from "../../shared/models/profileModel";
-import './profile.css';
+import './Profile.css';
 
 export const Profile = () => {
   const userRole = localStorage.getItem('userRole');
@@ -72,7 +72,7 @@ export const Profile = () => {
         userRole === 'COLLECTION_CENTER' && collectionCenterSettings ?
           <CollectionCenterProfile profileSettings={collectionCenterSettings} profileDetails={collectionCenterDetails}
             settingsUpdateHandler={updateCollectionCenterSettings} detailsUpdateHandler={updateCollectionCenterDetails} />
-          : userRole === 'USER' && userSettings ? <UserProfile profileSettings={userSettings} /> : <></>
+          : userRole === 'USER' && userSettings ? <UserProfile profileSettings={userSettings} settingsUpdateHandler={updateUserSettings} /> : <></>
       }
     </div>
   );
