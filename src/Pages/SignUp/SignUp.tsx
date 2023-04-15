@@ -24,11 +24,11 @@ export const SignUp = () => {
                             <div>
                                 <h3 className="fw-bold mb-3">{signUpPageConfig.title}</h3>
                                 <p className="text-dark">{signUpPageConfig.message}</p>
-                                <img className="sign-up-icon mx-auto d-block" src={signUpIcon} alt='sign-up icon' />
+                                <img className="sign-up-icon mx-auto d-block" src={signUpIcon} alt="sign-up icon" />
                             </div>
                             <div className="row mt-3">
                                 <div className="col-6">
-                                    <button className="btn btn-dark btn-block p-2 w-100 btn-custom-1" onClick={() => onClickHandler("user")}  > USER </button>
+                                    <button className="btn btn-dark btn-block p-2 w-100 btn-custom-1" onClick={() => onClickHandler("user")}  > CUSTOMER </button>
                                 </div>
                                 <div className="col-6">
                                     <button className="btn btn-dark btn-block p-2 w-100 btn-custom-1" onClick={() => onClickHandler("collectionCenter")}  > COLLECTION CENTER </button>

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { UserRegisterRequest } from '../../../shared/models/authModel'
 
 export const UserSignUp = () => {
-  const userSignUpConfig = { title: 'SIGN UP - USER' }
+  const userSignUpConfig = { title: 'SIGN UP - CUSTOMER' }
   const navigate = useNavigate();
   const [message, setMessage] = useState<string>("");
 
