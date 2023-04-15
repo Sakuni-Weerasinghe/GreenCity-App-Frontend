@@ -9,7 +9,8 @@ import {
   CollectionCenterDetailsUpdateRequest,
   CollectionCenterSettingsResponse,
   CollectionCenterSettingsUpdateRequest, ProfileRequest,
-  UserSettingsResponse
+  UserSettingsResponse,
+  UserSettingsUpdateRequest
 } from "../../shared/models/profileModel";
 import './Profile.css';
 
@@ -63,6 +64,16 @@ export const Profile = () => {
   const updateCollectionCenterDetails = (updatedDetails: CollectionCenterDetailsUpdateRequest) => {
     if (updatedDetails && collectionCenterDetails) {
       setCollectionCenterDetails({ ...collectionCenterDetails, ...updatedDetails })
+    }
+  }
+
+  /**
+   * This function is used to update collection center settings
+   * @param updatedSettings : CollectionCenterSettingsUpdateRequest
+   */
+  const updateUserSettings = (updatedSettings: UserSettingsUpdateRequest) => {
+    if (updatedSettings && userSettings) {
+      setUserSettings({ ...userSettings, ...updatedSettings })
     }
   }
 
