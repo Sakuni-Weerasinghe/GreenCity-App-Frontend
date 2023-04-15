@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
 import Header from "./Core/Header/Header"
 import { Footer } from "./Core/Footer/Footer"
-import { Home } from "./Pages/Home/Home"
-import { UserSignUp } from "./Pages/SignUp/user_signup/UserSignup"
-import { CollectionCenterSignUp } from "./Pages/SignUp/collection_center_signup/CcenterSignup"
+import { Home } from './Pages/home/Home';
+import { UserSignUp } from './Pages/signup/user-signup/UserSignup';
+import { CollectionCenterSignUp } from './Pages/signup/collection-center-signup/CollectionCenterSignup';
 
 import './App.css';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { Login } from './Pages/Login/Login';
+import { Login } from './Pages/login/Login';
 
-import { CollectionCenterDetails } from './Pages/CollectionCenterDetails/CollectionCenterDetails';
+import { CollectionCenterDetails } from './Pages/collection-center-details/CollectionCenterDetails';
 import { PickupRequest } from './Pages/pickup-request/PickupRequest';
 import { Dashboard } from './Pages/dashboard/Dashboard';
 import { RequestDetails } from './Pages/dashboard/request-details/RequestDetails';
-import { SignUp } from './Pages/SignUp/SignUp';
+import { SignUp } from './Pages/signup/SignUp';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
-import { Profile } from './Pages/Profile/profile';
+import { Profile } from './Pages/profile/Profile';
 
 import { AuthService } from './shared/services/auth.service';
 import { Error } from './Core/error/Error';

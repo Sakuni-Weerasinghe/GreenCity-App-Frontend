@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { AuthService } from '../../shared/services/auth.service'
 import { useNavigate } from "react-router-dom";
 import { ProfileService } from "../../shared/services/profile.service";
-import { CollectionCenterProfile } from "./collectionCenterProfile/collectionCenterProfile";
-import { UserProfile } from "./userProfile/userProfile";
+import { CollectionCenterProfile } from "./collection-center-profile/CollectionCenterProfile";
+import { UserProfile } from "./user-profile/UserProfile";
 import {
   CollectionCenterDetailsResponse,
   CollectionCenterDetailsUpdateRequest,

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import './home.css';
-import { SearchPanel } from './search_bar/SearchPanel';
+import { SearchPanel } from './search-panel/SearchPanel';
 
 import main_banner from '../../assets/Images/main_banner.png';
-import { CollectionCenterList } from './CollectionCenterList/CollectionCenterList';
+import { CollectionCenterList } from './collection-center-list/CollectionCenterList';
 import MapModal from '../map/modals/map-modal/MapModal';
 import { PublicService } from '../../shared/services/public.service';
 import { CollectionCenterSummary } from '../../shared/models/publicModals';
