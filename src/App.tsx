@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from "./Core/Header/Header"
 import { Footer } from "./Core/Footer/Footer"
-import { Home } from './Pages/home/Home';
+import { Home } from './Pages/homex/Home';
 import { UserSignUp } from './Pages/signup/user-signup/UserSignup';
 import { CollectionCenterSignUp } from './Pages/signup/collection-center-signup/CollectionCenterSignup';
 
