@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Signup.css";
+import "./SignUp.css";
 import signUpIcon from '../../assets/Images/sign-up.svg';
 
 export const SignUp = () => {
