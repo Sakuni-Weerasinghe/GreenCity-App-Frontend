@@ -1,7 +1,7 @@
 import thumbnail from "../../../assets/Images/customer_profile.svg";
 
 import "./UserProfile.css"
-import { UserProfileSettings } from '../../profile/modals/user-profile-settings/UserProfileSettings';
+import { UserProfileSettings } from '../modals/user-profile-settings/UserProfileSettings';
 import { useState } from 'react';
 
 export const UserProfile = (props: any) => {

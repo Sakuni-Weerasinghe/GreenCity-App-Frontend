@@ -1,8 +1,8 @@
 import thumbnail from "../../../assets/Images/collection_center_profile.svg"
 import "./CollectionCenterProfile.css";
 import { useEffect, useState } from 'react';
-import { CollectionCenterProfileSettings } from "../../profile/modals/collection-center-profile-settings/CollectionCenterProfileSettings";
-import { CollectionCenterProfileDetails } from "../../profile/modals/collection-center-profile-details/CollectionCenterProfileDetails";
+import { CollectionCenterProfileSettings } from "../modals/collection-center-profile-settings/CollectionCenterProfileSettings";
+import { CollectionCenterProfileDetails } from "../modals/collection-center-profile-details/CollectionCenterProfileDetails";
 
 export const CollectionCenterProfile = (props: any) => {
     const { profileSettings, profileDetails } = props;

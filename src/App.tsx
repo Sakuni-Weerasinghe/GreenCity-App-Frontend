@@ -15,7 +15,7 @@ import { Dashboard } from './Pages/dashboard/Dashboard';
 import { RequestDetails } from './Pages/dashboard/request-details/RequestDetails';
 import { SignUp } from './Pages/signup/SignUp';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
-import { Profile } from './Pages/profilex/Profile';
+import { Profile } from './Pages/profile/Profile';
 
 import { AuthService } from './shared/services/auth.service';
 import { Error } from './Core/error/Error';
