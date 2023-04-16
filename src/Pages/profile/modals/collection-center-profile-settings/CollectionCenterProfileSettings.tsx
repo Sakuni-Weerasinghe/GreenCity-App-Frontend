@@ -29,7 +29,7 @@ export const CollectionCenterProfileSettings = (props: any) => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<CollectionCenterSettingsUpdateRequest>({
         resolver: yupResolver(validationSchema),
         defaultValues: {
-            centerName: settings.centerName,
+            centerName: settings?.centerName,
             contactNumber: settings?.contactNumber,
             addressLine1: settings?.addressLine1,
             addressLine2: settings?.addressLine2,
